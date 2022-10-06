@@ -1,0 +1,37 @@
+{
+	"name": "20mm_Cannon_Bullet",
+	"plugin-id": "Sprite",
+	"sid": 958097549869005,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 5,
+						"height": 48,
+						"originX": -4,
+						"originY": 0.4791666666666667,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4458304,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 762356305151434,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

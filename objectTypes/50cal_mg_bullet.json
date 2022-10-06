@@ -1,0 +1,48 @@
+{
+	"name": "50cal_MG_Bullet",
+	"plugin-id": "Sprite",
+	"sid": 484484279061302,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 118184849507926
+		},
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 270332944322819
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 5,
+						"height": 49,
+						"originX": -3.8,
+						"originY": 0.4897959183673468,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7057773,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 677668480130899,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

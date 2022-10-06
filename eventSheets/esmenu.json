@@ -1,0 +1,15 @@
+{
+	"name": "esMenu",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Button Actions",
+			"description": "Contains all button actions throughout the Menu system.",
+			"isActiveOnStart": true,
+			"children": [],
+			"sid": 762816655561547
+		}
+	],
+	"sid": 336461907310030
+}

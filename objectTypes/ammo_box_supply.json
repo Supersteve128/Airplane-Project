@@ -1,0 +1,94 @@
+{
+	"name": "Ammo_Box_Supply",
+	"plugin-id": "Sprite",
+	"sid": 516956692543284,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "sharpen",
+			"name": "Sharpen"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 266,
+						"height": 182,
+						"originX": 0.48872180451127817,
+						"originY": 0.5659340659340659,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8171098,
+						"collisionPoly": {
+							"points": [
+								0.02631578947368421,
+								0.038461538461538464,
+								0.5,
+								0.005494505494505495,
+								0.9699248120300752,
+								0.038461538461538464,
+								0.9699248120300752,
+								0.5,
+								0.9699248120300752,
+								0.9560439560439561,
+								0.5,
+								0.989010989010989,
+								0.02631578947368421,
+								0.9560439560439561,
+								0.0037593984962406013,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					},
+					{
+						"width": 266,
+						"height": 182,
+						"originX": 0.48872180451127817,
+						"originY": 0.5659340659340659,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3721364,
+						"collisionPoly": {
+							"points": [
+								0.02631578947368421,
+								0.038461538461538464,
+								0.5,
+								0.005494505494505495,
+								0.9699248120300752,
+								0.038461538461538464,
+								0.9699248120300752,
+								0.5,
+								0.9699248120300752,
+								0.9560439560439561,
+								0.5,
+								0.989010989010989,
+								0.02631578947368421,
+								0.9560439560439561,
+								0.0037593984962406013,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 937987767157809,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,715 @@
+{
+	"name": "esTutorial_FighterMap",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "50cal_Mg_Bullet_Count",
+			"type": "number",
+			"initialValue": "1800",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 329110476341778
+		},
+		{
+			"eventType": "variable",
+			"name": "20mm_Cannon_Bullet_Count",
+			"type": "number",
+			"initialValue": "750",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 792117069080697
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Start Layout",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 874084951433806
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "P51D30_Mustang",
+							"sid": 672521453365765,
+							"parameters": {
+								"frame-number": "0"
+							}
+						},
+						{
+							"id": "stop-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 939520803261648
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Ammo_Box_Supply",
+							"sid": 124302188821982,
+							"parameters": {
+								"frame-number": "1"
+							}
+						},
+						{
+							"id": "stop-animation",
+							"objectClass": "Ammo_Box_Supply",
+							"sid": 206683169214786
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "BF109F2",
+							"sid": 442362830235195,
+							"parameters": {
+								"frame-number": "0"
+							}
+						},
+						{
+							"id": "stop-animation",
+							"objectClass": "BF109F2",
+							"sid": 662486787844278
+						}
+					],
+					"sid": 678427121492952
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 565873673637293
+						}
+					],
+					"actions": [],
+					"sid": 608635410671898,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 314489438546162,
+									"parameters": {
+										"key": 32
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "P51D30_Mustang",
+									"sid": 792123545214828,
+									"parameters": {
+										"frame-number": "0"
+									}
+								}
+							],
+							"sid": 551458956612064,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 166999141054083,
+											"parameters": {
+												"variable": "50cal_Mg_Bullet_Count",
+												"comparison": 5,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-loop",
+											"objectClass": "System",
+											"sid": 845004525966832
+										}
+									],
+									"sid": 196146920864085
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 649497278757811
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "User Inputs",
+			"description": "Users Keyboard Controls.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 570574670309612,
+							"parameters": {
+								"key": 32
+							}
+						}
+					],
+					"actions": [],
+					"sid": 529808868261435,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 293785213298248,
+									"parameters": {
+										"count": "50cal_Mg_Bullet_Count"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "P51D30_Mustang",
+									"sid": 529634045992204,
+									"parameters": {
+										"object": "50cal_MG_Bullet",
+										"layer": "0",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 799822309885002,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "0"
+									}
+								},
+								{
+									"id": "set-animation-frame",
+									"objectClass": "P51D30_Mustang",
+									"sid": 500010348794700,
+									"parameters": {
+										"frame-number": "1"
+									}
+								}
+							],
+							"sid": 645646924192023,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "every-tick",
+											"objectClass": "System",
+											"sid": 188500371660025
+										}
+									],
+									"actions": [
+										{
+											"id": "subtract-from-eventvar",
+											"objectClass": "System",
+											"sid": 960488236643877,
+											"parameters": {
+												"variable": "50cal_Mg_Bullet_Count",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 113488446477266,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 613875466056367,
+													"parameters": {
+														"variable": "50cal_Mg_Bullet_Count",
+														"comparison": 5,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 722589423172881
+												}
+											],
+											"sid": 605963800949331
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 461367825748508,
+							"parameters": {
+								"key": 68
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "rotate-clockwise",
+							"objectClass": "P51D30_Mustang",
+							"sid": 232191522132691,
+							"parameters": {
+								"degrees": "1.0"
+							}
+						}
+					],
+					"sid": 686873902933201
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 917331543590512,
+							"parameters": {
+								"key": 65
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "rotate-counter-clockwise",
+							"objectClass": "P51D30_Mustang",
+							"sid": 709001779933394,
+							"parameters": {
+								"degrees": "1.0"
+							}
+						}
+					],
+					"sid": 680916719328801
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 321674879205889,
+							"parameters": {
+								"key": 87
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 112652765200659,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "250"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 808662530939558,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 913191382782494,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "275"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 867855207040292,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 677292027680130,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "300"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 416286006020005,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 541859064923753,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "325"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 727073451417482,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 345004238787816,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "350"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 492281154793067,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 981613586242817,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "375"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 842022806650298,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 566691236028660,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "400"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 299303949922603,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 337813505279426,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "425"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 822530981857674,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 155195088279165,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "437"
+							}
+						}
+					],
+					"sid": 254084448957616
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 980015553913127,
+							"parameters": {
+								"key": 83
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 480029650775823,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "437"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 675338905121413,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 969452390545719,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "425"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 689776374428310,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 848239803592667,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "400"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 179036875942573,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 422651152282428,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "375"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 672132630512166,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 711597816015666,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "350"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 260812381518418,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 736922655692625,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "325"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 748657837995859,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 947225741906619,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "300"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 520157367481603,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 238745084270936,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "275"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 621284525906442,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 786855317561492,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "250"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 884669750843646,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 217424603171199,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "225"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 317733831596704,
+							"parameters": {
+								"seconds": "0.1"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 807103964049297,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "200"
+							}
+						}
+					],
+					"sid": 676582817733265
+				}
+			],
+			"sid": 176316525028289
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Collisions",
+			"description": "Game Collisions.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Ammo_Box_Supply",
+							"sid": 305403934356866,
+							"parameters": {
+								"object": "P51D30_Mustang"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Ammo_Box_Supply",
+							"sid": 453646529443565
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 110017215733036,
+							"parameters": {
+								"variable": "50cal_Mg_Bullet_Count",
+								"value": "1800"
+							}
+						}
+					],
+					"sid": 608647448045847
+				}
+			],
+			"sid": 550140955376794
+		}
+	],
+	"sid": 186945742316182
+}
