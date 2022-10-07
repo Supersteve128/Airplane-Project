@@ -89,7 +89,33 @@
 							"sid": 565873673637293
 						}
 					],
-					"actions": [],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Particles",
+							"sid": 767731204864817,
+							"parameters": {
+								"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
+								"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "CounterFont",
+							"sid": 378197632605916,
+							"parameters": {
+								"text": "20mm_Cannon_Bullet_Count & \" / 750\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "SpeedFont",
+							"sid": 513220270634947,
+							"parameters": {
+								"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
+							}
+						}
+					],
 					"sid": 608635410671898,
 					"children": [
 						{
@@ -207,6 +233,15 @@
 									"sid": 500010348794700,
 									"parameters": {
 										"frame-number": "1"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 916009282065556,
+									"parameters": {
+										"variable": "20mm_Cannon_Bullet_Count",
+										"value": "20mm_Cannon_Bullet_Count - 1"
 									}
 								}
 							],

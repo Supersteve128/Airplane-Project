@@ -23,6 +23,30 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
@@ -71,7 +95,11 @@
 			"Keyboard",
 			"Ammo_Box_Supply",
 			"BF109F2",
-			"20mm_Cannon_Bullet"
+			"20mm_Cannon_Bullet",
+			"TiledBackground",
+			"Particles",
+			"CounterFont",
+			"SpeedFont"
 		],
 		"subfolders": []
 	},
