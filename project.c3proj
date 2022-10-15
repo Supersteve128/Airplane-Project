@@ -16,6 +16,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
@@ -34,14 +42,6 @@
 			"type": "plugin",
 			"id": "Particles",
 			"name": "Particles",
-			"author": "Scirra",
-			"version": "r308.2",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
-			"id": "Spritefont2",
-			"name": "Sprite font",
 			"author": "Scirra",
 			"version": "r308.2",
 			"bundled": false
@@ -99,9 +99,20 @@
 			"TiledBackground",
 			"Particles",
 			"CounterFont",
-			"SpeedFont"
+			"SpeedFont",
+			"Camera"
 		],
-		"subfolders": []
+		"subfolders": [
+			{
+				"items": [
+					"Frame",
+					"Needle",
+					"SpriteFont"
+				],
+				"subfolders": [],
+				"name": "Compass"
+			}
+		]
 	},
 	"autosaveData": null,
 	"containers": [],

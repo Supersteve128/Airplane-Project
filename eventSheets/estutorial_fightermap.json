@@ -22,6 +22,16 @@
 			"sid": 792117069080697
 		},
 		{
+			"eventType": "variable",
+			"name": "CameraDistance",
+			"type": "number",
+			"initialValue": "270",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 732821038577502
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Start Layout",
@@ -114,6 +124,58 @@
 							"parameters": {
 								"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
 							}
+						},
+						{
+							"id": "set-layout-angle",
+							"objectClass": "System",
+							"sid": 997477792921156,
+							"parameters": {
+								"angle": "Camera.Angle+90"
+							}
+						},
+						{
+							"id": "set-layer-angle",
+							"objectClass": "System",
+							"sid": 817622704885952,
+							"parameters": {
+								"layer": "\"UI\"",
+								"angle": "(-Camera.Angle) - 90"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Camera",
+							"sid": 808687160735012,
+							"disabled": true,
+							"parameters": {
+								"x": "lerp(Self.X, P51D30_Mustang.X, 0.03)",
+								"y": "lerp(Self.Y, P51D30_Mustang.Y, 0.03)"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Camera",
+							"sid": 121630176287347,
+							"parameters": {
+								"angle": " P51D30_Mustang.Angle"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Camera",
+							"sid": 637073117149741,
+							"parameters": {
+								"x": "lerp(Self.X, (P51D30_Mustang.X + (cos(P51D30_Mustang.Angle)*CameraDistance)), 0.03)",
+								"y": "lerp(Self.Y, (P51D30_Mustang.Y + (sin(P51D30_Mustang.Angle)*CameraDistance)), 0.03)"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Needle",
+							"sid": 132493800275654,
+							"parameters": {
+								"angle": "Camera.Angle + 90"
+							}
 						}
 					],
 					"sid": 608635410671898,
@@ -166,6 +228,78 @@
 									"sid": 196146920864085
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 390297271208361,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"comparison": 4,
+										"speed": "500"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-acceleration",
+									"objectClass": "P51D30_Mustang",
+									"sid": 641405439147254,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"acceleration": "0"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 733999900938668,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "500"
+									}
+								}
+							],
+							"sid": 450185144679185
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 607286744563853,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"comparison": 2,
+										"speed": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-acceleration",
+									"objectClass": "P51D30_Mustang",
+									"sid": 177395744476867,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"acceleration": "0"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 419491563551518,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "0"
+									}
+								}
+							],
+							"sid": 646324187839772
 						}
 					]
 				}
@@ -356,152 +490,26 @@
 							"parameters": {
 								"key": 87
 							}
+						},
+						{
+							"id": "compare-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 479657298166173,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"comparison": 2,
+								"speed": "500"
+							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-speed",
+							"id": "set-acceleration",
 							"objectClass": "P51D30_Mustang",
-							"sid": 112652765200659,
+							"sid": 697788815168186,
 							"behaviorType": "Bullet",
 							"parameters": {
-								"speed": "250"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 808662530939558,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 913191382782494,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "275"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 867855207040292,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 677292027680130,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "300"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 416286006020005,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 541859064923753,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "325"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 727073451417482,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 345004238787816,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "350"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 492281154793067,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 981613586242817,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "375"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 842022806650298,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 566691236028660,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "400"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 299303949922603,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 337813505279426,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "425"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 822530981857674,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 155195088279165,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "437"
+								"acceleration": "60"
 							}
 						}
 					],
@@ -517,186 +525,26 @@
 							"parameters": {
 								"key": 83
 							}
+						},
+						{
+							"id": "compare-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 785882000541720,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"comparison": 4,
+								"speed": "10"
+							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-speed",
+							"id": "set-acceleration",
 							"objectClass": "P51D30_Mustang",
-							"sid": 480029650775823,
+							"sid": 645831928745499,
 							"behaviorType": "Bullet",
 							"parameters": {
-								"speed": "437"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 675338905121413,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 969452390545719,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "425"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 689776374428310,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 848239803592667,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "400"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 179036875942573,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 422651152282428,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "375"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 672132630512166,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 711597816015666,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "350"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 260812381518418,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 736922655692625,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "325"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 748657837995859,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 947225741906619,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "300"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 520157367481603,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 238745084270936,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "275"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 621284525906442,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 786855317561492,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "250"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 884669750843646,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 217424603171199,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "225"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 317733831596704,
-							"parameters": {
-								"seconds": "0.1"
-							}
-						},
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 807103964049297,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "200"
+								"acceleration": "-60"
 							}
 						}
 					],
