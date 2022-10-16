@@ -49,17 +49,13 @@
 					],
 					"actions": [
 						{
-							"id": "set-animation-frame",
+							"id": "set-animation",
 							"objectClass": "P51D30_Mustang",
-							"sid": 672521453365765,
+							"sid": 100083612320180,
 							"parameters": {
-								"frame-number": "0"
+								"animation": "\"Idle\"",
+								"from": "beginning"
 							}
-						},
-						{
-							"id": "stop-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 939520803261648
 						},
 						{
 							"id": "set-animation-frame",
@@ -112,9 +108,9 @@
 						{
 							"id": "set-text",
 							"objectClass": "CounterFont",
-							"sid": 378197632605916,
+							"sid": 190546050740691,
 							"parameters": {
-								"text": "20mm_Cannon_Bullet_Count & \" / 750\""
+								"text": "50cal_Mg_Bullet_Count & \" / 1800\""
 							}
 						},
 						{
@@ -194,11 +190,12 @@
 							],
 							"actions": [
 								{
-									"id": "set-animation-frame",
+									"id": "set-animation",
 									"objectClass": "P51D30_Mustang",
-									"sid": 792123545214828,
+									"sid": 521979538452624,
 									"parameters": {
-										"frame-number": "0"
+										"animation": "\"Idle\"",
+										"from": "current-frame"
 									}
 								}
 							],
@@ -235,11 +232,11 @@
 								{
 									"id": "compare-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 390297271208361,
+									"sid": 720297938599680,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"comparison": 4,
-										"speed": "500"
+										"speed": "437"
 									}
 								}
 							],
@@ -256,10 +253,10 @@
 								{
 									"id": "set-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 733999900938668,
+									"sid": 299939118576978,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"speed": "500"
+										"speed": "437"
 									}
 								}
 							],
@@ -271,11 +268,11 @@
 								{
 									"id": "compare-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 607286744563853,
+									"sid": 989732770248129,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"comparison": 2,
-										"speed": "0"
+										"speed": "200"
 									}
 								}
 							],
@@ -292,10 +289,10 @@
 								{
 									"id": "set-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 419491563551518,
+									"sid": 979233845823661,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"speed": "0"
+										"speed": "200"
 									}
 								}
 							],
@@ -362,20 +359,21 @@
 									}
 								},
 								{
-									"id": "set-animation-frame",
+									"id": "set-animation",
 									"objectClass": "P51D30_Mustang",
-									"sid": 500010348794700,
+									"sid": 983196963489854,
 									"parameters": {
-										"frame-number": "1"
+										"animation": "\"Idle Guns\"",
+										"from": "current-frame"
 									}
 								},
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 916009282065556,
+									"sid": 124343826974983,
 									"parameters": {
 										"variable": "20mm_Cannon_Bullet_Count",
-										"value": "20mm_Cannon_Bullet_Count - 1"
+										"value": "50cal_Mg_Bullet_Count - 1"
 									}
 								}
 							],
@@ -494,11 +492,11 @@
 						{
 							"id": "compare-speed",
 							"objectClass": "P51D30_Mustang",
-							"sid": 479657298166173,
+							"sid": 615120121717260,
 							"behaviorType": "Bullet",
 							"parameters": {
 								"comparison": 2,
-								"speed": "500"
+								"speed": "437"
 							}
 						}
 					],
@@ -529,11 +527,11 @@
 						{
 							"id": "compare-speed",
 							"objectClass": "P51D30_Mustang",
-							"sid": 785882000541720,
+							"sid": 454606250861830,
 							"behaviorType": "Bullet",
 							"parameters": {
 								"comparison": 4,
-								"speed": "10"
+								"speed": "200"
 							}
 						}
 					],
@@ -579,9 +577,9 @@
 							"sid": 453646529443565
 						},
 						{
-							"id": "add-to-eventvar",
+							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 110017215733036,
+							"sid": 328610432140460,
 							"parameters": {
 								"variable": "50cal_Mg_Bullet_Count",
 								"value": "1800"

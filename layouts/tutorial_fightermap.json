@@ -43,7 +43,7 @@
 					"type": "P51D30_Mustang",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Animation 1",
+						"initial-animation": "Idle",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -381,9 +381,9 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 931,
-						"y": 513,
-						"width": 295,
+						"x": 929,
+						"y": 512,
+						"width": 460.33,
 						"height": 60,
 						"originX": 0,
 						"originY": 0,
@@ -419,8 +419,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 934,
-						"y": 594,
+						"x": 927,
+						"y": 595,
 						"width": 200,
 						"height": 30,
 						"originX": 0,
