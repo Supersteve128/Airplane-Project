@@ -25,7 +25,7 @@
 			"eventType": "variable",
 			"name": "CameraDistance",
 			"type": "number",
-			"initialValue": "270",
+			"initialValue": "275",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,

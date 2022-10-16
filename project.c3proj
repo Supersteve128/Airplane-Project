@@ -47,6 +47,46 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Multiplayer",
+			"name": "Multiplayer",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TextBox",
+			"name": "Text input",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
@@ -90,17 +130,19 @@
 	"uniqueId": "0qmbljb3x9e",
 	"objectTypes": {
 		"items": [
-			"P51D30_Mustang",
-			"50cal_MG_Bullet",
 			"Keyboard",
 			"Ammo_Box_Supply",
-			"BF109F2",
-			"20mm_Cannon_Bullet",
 			"TiledBackground",
 			"Particles",
 			"CounterFont",
 			"SpeedFont",
-			"Camera"
+			"Camera",
+			"Multiplayer",
+			"Text",
+			"Mouse",
+			"Touch",
+			"NameInput",
+			"Button"
 		],
 		"subfolders": [
 			{
@@ -111,6 +153,22 @@
 				],
 				"subfolders": [],
 				"name": "Compass"
+			},
+			{
+				"items": [
+					"BF109F2",
+					"P51D30_Mustang"
+				],
+				"subfolders": [],
+				"name": "Airplanes"
+			},
+			{
+				"items": [
+					"20mm_Cannon_Bullet",
+					"50cal_MG_Bullet"
+				],
+				"subfolders": [],
+				"name": "Weapons"
 			}
 		]
 	},
@@ -245,7 +303,7 @@
 		"zAxisScale": "normalized",
 		"fov": 0.7853981633974483,
 		"useLoaderLayout": false,
-		"fullscreenMode": "letterbox-scale",
+		"fullscreenMode": "scale-inner",
 		"fullscreenQuality": "high",
 		"viewportFit": "auto",
 		"backgroundColor": [

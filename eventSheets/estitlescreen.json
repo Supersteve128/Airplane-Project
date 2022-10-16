@@ -1,5 +1,140 @@
 {
 	"name": "esTitleScreen",
-	"events": [],
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "GAME_NAME",
+			"type": "string",
+			"initialValue": "game",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 496864453309588
+		},
+		{
+			"eventType": "variable",
+			"name": "INSTANCE_NAME",
+			"type": "string",
+			"initialValue": "default",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 437736419888303
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 532966466931154,
+					"parameters": {
+						"object": "Button"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 822916710297866,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 224926947520156,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout-by-name",
+							"objectClass": "System",
+							"sid": 490724065629058,
+							"parameters": {
+								"layout": "\"Tutorial_FighterMap\""
+							}
+						}
+					],
+					"sid": 719623411841115
+				}
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Chat Log",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "AddLog",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 694522942262490
+				}
+			],
+			"sid": 746383512275738
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 994661462526231
+				}
+			],
+			"actions": [
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 677976171394667,
+					"parameters": {
+						"property-name": "\"border\"",
+						"value": "\"1px solid black\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 325264797054022,
+					"parameters": {
+						"property-name": "\"font-size\"",
+						"value": "\"36px\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 364097542174358,
+					"parameters": {
+						"property-name": "\"border-radius\"",
+						"value": "\"5px\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 879077995210862,
+					"parameters": {
+						"property-name": "\"padding\"",
+						"value": "\"5px 10px\""
+					}
+				}
+			],
+			"sid": 313195212972459
+		}
+	],
 	"sid": 255209927989058
 }
