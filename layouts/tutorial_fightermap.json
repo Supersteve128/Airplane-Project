@@ -71,6 +71,14 @@
 							"properties": {
 								"enabled": false
 							}
+						},
+						"Rotate": {
+							"properties": {
+								"speed": 0,
+								"acceleration": 0,
+								"enabled": true,
+								"live-preview": false
+							}
 						}
 					},
 					"effects": {

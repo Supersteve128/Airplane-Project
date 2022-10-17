@@ -19,6 +19,11 @@
 			"behaviorId": "scrollto",
 			"name": "ScrollTo",
 			"sid": 664765290369859
+		},
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 969123613578440
 		}
 	],
 	"effectTypes": [

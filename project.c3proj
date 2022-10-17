@@ -112,6 +112,14 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "destroy",
 			"name": "Destroy outside layout",
 			"author": "Scirra",
