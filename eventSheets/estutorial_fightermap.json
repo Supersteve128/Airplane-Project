@@ -587,6 +587,134 @@
 						}
 					],
 					"sid": 608647448045847
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 561325416192175,
+							"parameters": {
+								"key": 51
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 514078961075208,
+							"parameters": {
+								"animation": "\"Idle Damage 1\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "P51D30_Mustang",
+							"sid": 593091521420785,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "5"
+							}
+						}
+					],
+					"sid": 870096872683527,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "P51D30_Mustang",
+									"sid": 353397588050101,
+									"parameters": {
+										"animation": "\"Idle Damage 1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 522982517505976,
+									"parameters": {
+										"seconds": "0.47"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "P51D30_Mustang",
+									"sid": 950279538449332,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 938959328750508
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 765995552408267,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 963501027989664,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "0"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 565023638462507,
+							"parameters": {
+								"animation": "\"Death\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 916460708761328,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-finished",
+									"objectClass": "P51D30_Mustang",
+									"sid": 418855673875660,
+									"parameters": {
+										"animation": "\"Death\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "P51D30_Mustang",
+									"sid": 828150709459450
+								}
+							],
+							"sid": 959974763365143
+						}
+					]
 				}
 			],
 			"sid": 550140955376794

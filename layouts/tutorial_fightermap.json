@@ -49,7 +49,9 @@
 						"live-preview": false
 					},
 					"uid": 2,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"Health": 120
+					},
 					"behaviors": {
 						"Bullet": {
 							"properties": {
