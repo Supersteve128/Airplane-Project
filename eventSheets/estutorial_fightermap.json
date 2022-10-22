@@ -32,6 +32,26 @@
 			"sid": 732821038577502
 		},
 		{
+			"eventType": "variable",
+			"name": "RotationInitialVelocity",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 843961699861361
+		},
+		{
+			"eventType": "variable",
+			"name": "RotationAcceleration",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 400265078998271
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Start Layout",
@@ -151,9 +171,9 @@
 						{
 							"id": "set-angle",
 							"objectClass": "Camera",
-							"sid": 121630176287347,
+							"sid": 801204840558027,
 							"parameters": {
-								"angle": " P51D30_Mustang.Angle"
+								"angle": " anglelerp(Self.Angle, P51D30_Mustang.Angle, 0.50)"
 							}
 						},
 						{
@@ -168,9 +188,18 @@
 						{
 							"id": "set-angle",
 							"objectClass": "Needle",
-							"sid": 132493800275654,
+							"sid": 546585077851258,
 							"parameters": {
-								"angle": "Camera.Angle + 90"
+								"angle": "anglelerp(Self.Angle, Camera.Angle + 90, 0.05)"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "P51D30_Mustang",
+							"sid": 630102204531390,
+							"behaviorType": "Rotate",
+							"parameters": {
+								"acceleration": "RotationInitialVelocity + RotationAcceleration"
 							}
 						}
 					],
@@ -444,15 +473,76 @@
 					],
 					"actions": [
 						{
-							"id": "rotate-clockwise",
-							"objectClass": "P51D30_Mustang",
-							"sid": 232191522132691,
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 528971937092967,
 							"parameters": {
-								"degrees": "1.0"
+								"variable": "RotationAcceleration",
+								"value": "35"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 276895064131629,
+							"parameters": {
+								"variable": "RotationInitialVelocity",
+								"value": "20"
 							}
 						}
 					],
-					"sid": 686873902933201
+					"sid": 686873902933201,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 426477623285777,
+									"parameters": {
+										"variable": "RotationInitialVelocity",
+										"comparison": 2,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 441846807046151,
+									"parameters": {
+										"variable": "RotationInitialVelocity",
+										"value": "40"
+									}
+								}
+							],
+							"sid": 987614198941920
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 108564037138811
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 672751072056869,
+									"parameters": {
+										"variable": "RotationInitialVelocity",
+										"value": "20"
+									}
+								}
+							],
+							"sid": 725944420375037
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -468,23 +558,75 @@
 					],
 					"actions": [
 						{
-							"id": "rotate-counter-clockwise",
-							"objectClass": "P51D30_Mustang",
-							"sid": 709001779933394,
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 154389479177434,
 							"parameters": {
-								"degrees": "1.0"
+								"variable": "RotationAcceleration",
+								"value": "-35"
 							}
 						}
 					],
-					"sid": 680916719328801
+					"sid": 680916719328801,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 934877966638785,
+									"parameters": {
+										"variable": "RotationInitialVelocity",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 188479049497666,
+									"parameters": {
+										"variable": "RotationInitialVelocity",
+										"value": "-40"
+									}
+								}
+							],
+							"sid": 321870812058903
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 178383824309029
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 726884160058135,
+									"parameters": {
+										"variable": "RotationInitialVelocity",
+										"value": "-20"
+									}
+								}
+							],
+							"sid": 706640656695952
+						}
+					]
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-key-pressed",
+							"id": "key-is-down",
 							"objectClass": "Keyboard",
-							"sid": 321674879205889,
+							"sid": 579071733926290,
 							"parameters": {
 								"key": 87
 							}
@@ -509,6 +651,15 @@
 							"parameters": {
 								"acceleration": "60"
 							}
+						},
+						{
+							"id": "set-layer-scale",
+							"objectClass": "System",
+							"sid": 826062888803132,
+							"parameters": {
+								"layer": "\"Game\"",
+								"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
+							}
 						}
 					],
 					"sid": 254084448957616
@@ -517,9 +668,9 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-key-pressed",
+							"id": "key-is-down",
 							"objectClass": "Keyboard",
-							"sid": 980015553913127,
+							"sid": 527608456021794,
 							"parameters": {
 								"key": 83
 							}
@@ -544,9 +695,62 @@
 							"parameters": {
 								"acceleration": "-60"
 							}
+						},
+						{
+							"id": "set-layer-scale",
+							"objectClass": "System",
+							"sid": 669496840295773,
+							"parameters": {
+								"layer": "\"Game\"",
+								"scale": "lerp(LayerScale(\"Game\"), 1.1, 0.03)"
+							}
 						}
 					],
 					"sid": 676582817733265
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 175224387297437,
+							"parameters": {
+								"key": 68
+							},
+							"isInverted": true
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 594034382922594,
+							"parameters": {
+								"key": 65
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-speed",
+							"objectClass": "P51D30_Mustang",
+							"sid": 889253397427685,
+							"behaviorType": "Rotate",
+							"parameters": {
+								"speed": "lerp(Self.Rotate.Speed, 0, 0.5)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 813288234402904,
+							"parameters": {
+								"variable": "RotationAcceleration",
+								"value": "lerp(RotationAcceleration, 0, 0.5)"
+							}
+						}
+					],
+					"sid": 735344548461677
 				}
 			],
 			"sid": 176316525028289

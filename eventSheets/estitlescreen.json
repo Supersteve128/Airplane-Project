@@ -22,6 +22,16 @@
 			"sid": 437736419888303
 		},
 		{
+			"eventType": "variable",
+			"name": "Alias",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 200659169654456
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -134,6 +144,87 @@
 				}
 			],
 			"sid": 313195212972459
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 150177864324005
+				}
+			],
+			"actions": [
+				{
+					"id": "connect",
+					"objectClass": "Multiplayer",
+					"sid": 622553016462972,
+					"parameters": {
+						"server": "\"wss://multiplayer.scirra.com\""
+					}
+				}
+			],
+			"sid": 500836312852279
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Mouse",
+					"sid": 489359402214952,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				},
+				{
+					"id": "is-connected",
+					"objectClass": "Multiplayer",
+					"sid": 301886496042154
+				},
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 414795429743288,
+					"parameters": {
+						"object": "Button"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "log-in",
+					"objectClass": "Multiplayer",
+					"sid": 628010070964460,
+					"parameters": {
+						"alias": "Alias"
+					}
+				}
+			],
+			"sid": 495301488625225
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-text-changed",
+					"objectClass": "NameInput",
+					"sid": 387731746212684
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 800590239742606,
+					"parameters": {
+						"variable": "Alias",
+						"value": "NameInput.Text"
+					}
+				}
+			],
+			"sid": 947427089557152
 		}
 	],
 	"sid": 255209927989058
