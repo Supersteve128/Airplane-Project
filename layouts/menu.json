@@ -36,7 +36,24 @@
 		}
 	],
 	"sid": 458133318327743,
-	"nonworld-instances": [],
+	"nonworld-instances": [
+		{
+			"type": "LogMessages",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 33,
+			"instanceVariables": {}
+		},
+		{
+			"type": "JSON",
+			"properties": {},
+			"uid": 36,
+			"instanceVariables": {}
+		}
+	],
 	"effectTypes": [],
 	"width": 1280,
 	"height": 720,

@@ -9,6 +9,30 @@
 			"type": "number",
 			"desc": "",
 			"sid": 909409191027077
+		},
+		{
+			"name": "PeerID",
+			"type": "string",
+			"desc": "",
+			"sid": 979514661187460
+		},
+		{
+			"name": "RotationAcceleration",
+			"type": "number",
+			"desc": "",
+			"sid": 781445693248919
+		},
+		{
+			"name": "RotationInitialVelocity",
+			"type": "number",
+			"desc": "",
+			"sid": 851608864941137
+		},
+		{
+			"name": "inputs",
+			"type": "number",
+			"desc": "",
+			"sid": 133092590099858
 		}
 	],
 	"behaviorTypes": [

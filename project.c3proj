@@ -87,6 +87,22 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
@@ -150,7 +166,14 @@
 			"Mouse",
 			"Touch",
 			"NameInput",
-			"Button"
+			"Button",
+			"LogText",
+			"LogMessages",
+			"NetStats",
+			"Text2",
+			"Sprite",
+			"SpriteFont2",
+			"JSON"
 		],
 		"subfolders": [
 			{
@@ -352,5 +375,5 @@
 	},
 	"viewportWidth": 1280,
 	"viewportHeight": 720,
-	"firstLayout": null
+	"firstLayout": "TitleScreen"
 }

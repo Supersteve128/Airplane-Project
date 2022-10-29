@@ -3,27 +3,7 @@
 	"events": [
 		{
 			"eventType": "variable",
-			"name": "GAME_NAME",
-			"type": "string",
-			"initialValue": "game",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 496864453309588
-		},
-		{
-			"eventType": "variable",
-			"name": "INSTANCE_NAME",
-			"type": "string",
-			"initialValue": "default",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 437736419888303
-		},
-		{
-			"eventType": "variable",
-			"name": "Alias",
+			"name": "Username",
 			"type": "string",
 			"initialValue": "",
 			"comment": "",
@@ -57,44 +37,31 @@
 								"mouse-button": "left",
 								"click-type": "clicked"
 							}
+						},
+						{
+							"id": "compare-text",
+							"objectClass": "NameInput",
+							"sid": 383399334426386,
+							"parameters": {
+								"text": "\"\"",
+								"case": "case-insensitive"
+							},
+							"isInverted": true
 						}
 					],
 					"actions": [
 						{
-							"id": "go-to-layout-by-name",
+							"id": "go-to-layout",
 							"objectClass": "System",
-							"sid": 490724065629058,
+							"sid": 415589067898567,
 							"parameters": {
-								"layout": "\"Tutorial_FighterMap\""
+								"layout": "Tutorial_FighterMap"
 							}
 						}
 					],
 					"sid": 719623411841115
 				}
 			]
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Chat Log",
-			"description": "",
-			"isActiveOnStart": true,
-			"children": [
-				{
-					"functionName": "AddLog",
-					"functionDescription": "",
-					"functionCategory": "",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
-					"sid": 694522942262490
-				}
-			],
-			"sid": 746383512275738
 		},
 		{
 			"eventType": "block",
@@ -105,66 +72,8 @@
 					"sid": 994661462526231
 				}
 			],
-			"actions": [
-				{
-					"id": "set-css-style",
-					"objectClass": "NameInput",
-					"sid": 677976171394667,
-					"parameters": {
-						"property-name": "\"border\"",
-						"value": "\"1px solid black\""
-					}
-				},
-				{
-					"id": "set-css-style",
-					"objectClass": "NameInput",
-					"sid": 325264797054022,
-					"parameters": {
-						"property-name": "\"font-size\"",
-						"value": "\"36px\""
-					}
-				},
-				{
-					"id": "set-css-style",
-					"objectClass": "NameInput",
-					"sid": 364097542174358,
-					"parameters": {
-						"property-name": "\"border-radius\"",
-						"value": "\"5px\""
-					}
-				},
-				{
-					"id": "set-css-style",
-					"objectClass": "NameInput",
-					"sid": 879077995210862,
-					"parameters": {
-						"property-name": "\"padding\"",
-						"value": "\"5px 10px\""
-					}
-				}
-			],
+			"actions": [],
 			"sid": 313195212972459
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-start-of-layout",
-					"objectClass": "System",
-					"sid": 150177864324005
-				}
-			],
-			"actions": [
-				{
-					"id": "connect",
-					"objectClass": "Multiplayer",
-					"sid": 622553016462972,
-					"parameters": {
-						"server": "\"wss://multiplayer.scirra.com\""
-					}
-				}
-			],
-			"sid": 500836312852279
 		},
 		{
 			"eventType": "block",
@@ -198,7 +107,7 @@
 					"objectClass": "Multiplayer",
 					"sid": 628010070964460,
 					"parameters": {
-						"alias": "Alias"
+						"alias": "Username"
 					}
 				}
 			],
@@ -219,12 +128,69 @@
 					"objectClass": "System",
 					"sid": 800590239742606,
 					"parameters": {
-						"variable": "Alias",
+						"variable": "Username",
 						"value": "NameInput.Text"
 					}
 				}
 			],
-			"sid": 947427089557152
+			"sid": 947427089557152,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 164895304928577
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 471759356328370
+				}
+			],
+			"actions": [
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 639223186285549,
+					"parameters": {
+						"property-name": "\"border\"",
+						"value": "\"1px solid black\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 879095379280574,
+					"parameters": {
+						"property-name": "\"font-size\"",
+						"value": "\"36px\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 774363767855028,
+					"parameters": {
+						"property-name": "\"border-radius\"",
+						"value": "\"5px\""
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 964695522663695,
+					"parameters": {
+						"property-name": "\"padding\"",
+						"value": "\"5px 10px\""
+					}
+				}
+			],
+			"sid": 715067811788291
 		}
 	],
 	"sid": 255209927989058

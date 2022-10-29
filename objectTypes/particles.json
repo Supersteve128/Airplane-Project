@@ -3,7 +3,14 @@
 	"plugin-id": "Particles",
 	"sid": 103721067532508,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "PeerID",
+			"type": "string",
+			"desc": "",
+			"sid": 262120857716236
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
