@@ -54,7 +54,8 @@
 						"PeerID": "",
 						"RotationAcceleration": 0,
 						"RotationInitialVelocity": 0,
-						"inputs": 0
+						"inputs": 0,
+						"FiftyCal_Mg_Bullet_Count": 1200
 					},
 					"behaviors": {
 						"Bullet": {
@@ -71,11 +72,6 @@
 						"BoundToLayout": {
 							"properties": {
 								"bound-by": "edge"
-							}
-						},
-						"ScrollTo": {
-							"properties": {
-								"enabled": false
 							}
 						},
 						"Rotate": {

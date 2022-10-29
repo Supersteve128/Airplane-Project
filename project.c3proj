@@ -103,6 +103,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
@@ -120,14 +128,6 @@
 		},
 		{
 			"type": "behavior",
-			"id": "scrollto",
-			"name": "Scroll To",
-			"author": "Scirra",
-			"version": "r308.2",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
 			"id": "Rotate",
 			"name": "Rotate",
 			"author": "Scirra",
@@ -138,6 +138,14 @@
 			"type": "behavior",
 			"id": "destroy",
 			"name": "Destroy outside layout",
+			"author": "Scirra",
+			"version": "r308.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Scroll To",
 			"author": "Scirra",
 			"version": "r308.2",
 			"bundled": false
@@ -173,7 +181,8 @@
 			"Text2",
 			"Sprite",
 			"SpriteFont2",
-			"JSON"
+			"JSON",
+			"Audio"
 		],
 		"subfolders": [
 			{
@@ -231,7 +240,16 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "turret sound.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 512473034026966,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"music": {

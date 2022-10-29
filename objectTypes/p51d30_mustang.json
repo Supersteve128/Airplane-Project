@@ -33,6 +33,12 @@
 			"type": "number",
 			"desc": "",
 			"sid": 133092590099858
+		},
+		{
+			"name": "FiftyCal_Mg_Bullet_Count",
+			"type": "number",
+			"desc": "",
+			"sid": 326528055470265
 		}
 	],
 	"behaviorTypes": [
@@ -45,11 +51,6 @@
 			"behaviorId": "bound",
 			"name": "BoundToLayout",
 			"sid": 332371951953789
-		},
-		{
-			"behaviorId": "scrollto",
-			"name": "ScrollTo",
-			"sid": 664765290369859
 		},
 		{
 			"behaviorId": "Rotate",
