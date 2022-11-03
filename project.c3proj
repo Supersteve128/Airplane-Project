@@ -1,17 +1,17 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 30802,
+	"savedWithRelease": 31700,
 	"name": "Coding Club Game Concept",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": false,
+	"bundleAddons": true,
 	"usedAddons": [
 		{
 			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -19,7 +19,7 @@
 			"id": "Spritefont2",
 			"name": "Sprite font",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -27,7 +27,7 @@
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -35,7 +35,7 @@
 			"id": "TiledBg",
 			"name": "Tiled Background",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -43,7 +43,7 @@
 			"id": "Particles",
 			"name": "Particles",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -51,7 +51,7 @@
 			"id": "Multiplayer",
 			"name": "Multiplayer",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -59,7 +59,7 @@
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -67,7 +67,7 @@
 			"id": "Mouse",
 			"name": "Mouse",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -75,7 +75,7 @@
 			"id": "Touch",
 			"name": "Touch",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -83,7 +83,7 @@
 			"id": "TextBox",
 			"name": "Text input",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -91,7 +91,7 @@
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -99,7 +99,7 @@
 			"id": "Json",
 			"name": "JSON",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -107,7 +107,15 @@
 			"id": "Audio",
 			"name": "Audio",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Photon",
+			"name": "Photon",
+			"author": "Exit Games",
+			"version": "4.1.1.0",
 			"bundled": false
 		},
 		{
@@ -115,7 +123,7 @@
 			"id": "Bullet",
 			"name": "Bullet",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -123,7 +131,7 @@
 			"id": "bound",
 			"name": "Bound to layout",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -131,7 +139,7 @@
 			"id": "Rotate",
 			"name": "Rotate",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -139,7 +147,7 @@
 			"id": "destroy",
 			"name": "Destroy outside layout",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -147,7 +155,7 @@
 			"id": "scrollto",
 			"name": "Scroll To",
 			"author": "Scirra",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		},
 		{
@@ -155,7 +163,7 @@
 			"id": "sharpen",
 			"name": "Sharpen",
 			"author": "Brad Larson",
-			"version": "r308.2",
+			"version": "r317",
 			"bundled": false
 		}
 	],
@@ -180,9 +188,10 @@
 			"NetStats",
 			"Text2",
 			"Sprite",
-			"SpriteFont2",
+			"HealthFont",
 			"JSON",
-			"Audio"
+			"Audio",
+			"Photon"
 		],
 		"subfolders": [
 			{
@@ -389,7 +398,8 @@
 		"preloadSounds": true,
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",
-		"autoReloadScriptsOnPreview": false
+		"autoReloadScriptsOnPreview": false,
+		"exportFileStructure": "flat"
 	},
 	"viewportWidth": 1280,
 	"viewportHeight": 720,

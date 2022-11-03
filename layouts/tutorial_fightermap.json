@@ -55,7 +55,8 @@
 						"RotationAcceleration": 0,
 						"RotationInitialVelocity": 0,
 						"inputs": 0,
-						"FiftyCal_Mg_Bullet_Count": 1200
+						"FiftyCal_Mg_Bullet_Count": 1200,
+						"ActorNr": 0
 					},
 					"behaviors": {
 						"Bullet": {
@@ -92,8 +93,8 @@
 						}
 					},
 					"world": {
-						"x": 546,
-						"y": 358,
+						"x": -55,
+						"y": 170,
 						"width": 94,
 						"height": 93,
 						"originX": 0.5531914893617021,
@@ -118,7 +119,9 @@
 						"live-preview": false
 					},
 					"uid": 3,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"ActorNr": 0
+					},
 					"behaviors": {
 						"DestroyOutsideLayout": {
 							"properties": {}
@@ -265,7 +268,9 @@
 						"live-preview": false
 					},
 					"uid": 12,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"ActorNr": 0
+					},
 					"behaviors": {
 						"ScrollTo": {
 							"properties": {
@@ -317,7 +322,7 @@
 					},
 					"uid": 9,
 					"instanceVariables": {
-						"PeerID": ""
+						"ActorNr": 0
 					},
 					"behaviors": {},
 					"world": {
@@ -519,49 +524,7 @@
 					}
 				},
 				{
-					"type": "NetStats",
-					"properties": {
-						"text": "Stats",
-						"enable-bbcode": false,
-						"font": "Arial",
-						"size": 14.25,
-						"line-height": 0,
-						"bold": false,
-						"italic": false,
-						"color": [
-							0,
-							0,
-							0,
-							1
-						],
-						"horizontal-alignment": "left",
-						"vertical-alignment": "bottom",
-						"wrapping": "word",
-						"initially-visible": true,
-						"origin": "top-left"
-					},
-					"uid": 34,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 768.9315103699839,
-						"y": 13,
-						"width": 505.06848963001613,
-						"height": 132,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "SpriteFont2",
+					"type": "HealthFont",
 					"properties": {
 						"text": "Health",
 						"enable-bbcode": true,

@@ -8,37 +8,50 @@
 			"name": "Health",
 			"type": "number",
 			"desc": "",
+			"show": true,
 			"sid": 909409191027077
 		},
 		{
 			"name": "PeerID",
 			"type": "string",
 			"desc": "",
+			"show": true,
 			"sid": 979514661187460
 		},
 		{
 			"name": "RotationAcceleration",
 			"type": "number",
 			"desc": "",
+			"show": true,
 			"sid": 781445693248919
 		},
 		{
 			"name": "RotationInitialVelocity",
 			"type": "number",
 			"desc": "",
+			"show": true,
 			"sid": 851608864941137
 		},
 		{
 			"name": "inputs",
 			"type": "number",
 			"desc": "",
+			"show": true,
 			"sid": 133092590099858
 		},
 		{
 			"name": "FiftyCal_Mg_Bullet_Count",
 			"type": "number",
 			"desc": "",
+			"show": true,
 			"sid": 326528055470265
+		},
+		{
+			"name": "ActorNr",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 482466529176768
 		}
 	],
 	"behaviorTypes": [
@@ -548,8 +561,8 @@
 							{
 								"width": 94,
 								"height": 93,
-								"originX": 0.5,
-								"originY": 0.5,
+								"originX": 0.5531914893617021,
+								"originY": 0.4946236559139785,
 								"originalSource": "",
 								"exportFormat": "lossless",
 								"exportQuality": 0.8,
@@ -580,8 +593,8 @@
 							{
 								"width": 94,
 								"height": 93,
-								"originX": 0.5,
-								"originY": 0.5,
+								"originX": 0.5531914893617021,
+								"originY": 0.4946236559139785,
 								"originalSource": "",
 								"exportFormat": "lossless",
 								"exportQuality": 0.8,
@@ -612,8 +625,8 @@
 							{
 								"width": 94,
 								"height": 93,
-								"originX": 0.5,
-								"originY": 0.5,
+								"originX": 0.5531914893617021,
+								"originY": 0.4946236559139785,
 								"originalSource": "",
 								"exportFormat": "lossless",
 								"exportQuality": 0.8,
@@ -644,8 +657,8 @@
 							{
 								"width": 94,
 								"height": 93,
-								"originX": 0.5,
-								"originY": 0.5,
+								"originX": 0.5531914893617021,
+								"originY": 0.4946236559139785,
 								"originalSource": "",
 								"exportFormat": "lossless",
 								"exportQuality": 0.8,
@@ -676,8 +689,8 @@
 							{
 								"width": 94,
 								"height": 93,
-								"originX": 0.5,
-								"originY": 0.5,
+								"originX": 0.5531914893617021,
+								"originY": 0.4946236559139785,
 								"originalSource": "",
 								"exportFormat": "lossless",
 								"exportQuality": 0.8,
@@ -708,8 +721,8 @@
 							{
 								"width": 94,
 								"height": 93,
-								"originX": 0.5,
-								"originY": 0.5,
+								"originX": 0.5531914893617021,
+								"originY": 0.4946236559139785,
 								"originalSource": "",
 								"exportFormat": "lossless",
 								"exportQuality": 0.8,

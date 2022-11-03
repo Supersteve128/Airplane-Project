@@ -5,10 +5,11 @@
 	"isGlobal": false,
 	"instanceVariables": [
 		{
-			"name": "PeerID",
-			"type": "string",
+			"name": "ActorNr",
+			"type": "number",
 			"desc": "",
-			"sid": 262120857716236
+			"show": true,
+			"sid": 743873934662299
 		}
 	],
 	"behaviorTypes": [],

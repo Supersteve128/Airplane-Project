@@ -60,20 +60,20 @@
 						}
 					],
 					"sid": 719623411841115
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onjoinedlobby22",
+							"objectClass": "Photon",
+							"sid": 495050520317215
+						}
+					],
+					"actions": [],
+					"sid": 152048118368302
 				}
 			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 994661462526231
-				}
-			],
-			"actions": [],
-			"sid": 313195212972459
 		},
 		{
 			"eventType": "block",
@@ -101,16 +101,7 @@
 					}
 				}
 			],
-			"actions": [
-				{
-					"id": "log-in",
-					"objectClass": "Multiplayer",
-					"sid": 628010070964460,
-					"parameters": {
-						"alias": "Username"
-					}
-				}
-			],
+			"actions": [],
 			"sid": 495301488625225
 		},
 		{
@@ -153,6 +144,11 @@
 				}
 			],
 			"actions": [
+				{
+					"id": "connect10",
+					"objectClass": "Photon",
+					"sid": 701953572251414
+				},
 				{
 					"id": "set-css-style",
 					"objectClass": "NameInput",

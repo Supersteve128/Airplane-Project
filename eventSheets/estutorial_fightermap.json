@@ -33,56 +33,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "RotationInitialVelocity",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 843961699861361
-		},
-		{
-			"eventType": "variable",
-			"name": "RotationAcceleration",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 400265078998271
-		},
-		{
-			"eventType": "variable",
-			"name": "GAME_NAME",
-			"type": "string",
-			"initialValue": "scirra-pong",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 919953430876025
-		},
-		{
-			"eventType": "variable",
-			"name": "INSTANCE_NAME",
-			"type": "string",
-			"initialValue": "default",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 869688133667437
-		},
-		{
-			"eventType": "variable",
-			"name": "ROOM_NAME",
-			"type": "string",
-			"initialValue": "game",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 782172643411372
-		},
-		{
-			"eventType": "variable",
 			"name": "GameState",
 			"type": "string",
 			"initialValue": "waiting",
@@ -249,58 +199,28 @@
 					],
 					"actions": [
 						{
-							"id": "add-client-input-value",
-							"objectClass": "Multiplayer",
-							"sid": 204125979055216,
+							"id": "destroy",
+							"objectClass": "P51D30_Mustang",
+							"sid": 965962303076639
+						},
+						{
+							"id": "setmyactorname101",
+							"objectClass": "Photon",
+							"sid": 928181640355937,
 							"parameters": {
-								"tag": "\"inputs\"",
-								"precision": "very-low-uint8-1-byte",
-								"interpolation": "none"
+								"name0": "Username"
 							}
 						},
 						{
-							"id": "sync-object",
-							"objectClass": "Multiplayer",
-							"sid": 250796049046856,
+							"id": "joinrandomroom13",
+							"objectClass": "Photon",
+							"sid": 156473565418675,
 							"parameters": {
-								"object": "P51D30_Mustang",
-								"data": "position-and-angle",
-								"precision": "normal-float-4-bytes",
-								"bandwidth": "normal-bandwidth-unpredictable"
-							}
-						},
-						{
-							"id": "connect",
-							"objectClass": "Multiplayer",
-							"sid": 602150818715036,
-							"parameters": {
-								"server": "\"wss://multiplayer.scirra.com\""
-							}
-						},
-						{
-							"id": "sync-instance-variable",
-							"objectClass": "Multiplayer",
-							"sid": 292376563850365,
-							"parameters": {
-								"object": "P51D30_Mustang",
-								"instance-variable": {
-									"name": "inputs",
-									"objectClass": "P51D30_Mustang"
-								},
-								"precision": "very-low-uint8-1-byte",
-								"interpolation": "none",
-								"client-value-tag": "\"inputs\""
-							}
-						},
-						{
-							"id": "sync-object",
-							"objectClass": "Multiplayer",
-							"sid": 711802580025703,
-							"parameters": {
-								"object": "Particles",
-								"data": "position-and-angle",
-								"precision": "normal-float-4-bytes",
-								"bandwidth": "normal-bandwidth-unpredictable"
+								"matchmyroom2": "no",
+								"matchmakingmode6": "fillroom",
+								"lobbyname7": "\"\"",
+								"lobbytype10": "default",
+								"sqllobbyfilter11": "\"\""
 							}
 						}
 					],
@@ -310,454 +230,263 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-connected",
-							"objectClass": "Multiplayer",
-							"sid": 494867191041604
+							"id": "onjoinrandomroomnomatchfound23",
+							"objectClass": "Photon",
+							"sid": 550181065824396
 						}
 					],
 					"actions": [
 						{
-							"callFunction": "AddLog",
-							"sid": 320851396196161,
-							"parameters": [
-								"\"Connected, logging in...\""
-							]
+							"id": "createroom11",
+							"objectClass": "Photon",
+							"sid": 402187892376590,
+							"parameters": {
+								"room0": "\"test\"",
+								"lobbyname1": "\"\"",
+								"lobbytype4": "default"
+							}
 						},
 						{
-							"id": "log-in",
-							"objectClass": "Multiplayer",
-							"sid": 918387046715625,
+							"callFunction": "AddLog",
+							"sid": 761572109081308,
+							"parameters": [
+								"\"Created Room\""
+							]
+						}
+					],
+					"sid": 551194923537721
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onactorleave16",
+							"objectClass": "Photon",
+							"sid": 522479984714660
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 536176474490645,
 							"parameters": {
-								"alias": "Username"
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
 							}
 						}
 					],
-					"sid": 626647481698816
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-logged-in",
-							"objectClass": "Multiplayer",
-							"sid": 318141209848435
-						}
-					],
 					"actions": [
 						{
-							"callFunction": "AddLog",
-							"sid": 376195532815473,
-							"parameters": [
-								"\"Logged in with alias: \" & Multiplayer.MyAlias & \" (\" & Multiplayer.MyID & \")\" & newline & \"Joining room...\""
-							]
+							"id": "destroy",
+							"objectClass": "P51D30_Mustang",
+							"sid": 451583775240565
 						},
 						{
-							"id": "auto-join-room",
-							"objectClass": "Multiplayer",
-							"sid": 337986553759429,
-							"parameters": {
-								"game": "GAME_NAME",
-								"instance": "INSTANCE_NAME",
-								"first-room": "ROOM_NAME",
-								"max-peers": "10",
-								"locking": "lock-when-full"
-							}
-						}
-					],
-					"sid": 647316456794332
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-joined-room",
-							"objectClass": "Multiplayer",
-							"sid": 980221084054610
-						}
-					],
-					"actions": [],
-					"sid": 665794149715669,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-host",
-									"objectClass": "Multiplayer",
-									"sid": 875178590251855
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "AddLog",
-									"sid": 143073299068832,
-									"parameters": [
-										"\"Joined room as host, waiting for peer...\""
-									]
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 343912340967908,
-									"parameters": {
-										"group-name": "\"Host\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 405343828381211,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"value": "Multiplayer.MyID"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Particles",
-									"sid": 403807948736662,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"value": "Multiplayer.MyID"
-									}
-								},
-								{
-									"id": "add-child",
-									"objectClass": "P51D30_Mustang",
-									"sid": 219882592922044,
-									"parameters": {
-										"child": "Particles",
-										"transform-x": true,
-										"transform-y": true,
-										"transform-w": false,
-										"transform-h": false,
-										"transform-a": true,
-										"transform-z-elevation": true,
-										"destroy-with-parent": true
-									}
-								},
-								{
-									"id": "associate-object-with-peer",
-									"objectClass": "Multiplayer",
-									"sid": 688903954567656,
-									"parameters": {
-										"object": "P51D30_Mustang",
-										"peer-id": "Multiplayer.MyID"
-									}
-								}
-							],
-							"sid": 879351739077808
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 841563909288695
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "AddLog",
-									"sid": 699670785749233,
-									"parameters": [
-										"\"Joined room as peer\""
-									]
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 222806441011599,
-									"parameters": {
-										"group-name": "\"Peer\"",
-										"state": "activated"
-									}
-								},
-								{
-									"callFunction": "AddLog",
-									"sid": 117262786833367,
-									"parameters": [
-										"\"Attempting to establish connection to host...\""
-									]
-								},
-								{
-									"id": "destroy",
-									"objectClass": "P51D30_Mustang",
-									"sid": 561963092754797
-								},
-								{
-									"id": "destroy",
-									"objectClass": "Particles",
-									"sid": 753375971298948
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 971980910801854,
-									"parameters": {
-										"variable": "GameState",
-										"value": "\"getready\""
-									}
-								}
-							],
-							"sid": 420734298054260
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-disconnected",
-							"objectClass": "Multiplayer",
-							"sid": 254089766989254
-						}
-					],
-					"actions": [
-						{
 							"callFunction": "AddLog",
-							"sid": 948311539492065,
-							"parameters": [
-								"\"Signalling disconnected\""
-							]
-						}
-					],
-					"sid": 482997911953622
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-error",
-							"objectClass": "Multiplayer",
-							"sid": 355320683511063
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "AddLog",
-							"sid": 991073977984569,
-							"parameters": [
-								"\"Signalling error: \" & Multiplayer.ErrorMessage"
-							]
-						}
-					],
-					"sid": 679822094238841
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-left-room",
-							"objectClass": "Multiplayer",
-							"sid": 877825629139684
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "AddLog",
-							"sid": 378384410896284,
-							"parameters": [
-								"\"Signalling: left room\""
-							]
-						}
-					],
-					"sid": 638684127190786
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-kicked",
-							"objectClass": "Multiplayer",
-							"sid": 688060914270824
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "AddLog",
-							"sid": 816765619858518,
+							"sid": 521196844526285,
 							"parameters": [
 								"\"Kicked (either could not connect to host or host quit)\""
 							]
 						}
 					],
-					"sid": 846543764218299
+					"sid": 569137298503036
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "every-tick",
-							"objectClass": "System",
-							"sid": 300137356307272
+							"id": "onjoinroom14",
+							"objectClass": "Photon",
+							"sid": 642115834399082
 						}
 					],
 					"actions": [
 						{
-							"id": "set-text",
-							"objectClass": "NetStats",
-							"sid": 218863917076988,
+							"callFunction": "AddLog",
+							"sid": 654125330070985,
+							"parameters": [
+								"\"Connected, logging in...\""
+							]
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 506262319065859,
 							"parameters": {
-								"text": "Multiplayer.StatInboundCount & \" in (\" & (round(Multiplayer.StatInboundBandwidth/100)/10) & \" k) / sec\" & newline & Multiplayer.StatOutboundCount & \" out (\" & (round(Multiplayer.StatOutboundBandwidth/100)/10) & \" k) / sec\" & newline & \"Host ping \" & round(Multiplayer.PeerLatency(Multiplayer.HostID)) & \", PDV \" & round(Multiplayer.PeerPDV(Multiplayer.HostID))"
+								"code0": "1",
+								"data1": "0",
+								"interestgroup2": "0",
+								"cache11": "addtoroomcache",
+								"receivers15": "all",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
 							}
 						}
 					],
-					"sid": 808719542765112
-				}
-			],
-			"sid": 457140439925737
-		},
-		{
-			"eventType": "group",
-			"disabled": true,
-			"title": "User Inputs",
-			"description": "Users Keyboard Controls.",
-			"isActiveOnStart": true,
-			"children": [
+					"sid": 449674562206219
+				},
+				{
+					"eventType": "comment",
+					"text": "Creates object on start of entering room"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 791676538731834,
+							"parameters": {
+								"code0": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 465917050376648,
+							"parameters": {
+								"object-to-create": "P51D30_Mustang",
+								"layer": "0",
+								"x": "50",
+								"y": "50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 353580171599420,
+							"parameters": {
+								"object-to-create": "Particles",
+								"layer": "0",
+								"x": "50",
+								"y": "50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 830239586063814,
+							"parameters": {
+								"object-to-create": "Camera",
+								"layer": "0",
+								"x": "0",
+								"y": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "P51D30_Mustang",
+							"sid": 709635628602097,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"value": "Photon.ActorNr"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Particles",
+							"sid": 600718265322461,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"value": "Photon.ActorNr"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Camera",
+							"sid": 809818607069830,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"value": "Photon.ActorNr"
+							}
+						},
+						{
+							"callFunction": "AddLog",
+							"sid": 244329669804667,
+							"parameters": [
+								"\"Logged in with alias: \" & Photon.ActorNameByNr(Photon.ActorNr) & \" (\" & Photon.ActorNr & \")\" & newline & \"Joining room...\""
+							]
+						}
+					],
+					"sid": 285009607860158
+				},
+				{
+					"eventType": "comment",
+					"text": "Client controls and conditions"
+				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "P51D30_Mustang",
-							"sid": 615655752582604,
+							"sid": 212388383557874,
 							"parameters": {
-								"instance-variable": "PeerID",
+								"instance-variable": "ActorNr",
 								"comparison": 0,
-								"value": "Multiplayer.MyID"
+								"value": "Photon.MyActorNr"
 							}
 						}
 					],
-					"actions": [],
-					"sid": 217202110332783,
-					"disabled": true,
+					"actions": [
+						{
+							"id": "set-acceleration",
+							"objectClass": "P51D30_Mustang",
+							"sid": 386302385762788,
+							"behaviorType": "Rotate",
+							"parameters": {
+								"acceleration": "P51D30_Mustang.RotationInitialVelocity + P51D30_Mustang.RotationAcceleration"
+							}
+						}
+					],
+					"sid": 805992391045114,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "key-is-down",
-									"objectClass": "Keyboard",
-									"sid": 617888326135984,
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 328252753612756,
 									"parameters": {
-										"key": 32
+										"interval-seconds": "0.02"
 									}
 								}
 							],
-							"actions": [],
-							"sid": 734919690159088,
-							"disabled": true,
-							"children": [
+							"actions": [
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "repeat",
-											"objectClass": "System",
-											"sid": 260130733308529,
-											"parameters": {
-												"count": "50cal_Mg_Bullet_Count"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "spawn-another-object",
-											"objectClass": "P51D30_Mustang",
-											"sid": 788968659967338,
-											"parameters": {
-												"object": "50cal_MG_Bullet",
-												"layer": "0",
-												"image-point": "0",
-												"create-hierarchy": false
-											}
-										},
-										{
-											"id": "set-angle-of-motion",
-											"objectClass": "50cal_MG_Bullet",
-											"sid": 347319967602605,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"angle": "0"
-											}
-										},
-										{
-											"id": "set-animation",
-											"objectClass": "P51D30_Mustang",
-											"sid": 519255189493530,
-											"parameters": {
-												"animation": "\"Idle Guns\"",
-												"from": "current-frame"
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 660431842704709,
-											"parameters": {
-												"variable": "20mm_Cannon_Bullet_Count",
-												"value": "50cal_Mg_Bullet_Count - 1"
-											}
-										}
-									],
-									"sid": 977881452281920,
-									"disabled": true,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "every-tick",
-													"objectClass": "System",
-													"sid": 161261859913789
-												}
-											],
-											"actions": [
-												{
-													"id": "subtract-from-eventvar",
-													"objectClass": "System",
-													"sid": 412436506188045,
-													"parameters": {
-														"variable": "50cal_Mg_Bullet_Count",
-														"value": "1"
-													}
-												}
-											],
-											"sid": 886116622955837,
-											"disabled": true,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "compare-eventvar",
-															"objectClass": "System",
-															"sid": 487890591833698,
-															"parameters": {
-																"variable": "50cal_Mg_Bullet_Count",
-																"comparison": 5,
-																"value": "0"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "stop-loop",
-															"objectClass": "System",
-															"sid": 578725658328915
-														}
-													],
-													"sid": 894587676959978,
-													"disabled": true
-												}
-											]
-										}
-									]
+									"id": "set-position",
+									"objectClass": "Particles",
+									"sid": 409714732929478,
+									"parameters": {
+										"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
+										"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 613879220521702,
+									"parameters": {
+										"code0": "9",
+										"data1": "0",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "others",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
 								}
-							]
+							],
+							"sid": 407803084016515
 						},
 						{
 							"eventType": "block",
@@ -765,76 +494,118 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 875653222437639,
+									"sid": 655229270612138,
 									"parameters": {
-										"key": 68
+										"key": 32
+									}
+								},
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 385334939306724,
+									"parameters": {
+										"interval-seconds": "0.02"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 590281883083948,
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 783487585757873,
 									"parameters": {
-										"instance-variable": "RotationAcceleration",
-										"value": "35"
+										"code0": "5",
+										"data1": "P51D30_Mustang.inputs",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
 									}
 								}
 							],
-							"sid": 586385905668658,
-							"disabled": true,
+							"sid": 412008764748329
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 929882729870740,
+									"parameters": {
+										"key": 32
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 748079963592168,
+									"parameters": {
+										"audio-file": "turret sound",
+										"loop": "looping",
+										"volume": "-3",
+										"stereo-pan": "0",
+										"tag-optional": "\"turret\""
+									}
+								}
+							],
+							"sid": 431548422001679
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 717517332292435,
+									"parameters": {
+										"key": 32
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 712218072122041,
+									"parameters": {
+										"code0": "7",
+										"data1": "1",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 806727483639237,
 							"children": [
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 589766649535788,
+											"id": "compare-instance-variable",
+											"objectClass": "P51D30_Mustang",
+											"sid": 108827186376787,
 											"parameters": {
-												"variable": "RotationInitialVelocity",
-												"comparison": 2,
+												"instance-variable": "FiftyCal_Mg_Bullet_Count",
+												"comparison": 5,
 												"value": "0"
 											}
 										}
 									],
 									"actions": [
 										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 210846115271724,
-											"parameters": {
-												"instance-variable": "RotationInitialVelocity",
-												"value": "40"
-											}
-										}
-									],
-									"sid": 379058105082934,
-									"disabled": true
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
+											"id": "stop-loop",
 											"objectClass": "System",
-											"sid": 699995447448545
+											"sid": 527042164802878
 										}
 									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 881337168816137,
-											"parameters": {
-												"instance-variable": "RotationInitialVelocity",
-												"value": "20"
-											}
-										}
-									],
-									"sid": 451422960758593,
-									"disabled": true
+									"sid": 614681732453887
 								}
 							]
 						},
@@ -844,7 +615,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 355514805939717,
+									"sid": 692433404720992,
 									"parameters": {
 										"key": 65
 									}
@@ -854,25 +625,24 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 305400434743995,
+									"sid": 861455380968442,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "-35"
 									}
 								}
 							],
-							"sid": 877055462397888,
-							"disabled": true,
+							"sid": 447332753913061,
 							"children": [
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 858156992398354,
+											"id": "compare-instance-variable",
+											"objectClass": "P51D30_Mustang",
+											"sid": 905507259647170,
 											"parameters": {
-												"variable": "RotationInitialVelocity",
+												"instance-variable": "RotationInitialVelocity",
 												"comparison": 4,
 												"value": "0"
 											}
@@ -882,15 +652,14 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "P51D30_Mustang",
-											"sid": 670367036997548,
+											"sid": 574731795509962,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "-40"
 											}
 										}
 									],
-									"sid": 150236880372766,
-									"disabled": true
+									"sid": 155899146970251
 								},
 								{
 									"eventType": "block",
@@ -898,22 +667,21 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 708916413194158
+											"sid": 702923645211453
 										}
 									],
 									"actions": [
 										{
 											"id": "set-instvar-value",
 											"objectClass": "P51D30_Mustang",
-											"sid": 778764412899441,
+											"sid": 505776963297181,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "-20"
 											}
 										}
 									],
-									"sid": 285855778273834,
-									"disabled": true
+									"sid": 708027687670401
 								}
 							]
 						},
@@ -923,18 +691,64 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 856149710591154,
+									"sid": 616306194171777,
 									"parameters": {
 										"key": 87
 									}
-								},
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-scale",
+									"objectClass": "System",
+									"sid": 106881351988345,
+									"parameters": {
+										"layer": "\"Game\"",
+										"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
+									}
+								}
+							],
+							"sid": 313971788837254,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-speed",
+											"objectClass": "P51D30_Mustang",
+											"sid": 499845075269998,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"comparison": 2,
+												"speed": "437"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-acceleration",
+											"objectClass": "P51D30_Mustang",
+											"sid": 555238488082929,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"acceleration": "60"
+											}
+										}
+									],
+									"sid": 321273052351856
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
 								{
 									"id": "compare-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 674617125352294,
+									"sid": 224406642194322,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"comparison": 2,
+										"comparison": 5,
 										"speed": "437"
 									}
 								}
@@ -943,24 +757,23 @@
 								{
 									"id": "set-acceleration",
 									"objectClass": "P51D30_Mustang",
-									"sid": 778744194142703,
+									"sid": 685480490065738,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"acceleration": "60"
+										"acceleration": "0"
 									}
 								},
 								{
-									"id": "set-layer-scale",
-									"objectClass": "System",
-									"sid": 807652841120044,
+									"id": "set-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 168349003377920,
+									"behaviorType": "Bullet",
 									"parameters": {
-										"layer": "\"Game\"",
-										"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
+										"speed": "437"
 									}
 								}
 							],
-							"sid": 127790639099051,
-							"disabled": true
+							"sid": 668445183530378
 						},
 						{
 							"eventType": "block",
@@ -968,18 +781,140 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 837336278535869,
+									"sid": 177021684975925,
+									"parameters": {
+										"key": 68
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "P51D30_Mustang",
+									"sid": 815018323279277,
+									"parameters": {
+										"instance-variable": "RotationAcceleration",
+										"value": "35"
+									}
+								}
+							],
+							"sid": 821959639824300,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "P51D30_Mustang",
+											"sid": 900689303370686,
+											"parameters": {
+												"instance-variable": "RotationInitialVelocity",
+												"comparison": 4,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "P51D30_Mustang",
+											"sid": 826286779451952,
+											"parameters": {
+												"instance-variable": "RotationInitialVelocity",
+												"value": "40"
+											}
+										}
+									],
+									"sid": 358597599575684
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 737692442675339
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "P51D30_Mustang",
+											"sid": 402282824246934,
+											"parameters": {
+												"instance-variable": "RotationInitialVelocity",
+												"value": "20"
+											}
+										}
+									],
+									"sid": 727547471264261
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 561060465163117,
 									"parameters": {
 										"key": 83
 									}
-								},
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-scale",
+									"objectClass": "System",
+									"sid": 513824438244514,
+									"parameters": {
+										"layer": "\"Game\"",
+										"scale": "lerp(LayerScale(\"Game\"), 1.1, 0.03)"
+									}
+								}
+							],
+							"sid": 824443198160354,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-speed",
+											"objectClass": "P51D30_Mustang",
+											"sid": 682913927794246,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"comparison": 4,
+												"speed": "200"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-acceleration",
+											"objectClass": "P51D30_Mustang",
+											"sid": 688446701392716,
+											"behaviorType": "Bullet",
+											"parameters": {
+												"acceleration": "-60"
+											}
+										}
+									],
+									"sid": 542364407592995
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
 								{
 									"id": "compare-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 615508854987338,
+									"sid": 785783741781005,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"comparison": 4,
+										"comparison": 3,
 										"speed": "200"
 									}
 								}
@@ -988,24 +923,107 @@
 								{
 									"id": "set-acceleration",
 									"objectClass": "P51D30_Mustang",
-									"sid": 899704149789532,
+									"sid": 887861961245318,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"acceleration": "-60"
+										"acceleration": "0"
 									}
 								},
 								{
-									"id": "set-layer-scale",
-									"objectClass": "System",
-									"sid": 158522289002000,
+									"id": "set-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 872219413698583,
+									"behaviorType": "Bullet",
 									"parameters": {
-										"layer": "\"Game\"",
-										"scale": "lerp(LayerScale(\"Game\"), 1.1, 0.03)"
+										"speed": "200"
 									}
 								}
 							],
-							"sid": 961670470796322,
-							"disabled": true
+							"sid": 509677696179627
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 317560205302802,
+									"parameters": {
+										"key": 65
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 206304373179288,
+									"parameters": {
+										"key": 68
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 700244343988401,
+									"behaviorType": "Rotate",
+									"parameters": {
+										"speed": "0"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "P51D30_Mustang",
+									"sid": 415515259069268,
+									"parameters": {
+										"instance-variable": "RotationAcceleration",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 313518252733212
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-released",
+									"objectClass": "Keyboard",
+									"sid": 833512460751449,
+									"parameters": {
+										"key": 68
+									}
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 193586362020218,
+									"parameters": {
+										"key": 65
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-speed",
+									"objectClass": "P51D30_Mustang",
+									"sid": 229547301892386,
+									"behaviorType": "Rotate",
+									"parameters": {
+										"speed": "0"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "P51D30_Mustang",
+									"sid": 429892964955726,
+									"parameters": {
+										"instance-variable": "RotationAcceleration",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 845127294690628
 						},
 						{
 							"eventType": "block",
@@ -1013,7 +1031,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 267123246309809,
+									"sid": 221390149317802,
 									"parameters": {
 										"key": 68
 									},
@@ -1022,7 +1040,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 278229668446667,
+									"sid": 590275543779460,
 									"parameters": {
 										"key": 65
 									},
@@ -1033,7 +1051,7 @@
 								{
 									"id": "set-speed",
 									"objectClass": "P51D30_Mustang",
-									"sid": 458741605443215,
+									"sid": 541063667411396,
 									"behaviorType": "Rotate",
 									"parameters": {
 										"speed": "lerp(Self.Rotate.Speed, 0, 0.5)"
@@ -1042,20 +1060,685 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 311150804390586,
+									"sid": 318885041221070,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
-										"value": "lerp(RotationAcceleration, 0, 0.5)"
+										"value": "lerp(Self.RotationAcceleration, 0, 0.5)"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "P51D30_Mustang",
+									"sid": 983875183214793,
+									"parameters": {
+										"instance-variable": "RotationInitialVelocity",
+										"value": "0"
 									}
 								}
 							],
-							"sid": 102646855411824,
-							"disabled": true
+							"sid": 688108594923412
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 707694942855688,
+									"parameters": {
+										"key": 71
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "P51D30_Mustang",
+									"sid": 884393038227649,
+									"parameters": {
+										"x": "50",
+										"y": "50"
+									}
+								}
+							],
+							"sid": 561095839494904
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 521246156173656,
+									"parameters": {
+										"key": 51
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 552660450416637,
+									"parameters": {
+										"code0": "6",
+										"data1": "1",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 994751900488911,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "P51D30_Mustang",
+											"sid": 344880636703662,
+											"parameters": {
+												"animation": "\"Idle Damage 1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 627200091139027,
+											"parameters": {
+												"seconds": "0.47"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "P51D30_Mustang",
+											"sid": 216165495214613,
+											"parameters": {
+												"animation": "\"Idle\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 416818211595852
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "P51D30_Mustang",
+									"sid": 776011515789890,
+									"parameters": {
+										"instance-variable": "Health",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 118455642034763,
+									"parameters": {
+										"code0": "8",
+										"data1": "0",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 687319683811894
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "P51D30_Mustang",
+									"sid": 939458385148743,
+									"parameters": {
+										"object": "50cal_MG_Bullet"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 670931752211334,
+									"parameters": {
+										"instance-variable": "ActorNr",
+										"comparison": 1,
+										"value": "P51D30_Mustang.ActorNr"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 820434167601214,
+									"parameters": {
+										"code0": "6",
+										"data1": "50cal_MG_Bullet.UID",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 853788868667077
 						}
 					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 535444135337441,
+							"parameters": {
+								"interval-seconds": "0.02"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 458633687518859,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.MyActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 124935122449148,
+							"parameters": {
+								"code0": "2",
+								"data1": "P51D30_Mustang.X",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "others",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 837782491264791,
+							"parameters": {
+								"code0": "3",
+								"data1": "P51D30_Mustang.Y",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "others",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 739946966896541,
+							"parameters": {
+								"code0": "4",
+								"data1": "P51D30_Mustang.Angle",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "others",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 113124935252386
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 974360180819435,
+							"parameters": {
+								"code0": "2"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 139410522418916,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "P51D30_Mustang",
+							"sid": 357031259255318,
+							"parameters": {
+								"x": " float(Photon.EventData)"
+							}
+						}
+					],
+					"sid": 128766776966397
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 155099230724665,
+							"parameters": {
+								"code0": "3"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 766750735441543,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-y",
+							"objectClass": "P51D30_Mustang",
+							"sid": 542877595796198,
+							"parameters": {
+								"y": "float(Photon.EventData)"
+							}
+						}
+					],
+					"sid": 981571816508755
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 501521397752713,
+							"parameters": {
+								"code0": "4"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 627569680994143,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "P51D30_Mustang",
+							"sid": 683368957015191,
+							"parameters": {
+								"angle": "float(Photon.EventData)"
+							}
+						}
+					],
+					"sid": 747685063006902
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 579122958721947,
+							"parameters": {
+								"code0": "5"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 192630380898739,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 878416568788649,
+							"parameters": {
+								"instance-variable": "FiftyCal_Mg_Bullet_Count",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 566069757471997,
+							"parameters": {
+								"animation": "\"Idle Guns\"",
+								"from": "current-frame"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "P51D30_Mustang",
+							"sid": 663648966849204,
+							"parameters": {
+								"object": "50cal_MG_Bullet",
+								"layer": "0",
+								"image-point": "0",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "50cal_MG_Bullet",
+							"sid": 404913303349702,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"value": "P51D30_Mustang.ActorNr"
+							}
+						},
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "50cal_MG_Bullet",
+							"sid": 913656478447237,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "0"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "P51D30_Mustang",
+							"sid": 268430692902247,
+							"parameters": {
+								"instance-variable": "FiftyCal_Mg_Bullet_Count",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 750994499146106
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 112009527800016,
+							"parameters": {
+								"code0": "6"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 163255409209413,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "50cal_MG_Bullet",
+							"sid": 901803511036714
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 558781362924362,
+							"parameters": {
+								"animation": "\"Idle Damage 1\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "P51D30_Mustang",
+							"sid": 518025195240683,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 135851739393055,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "P51D30_Mustang",
+									"sid": 556220569892398,
+									"parameters": {
+										"animation": "\"Idle Damage 1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 693551635819782,
+									"parameters": {
+										"seconds": "0.47"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "P51D30_Mustang",
+									"sid": 267571022585372,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 561618484105762
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 700875651007405,
+							"parameters": {
+								"code0": "7"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 461376557239293,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 819437239763485,
+							"parameters": {
+								"animation": "\"Idle\"",
+								"from": "current-frame"
+							}
+						},
+						{
+							"id": "stop",
+							"objectClass": "Audio",
+							"sid": 130288394860747,
+							"parameters": {
+								"tag": "\"turret\""
+							}
+						}
+					],
+					"sid": 386887083381552
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 930557337520817,
+							"parameters": {
+								"code0": "8"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 655049277756850,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 171860904660077,
+							"parameters": {
+								"animation": "\"Death\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "P51D30_Mustang",
+							"sid": 257946657268065
+						}
+					],
+					"sid": 355508700391343
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 922789219396607,
+							"parameters": {
+								"code0": "8"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 172153213993084,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "P51D30_Mustang",
+							"sid": 668051434745217,
+							"parameters": {
+								"animation": "\"Death\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "P51D30_Mustang",
+							"sid": 337116063685812
+						}
+					],
+					"sid": 510046732152270
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 292434497023607,
+							"parameters": {
+								"code0": "9"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 416152344198629,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Particles",
+							"sid": 692135045680369,
+							"parameters": {
+								"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
+								"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
+							}
+						}
+					],
+					"sid": 570536708666806
 				}
 			],
-			"sid": 470891582719963
+			"sid": 457140439925737
 		},
 		{
 			"eventType": "group",
@@ -1093,2270 +1776,9 @@
 						}
 					],
 					"sid": 608647448045847
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-key-pressed",
-							"objectClass": "Keyboard",
-							"sid": 561325416192175,
-							"parameters": {
-								"key": 51
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 514078961075208,
-							"parameters": {
-								"animation": "\"Idle Damage 1\"",
-								"from": "beginning"
-							}
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "P51D30_Mustang",
-							"sid": 593091521420785,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "5"
-							}
-						}
-					],
-					"sid": 870096872683527,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-animation-playing",
-									"objectClass": "P51D30_Mustang",
-									"sid": 353397588050101,
-									"parameters": {
-										"animation": "\"Idle Damage 1\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 522982517505976,
-									"parameters": {
-										"seconds": "0.47"
-									}
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "P51D30_Mustang",
-									"sid": 950279538449332,
-									"parameters": {
-										"animation": "\"Idle\"",
-										"from": "beginning"
-									}
-								}
-							],
-							"sid": 938959328750508
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 765995552408267,
-							"parameters": {
-								"instance-variable": "Health",
-								"comparison": 0,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-speed",
-							"objectClass": "P51D30_Mustang",
-							"sid": 963501027989664,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"speed": "0"
-							}
-						},
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 565023638462507,
-							"parameters": {
-								"animation": "\"Death\"",
-								"from": "beginning"
-							}
-						}
-					],
-					"sid": 916460708761328,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-animation-finished",
-									"objectClass": "P51D30_Mustang",
-									"sid": 418855673875660,
-									"parameters": {
-										"animation": "\"Death\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "destroy",
-									"objectClass": "P51D30_Mustang",
-									"sid": 828150709459450
-								}
-							],
-							"sid": 959974763365143
-						}
-					]
 				}
 			],
 			"sid": 550140955376794
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Game",
-			"description": "includes Host and Peer",
-			"isActiveOnStart": true,
-			"children": [
-				{
-					"eventType": "group",
-					"disabled": false,
-					"title": "Peer",
-					"description": "",
-					"isActiveOnStart": false,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-created",
-									"objectClass": "P51D30_Mustang",
-									"sid": 413553893882558
-								}
-							],
-							"actions": [
-								{
-									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 729068671226617,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"value": "Multiplayer.PeerID"
-									}
-								},
-								{
-									"id": "associate-object-with-peer",
-									"objectClass": "Multiplayer",
-									"sid": 414979561510271,
-									"parameters": {
-										"object": "P51D30_Mustang",
-										"peer-id": "Multiplayer.PeerID"
-									}
-								}
-							],
-							"sid": 376535829862275
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-peer-connected",
-									"objectClass": "Multiplayer",
-									"sid": 485654134726076
-								}
-							],
-							"actions": [],
-							"sid": 313829842795199
-						},
-						{
-							"eventType": "comment",
-							"text": "Sends keyboard inputs from client to server"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-client-update",
-									"objectClass": "Multiplayer",
-									"sid": 174917484590607
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "P51D30_Mustang",
-									"sid": 672556883093528,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"comparison": 0,
-										"value": "Multiplayer.MyID"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 511554714283145,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 538721148763053,
-											"parameters": {
-												"key": 65
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 259402454374340,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 0, 1)"
-											}
-										}
-									],
-									"sid": 353914599705774
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 139255294249067
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 204359639895162,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 0, 0)"
-											}
-										}
-									],
-									"sid": 694524708781630
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 337624282435030,
-											"parameters": {
-												"key": 87
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 768378102145755,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 1, 1)"
-											}
-										},
-										{
-											"id": "set-layer-scale",
-											"objectClass": "System",
-											"sid": 222488720567958,
-											"parameters": {
-												"layer": "\"Game\"",
-												"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
-											}
-										}
-									],
-									"sid": 280608290979548
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 715776483080874
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 653316012469070,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 1, 0)"
-											}
-										}
-									],
-									"sid": 247830516477897
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 775890729888716,
-											"parameters": {
-												"key": 68
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 480089181470916,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 2, 1)"
-											}
-										}
-									],
-									"sid": 363338093116185
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 234578706964873
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 482399252622767,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 2, 0)"
-											}
-										}
-									],
-									"sid": 715983281434117
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 575045324125266,
-											"parameters": {
-												"key": 83
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 787226446668439,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 3, 1)"
-											}
-										},
-										{
-											"id": "set-layer-scale",
-											"objectClass": "System",
-											"sid": 745940602170670,
-											"parameters": {
-												"layer": "\"Game\"",
-												"scale": "lerp(LayerScale(\"Game\"), 1.1, 0.03)"
-											}
-										}
-									],
-									"sid": 580557500506321
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 202126624730112
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 144305455321921,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 3, 0)"
-											}
-										}
-									],
-									"sid": 334778463217760
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 547170747647198,
-											"parameters": {
-												"key": 32
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 206438749114748,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 4, 1)"
-											}
-										}
-									],
-									"sid": 437789556975494
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 340711987450142
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 512875854177975,
-											"parameters": {
-												"instance-variable": "inputs",
-												"value": "setbit(Self.inputs, 4, 0)"
-											}
-										}
-									],
-									"sid": 176336779297062
-								},
-								{
-									"eventType": "block",
-									"conditions": [],
-									"actions": [
-										{
-											"id": "set-client-state",
-											"objectClass": "Multiplayer",
-											"sid": 270520968537172,
-											"parameters": {
-												"tag": "\"inputs\"",
-												"value": "P51D30_Mustang.inputs"
-											}
-										}
-									],
-									"sid": 854962099789722
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "Plays the inputs on client side"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "P51D30_Mustang",
-									"sid": 337121506211099,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"comparison": 0,
-										"value": "Multiplayer.MyID"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 645907658244337,
-							"children": [
-								{
-									"eventType": "comment",
-									"text": "A key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 396106282300627,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 0)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 613586041835026,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "-35"
-											}
-										}
-									],
-									"sid": 816316592037422,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "P51D30_Mustang",
-													"sid": 794276876956601,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"comparison": 4,
-														"value": "0"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 320743583160897,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "-40"
-													}
-												}
-											],
-											"sid": 650430694967386
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 681023094070391
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 655130804960763,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "-20"
-													}
-												}
-											],
-											"sid": 431570572502448
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "W key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 788456843888043,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 1)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										},
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 253708560532010,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 2,
-												"speed": "437"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 224750547825211,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "60"
-											}
-										}
-									],
-									"sid": 394744630636127
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 244449554927844,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 5,
-												"speed": "437"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 497771946688169,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "0"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 542566580349463,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"speed": "437"
-											}
-										}
-									],
-									"sid": 477184139547265
-								},
-								{
-									"eventType": "comment",
-									"text": "D key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 678167158976730,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 2)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 237261053399635,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "35"
-											}
-										}
-									],
-									"sid": 573080853738013,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "P51D30_Mustang",
-													"sid": 423872181516969,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"comparison": 2,
-														"value": "0"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 851633289539484,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "40"
-													}
-												}
-											],
-											"sid": 239859486862942
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 190047541030848
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 933035840608113,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "20"
-													}
-												}
-											],
-											"sid": 669135674426246
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "S key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 816634382654463,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 3)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										},
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 323755569140814,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 4,
-												"speed": "200"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 870774729552618,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "-60"
-											}
-										}
-									],
-									"sid": 616010601646137
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 579300934218408,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 3,
-												"speed": "200"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 763625858684755,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "0"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 793559004916732,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"speed": "200"
-											}
-										}
-									],
-									"sid": 799460511041607
-								},
-								{
-									"eventType": "comment",
-									"text": "If A and D key are not pressed"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 592985207473994,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 0)",
-												"comparison": 0,
-												"second-value": "0"
-											}
-										},
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 687698999504502,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 2)",
-												"comparison": 0,
-												"second-value": "0"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 571060053077218,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "lerp(RotationAcceleration, 0, 0.5)"
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 966077881184232,
-											"parameters": {
-												"instance-variable": "RotationInitialVelocity",
-												"value": "0"
-											}
-										}
-									],
-									"sid": 933365460357602
-								},
-								{
-									"eventType": "comment",
-									"text": "Space"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 684616611377932,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 4)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 153363434955229,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "repeat",
-													"objectClass": "System",
-													"sid": 353333666135696,
-													"parameters": {
-														"count": "50cal_Mg_Bullet_Count"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "spawn-another-object",
-													"objectClass": "P51D30_Mustang",
-													"sid": 267351238791033,
-													"parameters": {
-														"object": "50cal_MG_Bullet",
-														"layer": "0",
-														"image-point": "0",
-														"create-hierarchy": false
-													}
-												},
-												{
-													"id": "set-angle-of-motion",
-													"objectClass": "50cal_MG_Bullet",
-													"sid": 650473886233670,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"angle": "0"
-													}
-												},
-												{
-													"id": "set-animation",
-													"objectClass": "P51D30_Mustang",
-													"sid": 173287863557081,
-													"parameters": {
-														"animation": "\"Idle Guns\"",
-														"from": "current-frame"
-													}
-												}
-											],
-											"sid": 123043912202901,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "every-tick",
-															"objectClass": "System",
-															"sid": 122908474629796
-														}
-													],
-													"actions": [
-														{
-															"id": "subtract-from-instvar",
-															"objectClass": "P51D30_Mustang",
-															"sid": 447115658928882,
-															"parameters": {
-																"instance-variable": "FiftyCal_Mg_Bullet_Count",
-																"value": "1"
-															}
-														}
-													],
-													"sid": 292241719380069,
-													"children": [
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "compare-eventvar",
-																	"objectClass": "System",
-																	"sid": 868620571751498,
-																	"parameters": {
-																		"variable": "50cal_Mg_Bullet_Count",
-																		"comparison": 5,
-																		"value": "0"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 163381875334354
-																}
-															],
-															"sid": 529212224521575
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					],
-					"sid": 411524606025213
-				},
-				{
-					"eventType": "comment",
-					"text": "The person who creates the room and manages new peers"
-				},
-				{
-					"eventType": "group",
-					"disabled": false,
-					"title": "Host",
-					"description": "",
-					"isActiveOnStart": false,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-peer-connected",
-									"objectClass": "Multiplayer",
-									"sid": 175327685403582
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 838685115102653,
-									"parameters": {
-										"object-to-create": "P51D30_Mustang",
-										"layer": "0",
-										"x": "50",
-										"y": "50",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 175310104428978,
-									"parameters": {
-										"object-to-create": "Particles",
-										"layer": "0",
-										"x": "50",
-										"y": "50",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Particles",
-									"sid": 253600746020867,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"value": "Multiplayer.PeerID"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 761748309216426,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"value": "Multiplayer.PeerID"
-									}
-								},
-								{
-									"id": "associate-object-with-peer",
-									"objectClass": "Multiplayer",
-									"sid": 945888347988103,
-									"parameters": {
-										"object": "P51D30_Mustang",
-										"peer-id": "Multiplayer.PeerID"
-									}
-								}
-							],
-							"sid": 902517183554053
-						},
-						{
-							"eventType": "comment",
-							"text": "The host's own mechanics are separate from the peers because of the client inputs"
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "P51D30_Mustang",
-									"sid": 683450426417004,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"comparison": 0,
-										"value": "Multiplayer.MyID"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-acceleration",
-									"objectClass": "P51D30_Mustang",
-									"sid": 830813616534526,
-									"behaviorType": "Rotate",
-									"parameters": {
-										"acceleration": "P51D30_Mustang.RotationInitialVelocity + P51D30_Mustang.RotationAcceleration"
-									}
-								}
-							],
-							"sid": 957070157371729,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 635123217240226,
-											"parameters": {
-												"key": 32
-											}
-										}
-									],
-									"actions": [],
-									"sid": 802452367026964,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "repeat",
-													"objectClass": "System",
-													"sid": 487152257146882,
-													"parameters": {
-														"count": "50cal_Mg_Bullet_Count"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "spawn-another-object",
-													"objectClass": "P51D30_Mustang",
-													"sid": 305599566873980,
-													"parameters": {
-														"object": "50cal_MG_Bullet",
-														"layer": "0",
-														"image-point": "0",
-														"create-hierarchy": false
-													}
-												},
-												{
-													"id": "set-angle-of-motion",
-													"objectClass": "50cal_MG_Bullet",
-													"sid": 171464203452601,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"angle": "0"
-													}
-												},
-												{
-													"id": "set-animation",
-													"objectClass": "P51D30_Mustang",
-													"sid": 272436006480617,
-													"parameters": {
-														"animation": "\"Idle Guns\"",
-														"from": "current-frame"
-													}
-												}
-											],
-											"sid": 607006360773009,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "every-tick",
-															"objectClass": "System",
-															"sid": 458032909999191
-														}
-													],
-													"actions": [
-														{
-															"id": "subtract-from-instvar",
-															"objectClass": "P51D30_Mustang",
-															"sid": 557341490880052,
-															"parameters": {
-																"instance-variable": "FiftyCal_Mg_Bullet_Count",
-																"value": "1"
-															}
-														}
-													],
-													"sid": 446954231763162,
-													"children": [
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "compare-eventvar",
-																	"objectClass": "System",
-																	"sid": 485101783984354,
-																	"parameters": {
-																		"variable": "50cal_Mg_Bullet_Count",
-																		"comparison": 5,
-																		"value": "0"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 688610271637841
-																}
-															],
-															"sid": 289630232493919
-														}
-													]
-												}
-											]
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "on-key-pressed",
-											"objectClass": "Keyboard",
-											"sid": 938902713158517,
-											"parameters": {
-												"key": 32
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "play",
-											"objectClass": "Audio",
-											"sid": 452917856055105,
-											"parameters": {
-												"audio-file": "turret sound",
-												"loop": "looping",
-												"volume": "-3",
-												"tag-optional": "\"turret\""
-											}
-										}
-									],
-									"sid": 216011950623179
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 487787494767756,
-											"parameters": {
-												"key": 65
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 858182788715981,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "-35"
-											}
-										}
-									],
-									"sid": 961702295763120,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "P51D30_Mustang",
-													"sid": 189899049975712,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"comparison": 4,
-														"value": "0"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 338100148127333,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "-40"
-													}
-												}
-											],
-											"sid": 630394679227488
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 687004707146197
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 340978256922385,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "-20"
-													}
-												}
-											],
-											"sid": 560547608762919
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 117259380850940,
-											"parameters": {
-												"key": 87
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-layer-scale",
-											"objectClass": "System",
-											"sid": 556859031660095,
-											"parameters": {
-												"layer": "\"Game\"",
-												"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
-											}
-										}
-									],
-									"sid": 578597421570486,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-speed",
-													"objectClass": "P51D30_Mustang",
-													"sid": 298068690370689,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"comparison": 2,
-														"speed": "437"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-acceleration",
-													"objectClass": "P51D30_Mustang",
-													"sid": 903001297025618,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"acceleration": "60"
-													}
-												}
-											],
-											"sid": 274976743600418
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 362893240539213,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 5,
-												"speed": "437"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 783896632638908,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "0"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 241110384645407,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"speed": "437"
-											}
-										}
-									],
-									"sid": 568115378384586
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 783274360526023,
-											"parameters": {
-												"key": 68
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 887050118915588,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "35"
-											}
-										}
-									],
-									"sid": 241046561235478
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 823230237366553,
-											"parameters": {
-												"key": 83
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-layer-scale",
-											"objectClass": "System",
-											"sid": 865033050722436,
-											"parameters": {
-												"layer": "\"Game\"",
-												"scale": "lerp(LayerScale(\"Game\"), 1.1, 0.03)"
-											}
-										}
-									],
-									"sid": 414425512305061,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-speed",
-													"objectClass": "P51D30_Mustang",
-													"sid": 575788148334969,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"comparison": 4,
-														"speed": "200"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-acceleration",
-													"objectClass": "P51D30_Mustang",
-													"sid": 999575453654456,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"acceleration": "-60"
-													}
-												}
-											],
-											"sid": 867637038327400
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 304532438768829,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 3,
-												"speed": "200"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 898574732911992,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "0"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 420563025549608,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"speed": "200"
-											}
-										}
-									],
-									"sid": 979562144275299
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 975030818659162,
-											"parameters": {
-												"key": 68
-											},
-											"isInverted": true
-										},
-										{
-											"id": "key-is-down",
-											"objectClass": "Keyboard",
-											"sid": 777405991637585,
-											"parameters": {
-												"key": 65
-											},
-											"isInverted": true
-										}
-									],
-									"actions": [
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 187286627168531,
-											"behaviorType": "Rotate",
-											"parameters": {
-												"speed": "lerp(Self.Rotate.Speed, 0, 0.5)"
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 282101807049027,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "lerp(Self.RotationAcceleration, 0, 0.5)"
-											}
-										}
-									],
-									"sid": 472262472885319
-								}
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "P51D30_Mustang",
-									"sid": 272863901303026,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"comparison": 1,
-										"value": "Multiplayer.MyID"
-									}
-								},
-								{
-									"id": "for-each",
-									"objectClass": "System",
-									"sid": 927308069627235,
-									"parameters": {
-										"object": "P51D30_Mustang"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 457185536339628,
-									"parameters": {
-										"instance-variable": "inputs",
-										"value": "Multiplayer.PeerState(P51D30_Mustang.peerid, \"inputs\")"
-									}
-								},
-								{
-									"id": "set-acceleration",
-									"objectClass": "P51D30_Mustang",
-									"sid": 932257499075002,
-									"behaviorType": "Rotate",
-									"parameters": {
-										"acceleration": "P51D30_Mustang.RotationInitialVelocity + P51D30_Mustang.RotationAcceleration"
-									}
-								},
-								{
-									"id": "set-text",
-									"objectClass": "CounterFont",
-									"sid": 743155616498378,
-									"parameters": {
-										"text": "P51D30_Mustang.FiftyCal_Mg_Bullet_Count & \" / 1800\""
-									}
-								}
-							],
-							"sid": 342777716269718,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 967965855183157,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 0)",
-												"comparison": 0,
-												"second-value": "0"
-											}
-										},
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 977255257069657,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 2)",
-												"comparison": 0,
-												"second-value": "0"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 726594752428128,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "lerp(RotationAcceleration, 0, 0.5)"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 916432462971398,
-											"behaviorType": "Rotate",
-											"parameters": {
-												"speed": "lerp(Self.Rotate.Speed, 0, 0.5)"
-											}
-										}
-									],
-									"sid": 736905147383816
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Particles",
-											"sid": 779498907238543,
-											"parameters": {
-												"instance-variable": "PeerID",
-												"comparison": 0,
-												"value": "P51D30_Mustang.PeerID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-position",
-											"objectClass": "Particles",
-											"sid": 336900383856725,
-											"parameters": {
-												"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
-												"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
-											}
-										}
-									],
-									"sid": 536233465026423
-								},
-								{
-									"eventType": "comment",
-									"text": "A key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 719585152265033,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 0)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 382236745944588,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "-35"
-											}
-										}
-									],
-									"sid": 821338472576337,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "P51D30_Mustang",
-													"sid": 933965379023469,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"comparison": 4,
-														"value": "0"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 530609517700907,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "-40"
-													}
-												}
-											],
-											"sid": 930323566945932
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 514533086690857
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 314316035155903,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "-20"
-													}
-												}
-											],
-											"sid": 744651615668584
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "W key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 701201710193951,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 1)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										},
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 965352141785303,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 2,
-												"speed": "437"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 610206966118682,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "60"
-											}
-										}
-									],
-									"sid": 242223070162158
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 374245866975342,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 5,
-												"speed": "437"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 654485653260056,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "0"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 575039874851294,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"speed": "437"
-											}
-										}
-									],
-									"sid": 682709957850121
-								},
-								{
-									"eventType": "comment",
-									"text": "D key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 433021749339320,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 2)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 625416548622139,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "35"
-											}
-										}
-									],
-									"sid": 423683025868789,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "P51D30_Mustang",
-													"sid": 504654408206041,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"comparison": 2,
-														"value": "0"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 810752696539129,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "40"
-													}
-												}
-											],
-											"sid": 347032245663355
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 946519671904173
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "P51D30_Mustang",
-													"sid": 246089454425531,
-													"parameters": {
-														"instance-variable": "RotationInitialVelocity",
-														"value": "20"
-													}
-												}
-											],
-											"sid": 932544618953370
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "S key"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 326625896263204,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 3)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										},
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 902716432118401,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 4,
-												"speed": "200"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 169623196673093,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "-60"
-											}
-										},
-										{
-											"id": "set-text",
-											"objectClass": "SpeedFont",
-											"sid": 139736089105958,
-											"parameters": {
-												"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
-											}
-										}
-									],
-									"sid": 969782433157244,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-speed",
-													"objectClass": "P51D30_Mustang",
-													"sid": 473488312664320,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"comparison": 4,
-														"speed": "200"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-acceleration",
-													"objectClass": "P51D30_Mustang",
-													"sid": 662164892416127,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"acceleration": "-60"
-													}
-												},
-												{
-													"id": "set-layer-scale",
-													"objectClass": "System",
-													"sid": 573896500918378,
-													"parameters": {
-														"layer": "\"Game\"",
-														"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
-													}
-												}
-											],
-											"sid": 140735642156015
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 404400971298981
-												}
-											],
-											"actions": [
-												{
-													"id": "set-acceleration",
-													"objectClass": "P51D30_Mustang",
-													"sid": 126442998152246,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"acceleration": "0"
-													}
-												},
-												{
-													"id": "set-speed",
-													"objectClass": "P51D30_Mustang",
-													"sid": 555596400037046,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"speed": "200"
-													}
-												}
-											],
-											"sid": 314226742713252
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 796520141983859,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"comparison": 3,
-												"speed": "200"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 675453967817572,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"acceleration": "0"
-											}
-										},
-										{
-											"id": "set-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 169648015356345,
-											"behaviorType": "Bullet",
-											"parameters": {
-												"speed": "200"
-											}
-										}
-									],
-									"sid": 967910794432783
-								},
-								{
-									"eventType": "comment",
-									"text": "If A and D key are not pressed"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 148175453918311,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 0)",
-												"comparison": 0,
-												"second-value": "0"
-											}
-										},
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 438255208278546,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 2)",
-												"comparison": 0,
-												"second-value": "0"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 686280721850513,
-											"parameters": {
-												"instance-variable": "RotationAcceleration",
-												"value": "lerp(RotationAcceleration, 0, 0.5)"
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 814236945124880,
-											"parameters": {
-												"instance-variable": "RotationInitialVelocity",
-												"value": "0"
-											}
-										}
-									],
-									"sid": 268898473023415
-								},
-								{
-									"eventType": "comment",
-									"text": "Space"
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 640003992726969,
-											"parameters": {
-												"first-value": "getbit(P51D30_Mustang.inputs, 4)",
-												"comparison": 0,
-												"second-value": "1"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 530139299255716,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "repeat",
-													"objectClass": "System",
-													"sid": 271933711003936,
-													"parameters": {
-														"count": "50cal_Mg_Bullet_Count"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "spawn-another-object",
-													"objectClass": "P51D30_Mustang",
-													"sid": 900041368869524,
-													"parameters": {
-														"object": "50cal_MG_Bullet",
-														"layer": "0",
-														"image-point": "0",
-														"create-hierarchy": false
-													}
-												},
-												{
-													"id": "set-angle-of-motion",
-													"objectClass": "50cal_MG_Bullet",
-													"sid": 141735173174480,
-													"behaviorType": "Bullet",
-													"parameters": {
-														"angle": "0"
-													}
-												},
-												{
-													"id": "set-animation",
-													"objectClass": "P51D30_Mustang",
-													"sid": 183179094713657,
-													"parameters": {
-														"animation": "\"Idle Guns\"",
-														"from": "current-frame"
-													}
-												}
-											],
-											"sid": 627865138748542,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "every-tick",
-															"objectClass": "System",
-															"sid": 497170486220420
-														}
-													],
-													"actions": [
-														{
-															"id": "subtract-from-instvar",
-															"objectClass": "P51D30_Mustang",
-															"sid": 506044816103179,
-															"parameters": {
-																"instance-variable": "FiftyCal_Mg_Bullet_Count",
-																"value": "1"
-															}
-														}
-													],
-													"sid": 853639087740036,
-													"children": [
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "compare-instance-variable",
-																	"objectClass": "P51D30_Mustang",
-																	"sid": 376475965600261,
-																	"parameters": {
-																		"instance-variable": "FiftyCal_Mg_Bullet_Count",
-																		"comparison": 5,
-																		"value": "0"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 247342437422787
-																}
-															],
-															"sid": 460541226772864
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					],
-					"sid": 750826696418734
-				}
-			],
-			"sid": 162368194983945
 		},
 		{
 			"eventType": "group",
@@ -3417,53 +1839,13 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-peer-disconnected",
-							"objectClass": "Multiplayer",
-							"sid": 384076165793933
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "AddLog",
-							"sid": 301198982948932,
-							"parameters": [
-								"\"'\" & Multiplayer.PeerAlias & \"' left\""
-							]
-						}
-					],
-					"sid": 849050591466195
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-peer-connected",
-							"objectClass": "Multiplayer",
-							"sid": 262907669877135
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "AddLog",
-							"sid": 989946237097997,
-							"parameters": [
-								"\"'\" & Multiplayer.PeerAlias & \"' joined\""
-							]
-						}
-					],
-					"sid": 863018175612612
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
 							"id": "compare-instance-variable",
 							"objectClass": "P51D30_Mustang",
-							"sid": 969291736095431,
+							"sid": 305374875657871,
 							"parameters": {
-								"instance-variable": "PeerID",
+								"instance-variable": "ActorNr",
 								"comparison": 0,
-								"value": "Multiplayer.MyID"
+								"value": "Photon.MyActorNr"
 							}
 						}
 					],
@@ -3482,6 +1864,14 @@
 							"sid": 519579715566184,
 							"parameters": {
 								"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "HealthFont",
+							"sid": 702394051132277,
+							"parameters": {
+								"text": "P51D30_Mustang.Health & \"hp\""
 							}
 						},
 						{
@@ -3513,8 +1903,16 @@
 						},
 						{
 							"id": "set-angle",
+							"objectClass": "Needle",
+							"sid": 596191119953393,
+							"parameters": {
+								"angle": "anglelerp(Self.Angle, Camera.Angle + 90, 0.05)"
+							}
+						},
+						{
+							"id": "set-angle",
 							"objectClass": "Camera",
-							"sid": 371461543708469,
+							"sid": 651401511398668,
 							"parameters": {
 								"angle": " anglelerp(Self.Angle, P51D30_Mustang.Angle, 0.50)"
 							}
@@ -3522,107 +1920,47 @@
 						{
 							"id": "set-position",
 							"objectClass": "Camera",
-							"sid": 502127663915788,
+							"sid": 686703796918139,
 							"parameters": {
 								"x": "lerp(Self.X, (P51D30_Mustang.X + (cos(P51D30_Mustang.Angle)*CameraDistance)), 0.03)",
 								"y": "lerp(Self.Y, (P51D30_Mustang.Y + (sin(P51D30_Mustang.Angle)*CameraDistance)), 0.03)"
 							}
-						},
+						}
+					],
+					"sid": 668214440194560
+				},
+				{
+					"eventType": "block",
+					"conditions": [
 						{
-							"id": "set-angle",
-							"objectClass": "Needle",
-							"sid": 596191119953393,
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 283768360069422,
 							"parameters": {
-								"angle": "anglelerp(Self.Angle, Camera.Angle + 90, 0.05)"
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
 							}
 						}
 					],
-					"sid": 668214440194560,
+					"actions": [],
+					"sid": 229209468039039,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "on-key-released",
-									"objectClass": "Keyboard",
-									"sid": 482380795767756,
-									"parameters": {
-										"key": 32
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-animation",
+									"id": "pick-children",
 									"objectClass": "P51D30_Mustang",
-									"sid": 252019065642694,
+									"sid": 873736349135974,
 									"parameters": {
-										"animation": "\"Idle\"",
-										"from": "current-frame"
-									}
-								},
-								{
-									"id": "stop",
-									"objectClass": "Audio",
-									"sid": 473640246139527,
-									"parameters": {
-										"tag": "\"turret\""
+										"child": "Particles",
+										"which": "own"
 									}
 								}
 							],
-							"sid": 312550864058429,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "P51D30_Mustang",
-											"sid": 744753614126249,
-											"parameters": {
-												"instance-variable": "FiftyCal_Mg_Bullet_Count",
-												"comparison": 5,
-												"value": "0"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "stop-loop",
-											"objectClass": "System",
-											"sid": 377968045337645
-										}
-									],
-									"sid": 188469492944554
-								}
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Particles",
-									"sid": 471017326155481,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"comparison": 0,
-										"value": "Multiplayer.MyID"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-position",
-									"objectClass": "Particles",
-									"sid": 210508098372019,
-									"parameters": {
-										"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
-										"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
-									}
-								}
-							],
-							"sid": 949342297011383
+							"actions": [],
+							"sid": 959000748033787
 						}
 					]
 				}

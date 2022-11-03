@@ -3,7 +3,15 @@
 	"plugin-id": "Sprite",
 	"sid": 484484279061302,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "ActorNr",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 988750655279168
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "destroy",
