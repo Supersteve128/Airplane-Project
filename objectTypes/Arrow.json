@@ -1,7 +1,7 @@
 {
-	"name": "Button",
+	"name": "Arrow",
 	"plugin-id": "Sprite",
-	"sid": 904523181837467,
+	"sid": 422177261536610,
 	"isGlobal": false,
 	"instanceVariables": [
 		{
@@ -9,7 +9,7 @@
 			"type": "string",
 			"desc": "",
 			"show": true,
-			"sid": 177638538233823
+			"sid": 641283073939781
 		}
 	],
 	"behaviorTypes": [],
@@ -26,12 +26,12 @@
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4924354,
+						"imageSpriteId": 1941191,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 814962651422855,
+				"sid": 933749740623436,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

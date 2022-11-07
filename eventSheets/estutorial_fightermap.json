@@ -3,26 +3,6 @@
 	"events": [
 		{
 			"eventType": "variable",
-			"name": "50cal_Mg_Bullet_Count",
-			"type": "number",
-			"initialValue": "1800",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 329110476341778
-		},
-		{
-			"eventType": "variable",
-			"name": "20mm_Cannon_Bullet_Count",
-			"type": "number",
-			"initialValue": "750",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 792117069080697
-		},
-		{
-			"eventType": "variable",
 			"name": "CameraDistance",
 			"type": "number",
 			"initialValue": "275",
@@ -184,7 +164,7 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Signalling",
+			"title": "Room",
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
@@ -194,37 +174,183 @@
 						{
 							"id": "on-start-of-layout",
 							"objectClass": "System",
-							"sid": 691039909592379
+							"sid": 136376253553264
 						}
 					],
 					"actions": [
 						{
-							"id": "destroy",
-							"objectClass": "P51D30_Mustang",
-							"sid": 965962303076639
+							"id": "set-instvar-value",
+							"objectClass": "ResponsiveObjects",
+							"sid": 534683811345545,
+							"parameters": {
+								"instance-variable": "InicioX",
+								"value": "Self.X"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "ResponsiveObjects",
+							"sid": 787576601473002,
+							"parameters": {
+								"instance-variable": "InicioY",
+								"value": "Self.Y"
+							}
 						},
 						{
 							"id": "setmyactorname101",
 							"objectClass": "Photon",
-							"sid": 928181640355937,
+							"sid": 291536736926415,
 							"parameters": {
 								"name0": "Username"
 							}
 						},
 						{
-							"id": "joinrandomroom13",
-							"objectClass": "Photon",
-							"sid": 156473565418675,
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 639433350845626,
 							"parameters": {
-								"matchmyroom2": "no",
-								"matchmakingmode6": "fillroom",
-								"lobbyname7": "\"\"",
-								"lobbytype10": "default",
-								"sqllobbyfilter11": "\"\""
+								"layer": "\"UI\"",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 995195301603199,
+							"parameters": {
+								"layer": "\"Room\"",
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 328455468978339,
+							"parameters": {
+								"layer": "\"Game\"",
+								"visibility": "visible"
 							}
 						}
 					],
-					"sid": 124951034305469
+					"sid": 553287098747715,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 209042989027628,
+									"parameters": {
+										"variable": "Host",
+										"comparison": 0,
+										"value": "\"Random\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "joinrandomroom13",
+									"objectClass": "Photon",
+									"sid": 484289341655977,
+									"parameters": {
+										"matchmyroom2": "no",
+										"matchmakingmode6": "fillroom",
+										"lobbyname7": "\"\"",
+										"lobbytype10": "default",
+										"sqllobbyfilter11": "\"\""
+									}
+								}
+							],
+							"sid": 633695624551290
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 976093806853411,
+									"parameters": {
+										"variable": "Host",
+										"comparison": 0,
+										"value": "\"New\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "createroom11",
+									"objectClass": "Photon",
+									"sid": 322211976824488,
+									"parameters": {
+										"room0": "str(round(random(1, 100)))",
+										"lobbyname1": "\"\"",
+										"lobbytype4": "default"
+									}
+								},
+								{
+									"id": "setmyroommaxplayers107",
+									"objectClass": "Photon",
+									"sid": 173698768775184,
+									"parameters": {
+										"maxplayers0": "10"
+									}
+								}
+							],
+							"sid": 118547492582326
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 483360772334989
+								}
+							],
+							"actions": [
+								{
+									"id": "joinroom12",
+									"objectClass": "Photon",
+									"sid": 387687328580296,
+									"parameters": {
+										"room0": "Host",
+										"rejoin3": "no",
+										"createifnotexists6": "no",
+										"lobbyname7": "\"\"",
+										"lobbytype10": "default"
+									}
+								}
+							],
+							"sid": 465318378197764
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onerror0",
+							"objectClass": "Photon",
+							"sid": 667447198678124
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 159194696722844,
+							"parameters": {
+								"layout": "TitleScreen"
+							}
+						}
+					],
+					"sid": 850470086860594
+				},
+				{
+					"eventType": "comment",
+					"text": "If Random Room"
 				},
 				{
 					"eventType": "block",
@@ -232,14 +358,14 @@
 						{
 							"id": "onjoinrandomroomnomatchfound23",
 							"objectClass": "Photon",
-							"sid": 550181065824396
+							"sid": 249613814055296
 						}
 					],
 					"actions": [
 						{
 							"id": "createroom11",
 							"objectClass": "Photon",
-							"sid": 402187892376590,
+							"sid": 831539942707985,
 							"parameters": {
 								"room0": "\"test\"",
 								"lobbyname1": "\"\"",
@@ -248,13 +374,334 @@
 						},
 						{
 							"callFunction": "AddLog",
-							"sid": 761572109081308,
+							"sid": 929450459316588,
 							"parameters": [
 								"\"Created Room\""
 							]
 						}
 					],
-					"sid": 551194923537721
+					"sid": 651585602287440
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onjoinroom14",
+							"objectClass": "Photon",
+							"sid": 716709563954251
+						}
+					],
+					"actions": [
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 311664449402086,
+							"parameters": {
+								"code0": "20",
+								"data1": "Username",
+								"interestgroup2": "0",
+								"cache11": "addtoroomcache",
+								"receivers15": "all",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 263316933140456,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Text",
+									"sid": 491085469255541,
+									"parameters": {
+										"instance-variable": "Name",
+										"comparison": 0,
+										"value": "\"id\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "Text",
+									"sid": 580857646319188,
+									"parameters": {
+										"text": "Photon.MyRoomName"
+									}
+								}
+							],
+							"sid": 163528691192802
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onactorleave16",
+							"objectClass": "Photon",
+							"sid": 268675004727286
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "P51D30_Mustang",
+							"sid": 365827087903838,
+							"parameters": {
+								"instance-variable": "ActorNr",
+								"comparison": 0,
+								"value": "Photon.ActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "AddLog",
+							"sid": 785775979618540,
+							"parameters": [
+								"\"Kicked (either could not connect to host or host quit)\""
+							]
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 345759407585972,
+							"parameters": {
+								"code0": "21",
+								"data1": "Photon.ActorNameByNr(Photon.ActorNr)",
+								"interestgroup2": "0",
+								"cache11": "addtoroomcache",
+								"receivers15": "all",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 449865090461624
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 448988067811275,
+							"parameters": {
+								"code0": "20"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Text",
+							"sid": 808432433396315,
+							"parameters": {
+								"instance-variable": "Name",
+								"comparison": 0,
+								"value": "\"PlayerList\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Text",
+							"sid": 593105093821428,
+							"parameters": {
+								"text": "Self.Text & Photon.EventData & newline"
+							}
+						}
+					],
+					"sid": 556416099723840
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 786625180542131,
+							"parameters": {
+								"code0": "21"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Text",
+							"sid": 238287970743819,
+							"parameters": {
+								"text": "replace(Self.Text, Photon.EventData, \"\")"
+							}
+						}
+					],
+					"sid": 818209322298687
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "isjoinedtoroom34",
+							"objectClass": "Photon",
+							"sid": 312849347374196
+						}
+					],
+					"actions": [],
+					"sid": 170723882987447,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-click",
+									"objectClass": "Mouse",
+									"sid": 595598583179768,
+									"parameters": {
+										"mouse-button": "left",
+										"click-type": "clicked"
+									}
+								},
+								{
+									"id": "cursor-is-over-object",
+									"objectClass": "Mouse",
+									"sid": 488018749013559,
+									"parameters": {
+										"object": "Button"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Button",
+									"sid": 543122020379447,
+									"parameters": {
+										"instance-variable": "Name",
+										"comparison": 0,
+										"value": "\"Start2\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "P51D30_Mustang",
+									"sid": 162162419556362
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 932728848725180,
+									"parameters": {
+										"code0": "22",
+										"data1": "0",
+										"interestgroup2": "0",
+										"cache11": "addtoroomcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 953728404921727
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 792014727292864,
+									"parameters": {
+										"code0": "22"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 136363157820520,
+									"parameters": {
+										"variable": "GameState",
+										"value": "\"Start\""
+									}
+								},
+								{
+									"id": "set-layer-visible",
+									"objectClass": "System",
+									"sid": 893261219944304,
+									"parameters": {
+										"layer": "\"Room\"",
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-layer-visible",
+									"objectClass": "System",
+									"sid": 493518911367565,
+									"parameters": {
+										"layer": "\"UI\"",
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 994534530274071,
+									"parameters": {
+										"group-name": "\"Game\"",
+										"state": "activated"
+									}
+								}
+							],
+							"sid": 992848559628194
+						}
+					]
+				}
+			],
+			"sid": 776880022311676
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Game",
+			"description": "",
+			"isActiveOnStart": false,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 948852729942476
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "AddLog",
+							"sid": 680339456050458,
+							"parameters": [
+								"\"Connected, logging in...\""
+							]
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 243951974170259,
+							"parameters": {
+								"code0": "1",
+								"data1": "0",
+								"interestgroup2": "0",
+								"cache11": "addtoroomcache",
+								"receivers15": "all",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 331047421878805
 				},
 				{
 					"eventType": "block",
@@ -267,7 +714,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "P51D30_Mustang",
-							"sid": 536176474490645,
+							"sid": 725417303877734,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -292,40 +739,6 @@
 					"sid": 569137298503036
 				},
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onjoinroom14",
-							"objectClass": "Photon",
-							"sid": 642115834399082
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "AddLog",
-							"sid": 654125330070985,
-							"parameters": [
-								"\"Connected, logging in...\""
-							]
-						},
-						{
-							"id": "raiseevent17",
-							"objectClass": "Photon",
-							"sid": 506262319065859,
-							"parameters": {
-								"code0": "1",
-								"data1": "0",
-								"interestgroup2": "0",
-								"cache11": "addtoroomcache",
-								"receivers15": "all",
-								"targetactors16": "\"\"",
-								"webforward19": "no"
-							}
-						}
-					],
-					"sid": 449674562206219
-				},
-				{
 					"eventType": "comment",
 					"text": "Creates object on start of entering room"
 				},
@@ -345,14 +758,31 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 465917050376648,
+							"sid": 471134701589778,
 							"parameters": {
 								"object-to-create": "P51D30_Mustang",
 								"layer": "0",
-								"x": "50",
-								"y": "50",
+								"x": "500",
+								"y": "500",
 								"create-hierarchy": false,
 								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "P51D30_Mustang",
+							"sid": 389559081576579,
+							"parameters": {
+								"width": "93",
+								"height": "93"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "P51D30_Mustang",
+							"sid": 916846644606773,
+							"parameters": {
+								"visibility": "visible"
 							}
 						},
 						{
@@ -384,7 +814,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "P51D30_Mustang",
-							"sid": 709635628602097,
+							"sid": 933772878819791,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"value": "Photon.ActorNr"
@@ -428,7 +858,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "P51D30_Mustang",
-							"sid": 212388383557874,
+							"sid": 193441317483218,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -440,10 +870,86 @@
 						{
 							"id": "set-acceleration",
 							"objectClass": "P51D30_Mustang",
-							"sid": 386302385762788,
+							"sid": 847110111343229,
 							"behaviorType": "Rotate",
 							"parameters": {
 								"acceleration": "P51D30_Mustang.RotationInitialVelocity + P51D30_Mustang.RotationAcceleration"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "CounterFont",
+							"sid": 861646995710189,
+							"parameters": {
+								"text": "P51D30_Mustang.FiftyCal_Mg_Bullet_Count & \" / 1800\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "SpeedFont",
+							"sid": 661319987635513,
+							"parameters": {
+								"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "HealthFont",
+							"sid": 705057793272813,
+							"parameters": {
+								"text": "P51D30_Mustang.Health & \"hp\""
+							}
+						},
+						{
+							"id": "set-layout-angle",
+							"objectClass": "System",
+							"sid": 414896747440636,
+							"parameters": {
+								"angle": "Camera.Angle+90"
+							}
+						},
+						{
+							"id": "set-layer-angle",
+							"objectClass": "System",
+							"sid": 327491798653113,
+							"parameters": {
+								"layer": "\"UI\"",
+								"angle": "(-Camera.Angle) - 90"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Camera",
+							"sid": 774163491242935,
+							"disabled": true,
+							"parameters": {
+								"x": "lerp(Self.X, P51D30_Mustang.X, 0.03)",
+								"y": "lerp(Self.Y, P51D30_Mustang.Y, 0.03)"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Needle",
+							"sid": 429601967125815,
+							"parameters": {
+								"angle": "anglelerp(Self.Angle, Camera.Angle + 90, 0.05)"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Camera",
+							"sid": 134487112270839,
+							"parameters": {
+								"angle": " anglelerp(Self.Angle, P51D30_Mustang.Angle, 0.50)"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Camera",
+							"sid": 756664250314044,
+							"parameters": {
+								"x": "lerp(Self.X, (P51D30_Mustang.X + (cos(P51D30_Mustang.Angle)*CameraDistance)), 0.03)",
+								"y": "lerp(Self.Y, (P51D30_Mustang.Y + (sin(P51D30_Mustang.Angle)*CameraDistance)), 0.03)"
 							}
 						}
 					],
@@ -625,7 +1131,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 861455380968442,
+									"sid": 208027843457518,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "-35"
@@ -640,7 +1146,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "P51D30_Mustang",
-											"sid": 905507259647170,
+											"sid": 260507519036879,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"comparison": 4,
@@ -652,7 +1158,7 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "P51D30_Mustang",
-											"sid": 574731795509962,
+											"sid": 493628277511740,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "-40"
@@ -674,7 +1180,7 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "P51D30_Mustang",
-											"sid": 505776963297181,
+											"sid": 533729013568460,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "-20"
@@ -791,7 +1297,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 815018323279277,
+									"sid": 945717735970309,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "35"
@@ -806,7 +1312,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "P51D30_Mustang",
-											"sid": 900689303370686,
+											"sid": 727839190944722,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"comparison": 4,
@@ -818,7 +1324,7 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "P51D30_Mustang",
-											"sid": 826286779451952,
+											"sid": 921456521092147,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "40"
@@ -840,7 +1346,7 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "P51D30_Mustang",
-											"sid": 402282824246934,
+											"sid": 202398524078028,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "20"
@@ -974,7 +1480,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 415515259069268,
+									"sid": 794082459505893,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "0"
@@ -982,48 +1488,6 @@
 								}
 							],
 							"sid": 313518252733212
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-released",
-									"objectClass": "Keyboard",
-									"sid": 833512460751449,
-									"parameters": {
-										"key": 68
-									}
-								},
-								{
-									"id": "key-is-down",
-									"objectClass": "Keyboard",
-									"sid": 193586362020218,
-									"parameters": {
-										"key": 65
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 229547301892386,
-									"behaviorType": "Rotate",
-									"parameters": {
-										"speed": "0"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 429892964955726,
-									"parameters": {
-										"instance-variable": "RotationAcceleration",
-										"value": "0"
-									}
-								}
-							],
-							"sid": 845127294690628
 						},
 						{
 							"eventType": "block",
@@ -1060,7 +1524,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 318885041221070,
+									"sid": 186513652849604,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "lerp(Self.RotationAcceleration, 0, 0.5)"
@@ -1069,7 +1533,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "P51D30_Mustang",
-									"sid": 983875183214793,
+									"sid": 136913381241675,
 									"parameters": {
 										"instance-variable": "RotationInitialVelocity",
 										"value": "0"
@@ -1094,10 +1558,10 @@
 								{
 									"id": "set-position",
 									"objectClass": "P51D30_Mustang",
-									"sid": 884393038227649,
+									"sid": 206629529804770,
 									"parameters": {
-										"x": "50",
-										"y": "50"
+										"x": "100",
+										"y": "100"
 									}
 								}
 							],
@@ -1174,7 +1638,7 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "P51D30_Mustang",
-									"sid": 776011515789890,
+									"sid": 448256171617192,
 									"parameters": {
 										"instance-variable": "Health",
 										"comparison": 0,
@@ -1214,7 +1678,7 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "50cal_MG_Bullet",
-									"sid": 670931752211334,
+									"sid": 559589501737109,
 									"parameters": {
 										"instance-variable": "ActorNr",
 										"comparison": 1,
@@ -1256,7 +1720,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "P51D30_Mustang",
-							"sid": 458633687518859,
+							"sid": 707977345548065,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -1314,17 +1778,9 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 974360180819435,
-							"parameters": {
-								"code0": "2"
-							}
-						},
-						{
 							"id": "compare-instance-variable",
 							"objectClass": "P51D30_Mustang",
-							"sid": 139410522418916,
+							"sid": 474242230828129,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -1332,410 +1788,329 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "set-x",
-							"objectClass": "P51D30_Mustang",
-							"sid": 357031259255318,
-							"parameters": {
-								"x": " float(Photon.EventData)"
-							}
-						}
-					],
-					"sid": 128766776966397
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 155099230724665,
-							"parameters": {
-								"code0": "3"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 766750735441543,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-y",
-							"objectClass": "P51D30_Mustang",
-							"sid": 542877595796198,
-							"parameters": {
-								"y": "float(Photon.EventData)"
-							}
-						}
-					],
-					"sid": 981571816508755
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 501521397752713,
-							"parameters": {
-								"code0": "4"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 627569680994143,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-angle",
-							"objectClass": "P51D30_Mustang",
-							"sid": 683368957015191,
-							"parameters": {
-								"angle": "float(Photon.EventData)"
-							}
-						}
-					],
-					"sid": 747685063006902
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 579122958721947,
-							"parameters": {
-								"code0": "5"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 192630380898739,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 878416568788649,
-							"parameters": {
-								"instance-variable": "FiftyCal_Mg_Bullet_Count",
-								"comparison": 4,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 566069757471997,
-							"parameters": {
-								"animation": "\"Idle Guns\"",
-								"from": "current-frame"
-							}
-						},
-						{
-							"id": "spawn-another-object",
-							"objectClass": "P51D30_Mustang",
-							"sid": 663648966849204,
-							"parameters": {
-								"object": "50cal_MG_Bullet",
-								"layer": "0",
-								"image-point": "0",
-								"create-hierarchy": false
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "50cal_MG_Bullet",
-							"sid": 404913303349702,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"value": "P51D30_Mustang.ActorNr"
-							}
-						},
-						{
-							"id": "set-angle-of-motion",
-							"objectClass": "50cal_MG_Bullet",
-							"sid": 913656478447237,
-							"behaviorType": "Bullet",
-							"parameters": {
-								"angle": "0"
-							}
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "P51D30_Mustang",
-							"sid": 268430692902247,
-							"parameters": {
-								"instance-variable": "FiftyCal_Mg_Bullet_Count",
-								"value": "1"
-							}
-						}
-					],
-					"sid": 750994499146106
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 112009527800016,
-							"parameters": {
-								"code0": "6"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 163255409209413,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "50cal_MG_Bullet",
-							"sid": 901803511036714
-						},
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 558781362924362,
-							"parameters": {
-								"animation": "\"Idle Damage 1\"",
-								"from": "beginning"
-							}
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "P51D30_Mustang",
-							"sid": 518025195240683,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "1"
-							}
-						}
-					],
-					"sid": 135851739393055,
+					"actions": [],
+					"sid": 322760208787418,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-animation-playing",
-									"objectClass": "P51D30_Mustang",
-									"sid": 556220569892398,
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 414584304032105,
 									"parameters": {
-										"animation": "\"Idle Damage 1\""
+										"code0": "2"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 693551635819782,
+									"id": "set-x",
+									"objectClass": "P51D30_Mustang",
+									"sid": 147217032784729,
 									"parameters": {
-										"seconds": "0.47"
+										"x": "float(Photon.EventData)"
 									}
+								}
+							],
+							"sid": 974647245128933
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 710122293311194,
+									"parameters": {
+										"code0": "3"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "P51D30_Mustang",
+									"sid": 730027435946402,
+									"parameters": {
+										"y": "float(Photon.EventData)"
+									}
+								}
+							],
+							"sid": 661528025723728
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 599663665115989,
+									"parameters": {
+										"code0": "4"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-angle",
+									"objectClass": "P51D30_Mustang",
+									"sid": 790875441027690,
+									"parameters": {
+										"angle": "float(Photon.EventData)"
+									}
+								}
+							],
+							"sid": 291680379355465
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 978711377744203,
+									"parameters": {
+										"code0": "5"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "P51D30_Mustang",
+									"sid": 807333194952238,
+									"parameters": {
+										"instance-variable": "FiftyCal_Mg_Bullet_Count",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "P51D30_Mustang",
+									"sid": 334435251427877,
+									"parameters": {
+										"animation": "\"Idle Guns\"",
+										"from": "current-frame"
+									}
+								},
+								{
+									"id": "spawn-another-object",
+									"objectClass": "P51D30_Mustang",
+									"sid": 494965017796039,
+									"parameters": {
+										"object": "50cal_MG_Bullet",
+										"layer": "0",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 751096820782527,
+									"parameters": {
+										"instance-variable": "ActorNr",
+										"value": "P51D30_Mustang.ActorNr"
+									}
+								},
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 242098324424371,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "0"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "P51D30_Mustang",
+									"sid": 151344673935271,
+									"parameters": {
+										"instance-variable": "FiftyCal_Mg_Bullet_Count",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 366217126727918
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 708493607235736,
+									"parameters": {
+										"code0": "6"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 562340258278981
 								},
 								{
 									"id": "set-animation",
 									"objectClass": "P51D30_Mustang",
-									"sid": 267571022585372,
+									"sid": 146703862297942,
 									"parameters": {
-										"animation": "\"Idle\"",
+										"animation": "\"Idle Damage 1\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "P51D30_Mustang",
+									"sid": 837065787334464,
+									"parameters": {
+										"instance-variable": "Health",
+										"value": "1"
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 726758487749505,
+									"parameters": {
+										"audio-file": "Metal damage",
+										"loop": "not-looping",
+										"volume": "-10",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
 									}
 								}
 							],
-							"sid": 561618484105762
+							"sid": 282489066201089,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "P51D30_Mustang",
+											"sid": 170758738432239,
+											"parameters": {
+												"animation": "\"Idle Damage 1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 198939050849098,
+											"parameters": {
+												"seconds": "0.47"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "P51D30_Mustang",
+											"sid": 932657013690867,
+											"parameters": {
+												"animation": "\"Idle\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 887978763825901
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 969560242880584,
+									"parameters": {
+										"code0": "7"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "P51D30_Mustang",
+									"sid": 579660659868480,
+									"parameters": {
+										"animation": "\"Idle\"",
+										"from": "current-frame"
+									}
+								},
+								{
+									"id": "stop",
+									"objectClass": "Audio",
+									"sid": 462163947799211,
+									"parameters": {
+										"tag": "\"turret\""
+									}
+								}
+							],
+							"sid": 159500115463217
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 682813521249666,
+									"parameters": {
+										"code0": "8"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "P51D30_Mustang",
+									"sid": 926081387299389,
+									"parameters": {
+										"animation": "\"Death\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "P51D30_Mustang",
+									"sid": 844043004843866
+								}
+							],
+							"sid": 777782584786234
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 145074743669146,
+									"parameters": {
+										"code0": "9"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "Particles",
+									"sid": 408127060437912,
+									"parameters": {
+										"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
+										"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
+									}
+								}
+							],
+							"sid": 285933261876560
 						}
 					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 700875651007405,
-							"parameters": {
-								"code0": "7"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 461376557239293,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 819437239763485,
-							"parameters": {
-								"animation": "\"Idle\"",
-								"from": "current-frame"
-							}
-						},
-						{
-							"id": "stop",
-							"objectClass": "Audio",
-							"sid": 130288394860747,
-							"parameters": {
-								"tag": "\"turret\""
-							}
-						}
-					],
-					"sid": 386887083381552
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 930557337520817,
-							"parameters": {
-								"code0": "8"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 655049277756850,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 171860904660077,
-							"parameters": {
-								"animation": "\"Death\"",
-								"from": "beginning"
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "P51D30_Mustang",
-							"sid": 257946657268065
-						}
-					],
-					"sid": 355508700391343
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 922789219396607,
-							"parameters": {
-								"code0": "8"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 172153213993084,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "P51D30_Mustang",
-							"sid": 668051434745217,
-							"parameters": {
-								"animation": "\"Death\"",
-								"from": "beginning"
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "P51D30_Mustang",
-							"sid": 337116063685812
-						}
-					],
-					"sid": 510046732152270
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 292434497023607,
-							"parameters": {
-								"code0": "9"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 416152344198629,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-position",
-							"objectClass": "Particles",
-							"sid": 692135045680369,
-							"parameters": {
-								"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
-								"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
-							}
-						}
-					],
-					"sid": 570536708666806
 				}
 			],
 			"sid": 457140439925737
@@ -1764,15 +2139,6 @@
 							"id": "destroy",
 							"objectClass": "Ammo_Box_Supply",
 							"sid": 453646529443565
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 328610432140460,
-							"parameters": {
-								"variable": "50cal_Mg_Bullet_Count",
-								"value": "1800"
-							}
 						}
 					],
 					"sid": 608647448045847
@@ -1839,130 +2205,109 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 305374875657871,
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 297960732990529,
 							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.MyActorNr"
+								"object": "ResponsiveObjects",
+								"expression": "find(ResponsiveObjects.Align, \"left\")",
+								"comparison": 1,
+								"value": "-1"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-text",
-							"objectClass": "CounterFont",
-							"sid": 759962266929219,
+							"id": "set-x",
+							"objectClass": "ResponsiveObjects",
+							"sid": 539628640170048,
 							"parameters": {
-								"text": "P51D30_Mustang.FiftyCal_Mg_Bullet_Count & \" / 1800\""
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "SpeedFont",
-							"sid": 519579715566184,
-							"parameters": {
-								"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "HealthFont",
-							"sid": 702394051132277,
-							"parameters": {
-								"text": "P51D30_Mustang.Health & \"hp\""
-							}
-						},
-						{
-							"id": "set-layout-angle",
-							"objectClass": "System",
-							"sid": 903296521891775,
-							"parameters": {
-								"angle": "Camera.Angle+90"
-							}
-						},
-						{
-							"id": "set-layer-angle",
-							"objectClass": "System",
-							"sid": 776560269864140,
-							"parameters": {
-								"layer": "\"UI\"",
-								"angle": "(-Camera.Angle) - 90"
-							}
-						},
-						{
-							"id": "set-position",
-							"objectClass": "Camera",
-							"sid": 405912032169504,
-							"disabled": true,
-							"parameters": {
-								"x": "lerp(Self.X, P51D30_Mustang.X, 0.03)",
-								"y": "lerp(Self.Y, P51D30_Mustang.Y, 0.03)"
-							}
-						},
-						{
-							"id": "set-angle",
-							"objectClass": "Needle",
-							"sid": 596191119953393,
-							"parameters": {
-								"angle": "anglelerp(Self.Angle, Camera.Angle + 90, 0.05)"
-							}
-						},
-						{
-							"id": "set-angle",
-							"objectClass": "Camera",
-							"sid": 651401511398668,
-							"parameters": {
-								"angle": " anglelerp(Self.Angle, P51D30_Mustang.Angle, 0.50)"
-							}
-						},
-						{
-							"id": "set-position",
-							"objectClass": "Camera",
-							"sid": 686703796918139,
-							"parameters": {
-								"x": "lerp(Self.X, (P51D30_Mustang.X + (cos(P51D30_Mustang.Angle)*CameraDistance)), 0.03)",
-								"y": "lerp(Self.Y, (P51D30_Mustang.Y + (sin(P51D30_Mustang.Angle)*CameraDistance)), 0.03)"
+								"x": "Self.InicioX + ViewportLeft(Self.LayerName)"
 							}
 						}
 					],
-					"sid": 668214440194560
+					"sid": 581468249002058
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 283768360069422,
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 722544472762760,
 							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
+								"object": "ResponsiveObjects",
+								"expression": "find(ResponsiveObjects.Align, \"right\")",
+								"comparison": 1,
+								"value": "-1"
 							}
 						}
 					],
-					"actions": [],
-					"sid": 229209468039039,
-					"children": [
+					"actions": [
 						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-children",
-									"objectClass": "P51D30_Mustang",
-									"sid": 873736349135974,
-									"parameters": {
-										"child": "Particles",
-										"which": "own"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 959000748033787
+							"id": "set-x",
+							"objectClass": "ResponsiveObjects",
+							"sid": 863648529361906,
+							"parameters": {
+								"x": "Self.InicioX + ( ViewportRight(Self.LayerName) - OriginalWindowWidth )"
+							}
 						}
-					]
+					],
+					"sid": 202582168906007
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 522676941686468,
+							"parameters": {
+								"object": "ResponsiveObjects",
+								"expression": "find(ResponsiveObjects.Align, \"up\")",
+								"comparison": 1,
+								"value": "-1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-y",
+							"objectClass": "ResponsiveObjects",
+							"sid": 938691258997353,
+							"parameters": {
+								"y": "Self.InicioY + ViewportTop(Self.LayerName)"
+							}
+						}
+					],
+					"sid": 727871105669296
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 587171606737733,
+							"parameters": {
+								"object": "ResponsiveObjects",
+								"expression": "find(ResponsiveObjects.Align, \"down\")",
+								"comparison": 1,
+								"value": "-1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-y",
+							"objectClass": "ResponsiveObjects",
+							"sid": 365861802803036,
+							"parameters": {
+								"y": "Self.InicioY + ( ViewportBottom(Self.LayerName) - OriginalWindowHeight )"
+							}
+						}
+					],
+					"sid": 325635673345989
 				}
 			],
 			"sid": 702390106167680

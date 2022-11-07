@@ -1,0 +1,48 @@
+{
+	"name": "PlaneObjects",
+	"plugin-id": "Sprite",
+	"sid": 234276156500204,
+	"instanceVariables": [
+		{
+			"name": "Health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 535987104204323
+		},
+		{
+			"name": "ActorNr",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 785463603995975
+		},
+		{
+			"name": "RotationInitialVelocity",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 735762803247624
+		},
+		{
+			"name": "RotationAcceleration",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 108890042297668
+		},
+		{
+			"name": "Name",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 486665192016937
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"P51D30_Mustang",
+		"BF109F2"
+	]
+}

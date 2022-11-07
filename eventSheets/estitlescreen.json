@@ -12,68 +12,14 @@
 			"sid": 200659169654456
 		},
 		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "cursor-is-over-object",
-					"objectClass": "Mouse",
-					"sid": 532966466931154,
-					"parameters": {
-						"object": "Button"
-					}
-				}
-			],
-			"actions": [],
-			"sid": 822916710297866,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-click",
-							"objectClass": "Mouse",
-							"sid": 224926947520156,
-							"parameters": {
-								"mouse-button": "left",
-								"click-type": "clicked"
-							}
-						},
-						{
-							"id": "compare-text",
-							"objectClass": "NameInput",
-							"sid": 383399334426386,
-							"parameters": {
-								"text": "\"\"",
-								"case": "case-insensitive"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "go-to-layout",
-							"objectClass": "System",
-							"sid": 415589067898567,
-							"parameters": {
-								"layout": "Tutorial_FighterMap"
-							}
-						}
-					],
-					"sid": 719623411841115
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onjoinedlobby22",
-							"objectClass": "Photon",
-							"sid": 495050520317215
-						}
-					],
-					"actions": [],
-					"sid": 152048118368302
-				}
-			]
+			"eventType": "variable",
+			"name": "Host",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 190532816925915
 		},
 		{
 			"eventType": "block",
@@ -81,58 +27,78 @@
 				{
 					"id": "on-click",
 					"objectClass": "Mouse",
-					"sid": 489359402214952,
+					"sid": 216859901027553,
 					"parameters": {
 						"mouse-button": "left",
 						"click-type": "clicked"
 					}
 				},
 				{
-					"id": "is-connected",
-					"objectClass": "Multiplayer",
-					"sid": 301886496042154
-				},
-				{
 					"id": "cursor-is-over-object",
 					"objectClass": "Mouse",
-					"sid": 414795429743288,
+					"sid": 925638759812515,
 					"parameters": {
 						"object": "Button"
 					}
-				}
-			],
-			"actions": [],
-			"sid": 495301488625225
-		},
-		{
-			"eventType": "block",
-			"conditions": [
+				},
 				{
-					"id": "on-text-changed",
+					"id": "compare-instance-variable",
+					"objectClass": "Button",
+					"sid": 238924345161073,
+					"parameters": {
+						"instance-variable": "Name",
+						"comparison": 0,
+						"value": "\"CreateRoom\""
+					}
+				},
+				{
+					"id": "compare-text",
 					"objectClass": "NameInput",
-					"sid": 387731746212684
+					"sid": 948125028231970,
+					"parameters": {
+						"text": "\"\"",
+						"case": "case-insensitive"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 800590239742606,
+					"sid": 487621760692698,
 					"parameters": {
 						"variable": "Username",
 						"value": "NameInput.Text"
 					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 840416534946237,
+					"parameters": {
+						"variable": "Host",
+						"value": "\"New\""
+					}
+				},
+				{
+					"id": "setmyactorname101",
+					"objectClass": "Photon",
+					"sid": 381575192292640,
+					"parameters": {
+						"name0": "Username"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 554664363498769,
+					"parameters": {
+						"layout": "Tutorial_FighterMap"
+					}
 				}
 			],
-			"sid": 947427089557152,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [],
-					"sid": 164895304928577
-				}
-			]
+			"sid": 947427089557152
 		},
 		{
 			"eventType": "block",
@@ -144,6 +110,15 @@
 				}
 			],
 			"actions": [
+				{
+					"id": "request-project-file",
+					"objectClass": "AJAX",
+					"sid": 385497532147084,
+					"parameters": {
+						"tag": "\"planes\"",
+						"file": "planes.json"
+					}
+				},
 				{
 					"id": "connect10",
 					"objectClass": "Photon",
@@ -184,9 +159,89 @@
 						"property-name": "\"padding\"",
 						"value": "\"5px 10px\""
 					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 654206801132647,
+					"parameters": {
+						"layer": "\"Room\"",
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 547619837249010,
+					"parameters": {
+						"layer": "\"Start\"",
+						"visibility": "visible"
+					}
 				}
 			],
 			"sid": 715067811788291
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 622096278565091,
+					"parameters": {
+						"tag": "\"planes\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "parse",
+					"objectClass": "Planes",
+					"sid": 348124686357012,
+					"parameters": {
+						"data": "AJAX.LastData"
+					}
+				}
+			],
+			"sid": 160358645628107
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 752580367817613,
+					"parameters": {
+						"key": 13
+					}
+				},
+				{
+					"id": "is-focused",
+					"objectClass": "NameInput",
+					"sid": 405725825084879
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 127824549172544,
+					"parameters": {
+						"variable": "Host",
+						"value": "NameInput.Text"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 924746484554677,
+					"parameters": {
+						"layout": "Tutorial_FighterMap"
+					}
+				}
+			],
+			"sid": 678928995104761
 		}
 	],
 	"sid": 255209927989058

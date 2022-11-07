@@ -48,9 +48,15 @@
 			"instanceVariables": {}
 		},
 		{
-			"type": "JSON",
+			"type": "Planes",
 			"properties": {},
 			"uid": 36,
+			"instanceVariables": {}
+		},
+		{
+			"type": "Plane",
+			"properties": {},
+			"uid": 47,
 			"instanceVariables": {}
 		}
 	],

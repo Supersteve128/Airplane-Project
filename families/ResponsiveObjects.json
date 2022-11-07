@@ -1,0 +1,36 @@
+{
+	"name": "ResponsiveObjects",
+	"plugin-id": "Spritefont2",
+	"sid": 988394910920121,
+	"instanceVariables": [
+		{
+			"name": "InicioX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 609293998585982
+		},
+		{
+			"name": "InicioY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 702761793913368
+		},
+		{
+			"name": "Align",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 729424109008146
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"SpriteFont",
+		"CounterFont",
+		"HealthFont",
+		"SpeedFont"
+	]
+}
