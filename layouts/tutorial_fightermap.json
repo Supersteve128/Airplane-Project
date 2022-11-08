@@ -61,18 +61,13 @@
 					"behaviors": {
 						"Bullet": {
 							"properties": {
-								"speed": 200,
+								"speed": 0,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
 								"set-angle": true,
 								"step": false,
-								"enabled": true
-							}
-						},
-						"BoundToLayout": {
-							"properties": {
-								"bound-by": "edge"
+								"enabled": false
 							}
 						},
 						"Rotate": {
@@ -81,6 +76,11 @@
 								"acceleration": 0,
 								"enabled": true,
 								"live-preview": false
+							}
+						},
+						"BoundToLayout": {
+							"properties": {
+								"bound-by": "edge"
 							}
 						}
 					},
@@ -195,7 +195,7 @@
 				{
 					"type": "BF109F2",
 					"properties": {
-						"initially-visible": true,
+						"initially-visible": false,
 						"initial-animation": "Animation 1",
 						"initial-frame": 0,
 						"enable-collisions": true,
@@ -209,7 +209,32 @@
 						"RotationAcceleration": 0,
 						"Name": ""
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Bullet": {
+							"properties": {
+								"speed": 0,
+								"acceleration": 0,
+								"gravity": 0,
+								"bounce-off-solids": false,
+								"set-angle": true,
+								"step": false,
+								"enabled": false
+							}
+						},
+						"Rotate": {
+							"properties": {
+								"speed": 0,
+								"acceleration": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						},
+						"BoundToLayout": {
+							"properties": {
+								"bound-by": "edge"
+							}
+						}
+					},
 					"effects": {
 						"Sharpen": {
 							"isEnabled": true,
@@ -920,7 +945,7 @@
 					"behaviors": {
 						"Bullet": {
 							"properties": {
-								"speed": 200,
+								"speed": 0,
 								"acceleration": 0,
 								"gravity": 0,
 								"bounce-off-solids": false,
@@ -929,17 +954,17 @@
 								"enabled": false
 							}
 						},
-						"BoundToLayout": {
-							"properties": {
-								"bound-by": "edge"
-							}
-						},
 						"Rotate": {
 							"properties": {
 								"speed": 0,
 								"acceleration": 0,
 								"enabled": true,
 								"live-preview": false
+							}
+						},
+						"BoundToLayout": {
+							"properties": {
+								"bound-by": "edge"
 							}
 						}
 					},

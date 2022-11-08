@@ -39,7 +39,23 @@
 			"sid": 486665192016937
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 642953698580634
+		},
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 460837510971201
+		},
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 385185528897641
+		}
+	],
 	"effectTypes": [],
 	"members": [
 		"P51D30_Mustang",

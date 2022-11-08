@@ -447,8 +447,8 @@
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 365827087903838,
+							"objectClass": "PlaneObjects",
+							"sid": 369450861188326,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -584,11 +584,6 @@
 							],
 							"actions": [
 								{
-									"id": "destroy",
-									"objectClass": "P51D30_Mustang",
-									"sid": 162162419556362
-								},
-								{
 									"id": "raiseevent17",
 									"objectClass": "Photon",
 									"sid": 932728848725180,
@@ -618,6 +613,16 @@
 								}
 							],
 							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "Particles",
+									"sid": 603160817465726
+								},
+								{
+									"id": "destroy",
+									"objectClass": "PlaneObjects",
+									"sid": 784014556820787
+								},
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
@@ -670,6 +675,26 @@
 			"isActiveOnStart": false,
 			"children": [
 				{
+					"eventType": "variable",
+					"name": "ActorNr",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 240233815759730
+				},
+				{
+					"eventType": "variable",
+					"name": "minSpeed",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 693795811392371
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -689,10 +714,10 @@
 						{
 							"id": "raiseevent17",
 							"objectClass": "Photon",
-							"sid": 243951974170259,
+							"sid": 935041351332463,
 							"parameters": {
 								"code0": "1",
-								"data1": "0",
+								"data1": "SelectedAirplane",
 								"interestgroup2": "0",
 								"cache11": "addtoroomcache",
 								"receivers15": "all",
@@ -702,41 +727,6 @@
 						}
 					],
 					"sid": 331047421878805
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onactorleave16",
-							"objectClass": "Photon",
-							"sid": 522479984714660
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 725417303877734,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.ActorNr"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "P51D30_Mustang",
-							"sid": 451583775240565
-						},
-						{
-							"callFunction": "AddLog",
-							"sid": 521196844526285,
-							"parameters": [
-								"\"Kicked (either could not connect to host or host quit)\""
-							]
-						}
-					],
-					"sid": 569137298503036
 				},
 				{
 					"eventType": "comment",
@@ -756,11 +746,11 @@
 					],
 					"actions": [
 						{
-							"id": "create-object",
+							"id": "create-object-by-name",
 							"objectClass": "System",
-							"sid": 471134701589778,
+							"sid": 697049974069227,
 							"parameters": {
-								"object-to-create": "P51D30_Mustang",
+								"object-name": "Photon.EventData",
 								"layer": "0",
 								"x": "500",
 								"y": "500",
@@ -769,21 +759,26 @@
 							}
 						},
 						{
-							"id": "set-size",
-							"objectClass": "P51D30_Mustang",
-							"sid": 389559081576579,
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 517565821256311,
 							"parameters": {
-								"width": "93",
-								"height": "93"
+								"variable": "ActorNr",
+								"value": "Photon.ActorNr"
 							}
 						},
 						{
-							"id": "set-visible",
-							"objectClass": "P51D30_Mustang",
-							"sid": 916846644606773,
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 183179637209458,
 							"parameters": {
-								"visibility": "visible"
+								"variable": "minSpeed",
+								"value": "Planes.Get(Photon.EventData&\".minSpeed\")"
 							}
+						},
+						{
+							"type": "script",
+							"script": "const airplane = runtime.objects[runtime.globalVars.SelectedAirplane].getFirstPickedInstance()\n\nairplane.instVars.ActorNr = localVars.ActorNr\nairplane.isVisible = true\nairplane.behaviors.Bullet.speed = localVars.minSpeed\nairplane.behaviors.Bullet.isEnabled = true\nairplane.setSize(93, 93)"
 						},
 						{
 							"id": "create-object",
@@ -801,7 +796,8 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 830239586063814,
+							"sid": 586615089643963,
+							"disabled": true,
 							"parameters": {
 								"object-to-create": "Camera",
 								"layer": "0",
@@ -813,8 +809,9 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "P51D30_Mustang",
-							"sid": 933772878819791,
+							"objectClass": "Camera",
+							"sid": 398494443387383,
+							"disabled": true,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"value": "Photon.ActorNr"
@@ -824,15 +821,6 @@
 							"id": "set-instvar-value",
 							"objectClass": "Particles",
 							"sid": 600718265322461,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"value": "Photon.ActorNr"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Camera",
-							"sid": 809818607069830,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"value": "Photon.ActorNr"
@@ -857,8 +845,8 @@
 					"conditions": [
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 193441317483218,
+							"objectClass": "PlaneObjects",
+							"sid": 268750927456979,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -869,11 +857,11 @@
 					"actions": [
 						{
 							"id": "set-acceleration",
-							"objectClass": "P51D30_Mustang",
-							"sid": 847110111343229,
+							"objectClass": "PlaneObjects",
+							"sid": 560295475167539,
 							"behaviorType": "Rotate",
 							"parameters": {
-								"acceleration": "P51D30_Mustang.RotationInitialVelocity + P51D30_Mustang.RotationAcceleration"
+								"acceleration": "PlaneObjects.RotationInitialVelocity + PlaneObjects.RotationAcceleration"
 							}
 						},
 						{
@@ -887,40 +875,23 @@
 						{
 							"id": "set-text",
 							"objectClass": "SpeedFont",
-							"sid": 661319987635513,
+							"sid": 367209347533792,
 							"parameters": {
-								"text": "P51D30_Mustang.Bullet.Speed & \"mph\""
+								"text": "PlaneObjects.Bullet.Speed & \"mph\""
 							}
 						},
 						{
 							"id": "set-text",
 							"objectClass": "HealthFont",
-							"sid": 705057793272813,
+							"sid": 621278251543922,
 							"parameters": {
-								"text": "P51D30_Mustang.Health & \"hp\""
-							}
-						},
-						{
-							"id": "set-layout-angle",
-							"objectClass": "System",
-							"sid": 414896747440636,
-							"parameters": {
-								"angle": "Camera.Angle+90"
-							}
-						},
-						{
-							"id": "set-layer-angle",
-							"objectClass": "System",
-							"sid": 327491798653113,
-							"parameters": {
-								"layer": "\"UI\"",
-								"angle": "(-Camera.Angle) - 90"
+								"text": "PlaneObjects.Health & \"hp\""
 							}
 						},
 						{
 							"id": "set-position",
 							"objectClass": "Camera",
-							"sid": 774163491242935,
+							"sid": 123455566753441,
 							"disabled": true,
 							"parameters": {
 								"x": "lerp(Self.X, P51D30_Mustang.X, 0.03)",
@@ -930,7 +901,7 @@
 						{
 							"id": "set-angle",
 							"objectClass": "Needle",
-							"sid": 429601967125815,
+							"sid": 805918782106941,
 							"parameters": {
 								"angle": "anglelerp(Self.Angle, Camera.Angle + 90, 0.05)"
 							}
@@ -938,18 +909,35 @@
 						{
 							"id": "set-angle",
 							"objectClass": "Camera",
-							"sid": 134487112270839,
+							"sid": 471211777015309,
 							"parameters": {
-								"angle": " anglelerp(Self.Angle, P51D30_Mustang.Angle, 0.50)"
+								"angle": " anglelerp(Self.Angle, PlaneObjects.Angle, 0.50)"
 							}
 						},
 						{
 							"id": "set-position",
 							"objectClass": "Camera",
-							"sid": 756664250314044,
+							"sid": 241310040781622,
 							"parameters": {
-								"x": "lerp(Self.X, (P51D30_Mustang.X + (cos(P51D30_Mustang.Angle)*CameraDistance)), 0.03)",
-								"y": "lerp(Self.Y, (P51D30_Mustang.Y + (sin(P51D30_Mustang.Angle)*CameraDistance)), 0.03)"
+								"x": "lerp(Self.X, (PlaneObjects.X + (cos(PlaneObjects.Angle)*CameraDistance)), 0.03)",
+								"y": "lerp(Self.Y, (PlaneObjects.Y + (sin(PlaneObjects.Angle)*CameraDistance)), 0.03)"
+							}
+						},
+						{
+							"id": "set-layout-angle",
+							"objectClass": "System",
+							"sid": 367059470478232,
+							"parameters": {
+								"angle": "Camera.Angle+90"
+							}
+						},
+						{
+							"id": "set-layer-angle",
+							"objectClass": "System",
+							"sid": 865348476285155,
+							"parameters": {
+								"layer": "\"UI\"",
+								"angle": "(-Camera.Angle) - 90"
 							}
 						}
 					],
@@ -971,10 +959,10 @@
 								{
 									"id": "set-position",
 									"objectClass": "Particles",
-									"sid": 409714732929478,
+									"sid": 234462842918191,
 									"parameters": {
-										"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
-										"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
+										"x": "PlaneObjects.ImagePointX(\"Engine\")",
+										"y": "PlaneObjects.ImagePointY(\"Engine\")"
 									}
 								},
 								{
@@ -1130,8 +1118,8 @@
 							"actions": [
 								{
 									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 208027843457518,
+									"objectClass": "PlaneObjects",
+									"sid": 899885952004935,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "-35"
@@ -1145,8 +1133,8 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "P51D30_Mustang",
-											"sid": 260507519036879,
+											"objectClass": "PlaneObjects",
+											"sid": 120285180072974,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"comparison": 4,
@@ -1157,8 +1145,8 @@
 									"actions": [
 										{
 											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 493628277511740,
+											"objectClass": "PlaneObjects",
+											"sid": 992149317813571,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "-40"
@@ -1179,8 +1167,8 @@
 									"actions": [
 										{
 											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 533729013568460,
+											"objectClass": "PlaneObjects",
+											"sid": 726939524792260,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "-20"
@@ -1221,8 +1209,8 @@
 									"conditions": [
 										{
 											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 499845075269998,
+											"objectClass": "PlaneObjects",
+											"sid": 487877443250428,
 											"behaviorType": "Bullet",
 											"parameters": {
 												"comparison": 2,
@@ -1233,8 +1221,8 @@
 									"actions": [
 										{
 											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 555238488082929,
+											"objectClass": "PlaneObjects",
+											"sid": 316129142919732,
 											"behaviorType": "Bullet",
 											"parameters": {
 												"acceleration": "60"
@@ -1250,8 +1238,8 @@
 							"conditions": [
 								{
 									"id": "compare-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 224406642194322,
+									"objectClass": "PlaneObjects",
+									"sid": 294904798481791,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"comparison": 5,
@@ -1262,8 +1250,8 @@
 							"actions": [
 								{
 									"id": "set-acceleration",
-									"objectClass": "P51D30_Mustang",
-									"sid": 685480490065738,
+									"objectClass": "PlaneObjects",
+									"sid": 155213869873749,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"acceleration": "0"
@@ -1271,15 +1259,15 @@
 								},
 								{
 									"id": "set-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 168349003377920,
+									"objectClass": "PlaneObjects",
+									"sid": 961689687384231,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"speed": "437"
 									}
 								}
 							],
-							"sid": 668445183530378
+							"sid": 777258768239538
 						},
 						{
 							"eventType": "block",
@@ -1296,8 +1284,8 @@
 							"actions": [
 								{
 									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 945717735970309,
+									"objectClass": "PlaneObjects",
+									"sid": 677369494592815,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "35"
@@ -1311,11 +1299,11 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "P51D30_Mustang",
-											"sid": 727839190944722,
+											"objectClass": "PlaneObjects",
+											"sid": 203522110710040,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
-												"comparison": 4,
+												"comparison": 2,
 												"value": "0"
 											}
 										}
@@ -1323,8 +1311,8 @@
 									"actions": [
 										{
 											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 921456521092147,
+											"objectClass": "PlaneObjects",
+											"sid": 269783576368748,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "40"
@@ -1345,8 +1333,8 @@
 									"actions": [
 										{
 											"id": "set-instvar-value",
-											"objectClass": "P51D30_Mustang",
-											"sid": 202398524078028,
+											"objectClass": "PlaneObjects",
+											"sid": 998787100595972,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "20"
@@ -1387,8 +1375,8 @@
 									"conditions": [
 										{
 											"id": "compare-speed",
-											"objectClass": "P51D30_Mustang",
-											"sid": 682913927794246,
+											"objectClass": "PlaneObjects",
+											"sid": 276484125870913,
 											"behaviorType": "Bullet",
 											"parameters": {
 												"comparison": 4,
@@ -1399,8 +1387,8 @@
 									"actions": [
 										{
 											"id": "set-acceleration",
-											"objectClass": "P51D30_Mustang",
-											"sid": 688446701392716,
+											"objectClass": "PlaneObjects",
+											"sid": 777810065044412,
 											"behaviorType": "Bullet",
 											"parameters": {
 												"acceleration": "-60"
@@ -1416,8 +1404,8 @@
 							"conditions": [
 								{
 									"id": "compare-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 785783741781005,
+									"objectClass": "PlaneObjects",
+									"sid": 323086657508996,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"comparison": 3,
@@ -1428,8 +1416,8 @@
 							"actions": [
 								{
 									"id": "set-acceleration",
-									"objectClass": "P51D30_Mustang",
-									"sid": 887861961245318,
+									"objectClass": "PlaneObjects",
+									"sid": 930806387517293,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"acceleration": "0"
@@ -1437,15 +1425,15 @@
 								},
 								{
 									"id": "set-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 872219413698583,
+									"objectClass": "PlaneObjects",
+									"sid": 924256189968546,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"speed": "200"
 									}
 								}
 							],
-							"sid": 509677696179627
+							"sid": 775694434412298
 						},
 						{
 							"eventType": "block",
@@ -1470,8 +1458,8 @@
 							"actions": [
 								{
 									"id": "set-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 700244343988401,
+									"objectClass": "PlaneObjects",
+									"sid": 272819324296130,
 									"behaviorType": "Rotate",
 									"parameters": {
 										"speed": "0"
@@ -1479,8 +1467,8 @@
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 794082459505893,
+									"objectClass": "PlaneObjects",
+									"sid": 164378906440854,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "0"
@@ -1514,8 +1502,8 @@
 							"actions": [
 								{
 									"id": "set-speed",
-									"objectClass": "P51D30_Mustang",
-									"sid": 541063667411396,
+									"objectClass": "PlaneObjects",
+									"sid": 912154422314602,
 									"behaviorType": "Rotate",
 									"parameters": {
 										"speed": "lerp(Self.Rotate.Speed, 0, 0.5)"
@@ -1523,8 +1511,8 @@
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 186513652849604,
+									"objectClass": "PlaneObjects",
+									"sid": 941470702961540,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
 										"value": "lerp(Self.RotationAcceleration, 0, 0.5)"
@@ -1532,8 +1520,8 @@
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "P51D30_Mustang",
-									"sid": 136913381241675,
+									"objectClass": "PlaneObjects",
+									"sid": 585705954004762,
 									"parameters": {
 										"instance-variable": "RotationInitialVelocity",
 										"value": "0"
@@ -1557,8 +1545,8 @@
 							"actions": [
 								{
 									"id": "set-position",
-									"objectClass": "P51D30_Mustang",
-									"sid": 206629529804770,
+									"objectClass": "PlaneObjects",
+									"sid": 892492089501574,
 									"parameters": {
 										"x": "100",
 										"y": "100"
@@ -1602,8 +1590,8 @@
 									"conditions": [
 										{
 											"id": "is-animation-playing",
-											"objectClass": "P51D30_Mustang",
-											"sid": 344880636703662,
+											"objectClass": "PlaneObjects",
+											"sid": 239389691345301,
 											"parameters": {
 												"animation": "\"Idle Damage 1\""
 											}
@@ -1620,8 +1608,8 @@
 										},
 										{
 											"id": "set-animation",
-											"objectClass": "P51D30_Mustang",
-											"sid": 216165495214613,
+											"objectClass": "PlaneObjects",
+											"sid": 783048744213350,
 											"parameters": {
 												"animation": "\"Idle\"",
 												"from": "beginning"
@@ -1637,11 +1625,11 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "P51D30_Mustang",
-									"sid": 448256171617192,
+									"objectClass": "PlaneObjects",
+									"sid": 329710084523700,
 									"parameters": {
 										"instance-variable": "Health",
-										"comparison": 0,
+										"comparison": 3,
 										"value": "0"
 									}
 								}
@@ -1669,8 +1657,8 @@
 							"conditions": [
 								{
 									"id": "on-collision-with-another-object",
-									"objectClass": "P51D30_Mustang",
-									"sid": 939458385148743,
+									"objectClass": "PlaneObjects",
+									"sid": 798587123627573,
 									"parameters": {
 										"object": "50cal_MG_Bullet"
 									}
@@ -1678,11 +1666,11 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "50cal_MG_Bullet",
-									"sid": 559589501737109,
+									"sid": 253644896048350,
 									"parameters": {
 										"instance-variable": "ActorNr",
 										"comparison": 1,
-										"value": "P51D30_Mustang.ActorNr"
+										"value": "PlaneObjects.ActorNr"
 									}
 								}
 							],
@@ -1719,8 +1707,8 @@
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 707977345548065,
+							"objectClass": "PlaneObjects",
+							"sid": 800430576775890,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -1732,10 +1720,10 @@
 						{
 							"id": "raiseevent17",
 							"objectClass": "Photon",
-							"sid": 124935122449148,
+							"sid": 349390379024728,
 							"parameters": {
 								"code0": "2",
-								"data1": "P51D30_Mustang.X",
+								"data1": "PlaneObjects.X",
 								"interestgroup2": "0",
 								"cache11": "donotcache",
 								"receivers15": "others",
@@ -1746,10 +1734,10 @@
 						{
 							"id": "raiseevent17",
 							"objectClass": "Photon",
-							"sid": 837782491264791,
+							"sid": 342629489686932,
 							"parameters": {
 								"code0": "3",
-								"data1": "P51D30_Mustang.Y",
+								"data1": "PlaneObjects.Y",
 								"interestgroup2": "0",
 								"cache11": "donotcache",
 								"receivers15": "others",
@@ -1760,10 +1748,10 @@
 						{
 							"id": "raiseevent17",
 							"objectClass": "Photon",
-							"sid": 739946966896541,
+							"sid": 202097827512969,
 							"parameters": {
 								"code0": "4",
-								"data1": "P51D30_Mustang.Angle",
+								"data1": "PlaneObjects.Angle",
 								"interestgroup2": "0",
 								"cache11": "donotcache",
 								"receivers15": "others",
@@ -1779,8 +1767,8 @@
 					"conditions": [
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "P51D30_Mustang",
-							"sid": 474242230828129,
+							"objectClass": "PlaneObjects",
+							"sid": 342401916995504,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"comparison": 0,
@@ -1806,8 +1794,8 @@
 							"actions": [
 								{
 									"id": "set-x",
-									"objectClass": "P51D30_Mustang",
-									"sid": 147217032784729,
+									"objectClass": "PlaneObjects",
+									"sid": 718202230463157,
 									"parameters": {
 										"x": "float(Photon.EventData)"
 									}
@@ -1830,8 +1818,8 @@
 							"actions": [
 								{
 									"id": "set-y",
-									"objectClass": "P51D30_Mustang",
-									"sid": 730027435946402,
+									"objectClass": "PlaneObjects",
+									"sid": 335434299487984,
 									"parameters": {
 										"y": "float(Photon.EventData)"
 									}
@@ -1854,8 +1842,8 @@
 							"actions": [
 								{
 									"id": "set-angle",
-									"objectClass": "P51D30_Mustang",
-									"sid": 790875441027690,
+									"objectClass": "PlaneObjects",
+									"sid": 427332877860651,
 									"parameters": {
 										"angle": "float(Photon.EventData)"
 									}
@@ -1888,8 +1876,8 @@
 							"actions": [
 								{
 									"id": "set-animation",
-									"objectClass": "P51D30_Mustang",
-									"sid": 334435251427877,
+									"objectClass": "PlaneObjects",
+									"sid": 845546753856988,
 									"parameters": {
 										"animation": "\"Idle Guns\"",
 										"from": "current-frame"
@@ -1897,8 +1885,8 @@
 								},
 								{
 									"id": "spawn-another-object",
-									"objectClass": "P51D30_Mustang",
-									"sid": 494965017796039,
+									"objectClass": "PlaneObjects",
+									"sid": 798321811301052,
 									"parameters": {
 										"object": "50cal_MG_Bullet",
 										"layer": "0",
@@ -1956,8 +1944,8 @@
 								},
 								{
 									"id": "set-animation",
-									"objectClass": "P51D30_Mustang",
-									"sid": 146703862297942,
+									"objectClass": "PlaneObjects",
+									"sid": 119803024529272,
 									"parameters": {
 										"animation": "\"Idle Damage 1\"",
 										"from": "beginning"
@@ -1965,8 +1953,8 @@
 								},
 								{
 									"id": "subtract-from-instvar",
-									"objectClass": "P51D30_Mustang",
-									"sid": 837065787334464,
+									"objectClass": "PlaneObjects",
+									"sid": 147146319338837,
 									"parameters": {
 										"instance-variable": "Health",
 										"value": "1"
@@ -1992,8 +1980,8 @@
 									"conditions": [
 										{
 											"id": "is-animation-playing",
-											"objectClass": "P51D30_Mustang",
-											"sid": 170758738432239,
+											"objectClass": "PlaneObjects",
+											"sid": 121790375063087,
 											"parameters": {
 												"animation": "\"Idle Damage 1\""
 											}
@@ -2010,8 +1998,8 @@
 										},
 										{
 											"id": "set-animation",
-											"objectClass": "P51D30_Mustang",
-											"sid": 932657013690867,
+											"objectClass": "PlaneObjects",
+											"sid": 242188260184208,
 											"parameters": {
 												"animation": "\"Idle\"",
 												"from": "beginning"
@@ -2037,8 +2025,8 @@
 							"actions": [
 								{
 									"id": "set-animation",
-									"objectClass": "P51D30_Mustang",
-									"sid": 579660659868480,
+									"objectClass": "PlaneObjects",
+									"sid": 238505566708726,
 									"parameters": {
 										"animation": "\"Idle\"",
 										"from": "current-frame"
@@ -2070,8 +2058,8 @@
 							"actions": [
 								{
 									"id": "set-animation",
-									"objectClass": "P51D30_Mustang",
-									"sid": 926081387299389,
+									"objectClass": "PlaneObjects",
+									"sid": 808862270420344,
 									"parameters": {
 										"animation": "\"Death\"",
 										"from": "beginning"
@@ -2079,8 +2067,8 @@
 								},
 								{
 									"id": "destroy",
-									"objectClass": "P51D30_Mustang",
-									"sid": 844043004843866
+									"objectClass": "PlaneObjects",
+									"sid": 424754517979971
 								}
 							],
 							"sid": 777782584786234
@@ -2101,14 +2089,39 @@
 								{
 									"id": "set-position",
 									"objectClass": "Particles",
-									"sid": 408127060437912,
+									"sid": 147714358758514,
 									"parameters": {
-										"x": "P51D30_Mustang.ImagePointX(\"Engine\")",
-										"y": "P51D30_Mustang.ImagePointY(\"Engine\")"
+										"x": "PlaneObjects.ImagePointX(\"Engine\")",
+										"y": "PlaneObjects.ImagePointY(\"Engine\")"
 									}
 								}
 							],
 							"sid": 285933261876560
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onactorleave16",
+									"objectClass": "Photon",
+									"sid": 510909339775261
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "PlaneObjects",
+									"sid": 116452366125263
+								},
+								{
+									"callFunction": "AddLog",
+									"sid": 689066206447193,
+									"parameters": [
+										"\"Kicked (either could not connect to host or host quit)\""
+									]
+								}
+							],
+							"sid": 636285772193407
 						}
 					]
 				}

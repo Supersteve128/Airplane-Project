@@ -128,6 +128,14 @@
 		},
 		{
 			"type": "behavior",
+			"id": "destroy",
+			"name": "Destroy outside layout",
+			"author": "Scirra",
+			"version": "r317",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Bullet",
 			"name": "Bullet",
 			"author": "Scirra",
@@ -136,8 +144,8 @@
 		},
 		{
 			"type": "behavior",
-			"id": "bound",
-			"name": "Bound to layout",
+			"id": "scrollto",
+			"name": "Scroll To",
 			"author": "Scirra",
 			"version": "r317",
 			"bundled": false
@@ -152,16 +160,8 @@
 		},
 		{
 			"type": "behavior",
-			"id": "destroy",
-			"name": "Destroy outside layout",
-			"author": "Scirra",
-			"version": "r317",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "scrollto",
-			"name": "Scroll To",
+			"id": "bound",
+			"name": "Bound to layout",
 			"author": "Scirra",
 			"version": "r317",
 			"bundled": false

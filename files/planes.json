@@ -9,5 +9,8 @@
         "normalTurnInitialVelocity": 20,
         "minCameraScale": 1.1,
         "maxCameraScale": 0.85
-    }
+    },
+	"BF109F2": {
+	
+	}
 }

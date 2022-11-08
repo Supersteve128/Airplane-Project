@@ -19,23 +19,7 @@
 			"sid": 326528055470265
 		}
 	],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Bullet",
-			"name": "Bullet",
-			"sid": 791571784197016
-		},
-		{
-			"behaviorId": "bound",
-			"name": "BoundToLayout",
-			"sid": 332371951953789
-		},
-		{
-			"behaviorId": "Rotate",
-			"name": "Rotate",
-			"sid": 969123613578440
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [
 		{
 			"effectId": "sharpen",
