@@ -1,17 +1,17 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 31700,
+	"savedWithRelease": 31702,
 	"name": "Coding Club Game Concept",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": true,
+	"bundleAddons": false,
 	"usedAddons": [
 		{
 			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -19,7 +19,7 @@
 			"id": "Spritefont2",
 			"name": "Sprite font",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -27,7 +27,7 @@
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -35,7 +35,7 @@
 			"id": "Json",
 			"name": "JSON",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -43,7 +43,7 @@
 			"id": "Mouse",
 			"name": "Mouse",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -59,7 +59,7 @@
 			"id": "Touch",
 			"name": "Touch",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -67,7 +67,7 @@
 			"id": "Audio",
 			"name": "Audio",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -75,7 +75,7 @@
 			"id": "AJAX",
 			"name": "AJAX",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -83,7 +83,7 @@
 			"id": "Browser",
 			"name": "Browser",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -91,7 +91,7 @@
 			"id": "TiledBg",
 			"name": "Tiled Background",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -99,7 +99,7 @@
 			"id": "Particles",
 			"name": "Particles",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -107,7 +107,7 @@
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -115,7 +115,7 @@
 			"id": "TextBox",
 			"name": "Text input",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -123,7 +123,7 @@
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -131,7 +131,7 @@
 			"id": "destroy",
 			"name": "Destroy outside layout",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -139,7 +139,7 @@
 			"id": "Bullet",
 			"name": "Bullet",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -147,7 +147,7 @@
 			"id": "scrollto",
 			"name": "Scroll To",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -155,7 +155,7 @@
 			"id": "Rotate",
 			"name": "Rotate",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -163,7 +163,7 @@
 			"id": "bound",
 			"name": "Bound to layout",
 			"author": "Scirra",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		},
 		{
@@ -171,7 +171,7 @@
 			"id": "sharpen",
 			"name": "Sharpen",
 			"author": "Brad Larson",
-			"version": "r317",
+			"version": "r317.2",
 			"bundled": false
 		}
 	],
@@ -179,20 +179,20 @@
 	"objectTypes": {
 		"items": [
 			"Ammo_Box_Supply",
-			"TiledBackground",
 			"Particles",
 			"CounterFont",
-			"SpeedFont",
 			"Camera",
 			"Text",
-			"NameInput",
+			"JoinInput",
 			"Button",
 			"LogText",
 			"LogMessages",
-			"NetStats",
-			"Sprite",
 			"HealthFont",
-			"Arrow"
+			"Arrow",
+			"NetStats",
+			"NameInput",
+			"Players",
+			"Stats"
 		],
 		"subfolders": [
 			{
@@ -234,6 +234,31 @@
 				],
 				"subfolders": [],
 				"name": "Mechanics"
+			},
+			{
+				"items": [
+					"TitleFont",
+					"SpeedFont",
+					"BlueFont",
+					"RedFont"
+				],
+				"subfolders": [],
+				"name": "Fonts"
+			},
+			{
+				"items": [
+					"Area",
+					"Point"
+				],
+				"subfolders": [],
+				"name": "GPS"
+			},
+			{
+				"items": [
+					"TiledBackground"
+				],
+				"subfolders": [],
+				"name": "Backgrounds"
 			}
 		]
 	},
@@ -242,7 +267,10 @@
 	"families": {
 		"items": [
 			"ResponsiveObjects",
-			"PlaneObjects"
+			"PlaneObjects",
+			"TextObjects",
+			"Bullets",
+			"TeamFonts"
 		],
 		"subfolders": []
 	},
@@ -378,6 +406,14 @@
 					"file-info": {
 						"purpose": "none"
 					}
+				},
+				{
+					"name": "bullets.json",
+					"type": "application/json",
+					"sid": 791435927512975,
+					"file-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
@@ -427,7 +463,7 @@
 			1,
 			0
 		],
-		"orientations": "landscape",
+		"orientations": "portrait",
 		"webgpu": "auto",
 		"gpuPreference": "high-performance",
 		"scriptsType": "module",

@@ -23,6 +23,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 729424109008146
+		},
+		{
+			"name": "Name",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 273166431125423
 		}
 	],
 	"behaviorTypes": [],
@@ -31,6 +38,7 @@
 		"SpriteFont",
 		"CounterFont",
 		"HealthFont",
-		"SpeedFont"
+		"SpeedFont",
+		"TitleFont"
 	]
 }

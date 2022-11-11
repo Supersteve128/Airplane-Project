@@ -197,14 +197,6 @@
 							}
 						},
 						{
-							"id": "setmyactorname101",
-							"objectClass": "Photon",
-							"sid": 291536736926415,
-							"parameters": {
-								"name0": "Username"
-							}
-						},
-						{
 							"id": "set-layer-visible",
 							"objectClass": "System",
 							"sid": 639433350845626,
@@ -383,59 +375,8 @@
 					"sid": 651585602287440
 				},
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onjoinroom14",
-							"objectClass": "Photon",
-							"sid": 716709563954251
-						}
-					],
-					"actions": [
-						{
-							"id": "raiseevent17",
-							"objectClass": "Photon",
-							"sid": 311664449402086,
-							"parameters": {
-								"code0": "20",
-								"data1": "Username",
-								"interestgroup2": "0",
-								"cache11": "addtoroomcache",
-								"receivers15": "all",
-								"targetactors16": "\"\"",
-								"webforward19": "no"
-							}
-						}
-					],
-					"sid": 263316933140456,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Text",
-									"sid": 491085469255541,
-									"parameters": {
-										"instance-variable": "Name",
-										"comparison": 0,
-										"value": "\"id\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-text",
-									"objectClass": "Text",
-									"sid": 580857646319188,
-									"parameters": {
-										"text": "Photon.MyRoomName"
-									}
-								}
-							],
-							"sid": 163528691192802
-						}
-					]
+					"eventType": "comment",
+					"text": "On player leaving, remove player"
 				},
 				{
 					"eventType": "block",
@@ -457,6 +398,11 @@
 						}
 					],
 					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "PlaneObjects",
+							"sid": 312434092557402
+						},
 						{
 							"callFunction": "AddLog",
 							"sid": 785775979618540,
@@ -487,41 +433,7 @@
 						{
 							"id": "onevent3",
 							"objectClass": "Photon",
-							"sid": 448988067811275,
-							"parameters": {
-								"code0": "20"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Text",
-							"sid": 808432433396315,
-							"parameters": {
-								"instance-variable": "Name",
-								"comparison": 0,
-								"value": "\"PlayerList\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-text",
-							"objectClass": "Text",
-							"sid": 593105093821428,
-							"parameters": {
-								"text": "Self.Text & Photon.EventData & newline"
-							}
-						}
-					],
-					"sid": 556416099723840
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "onevent3",
-							"objectClass": "Photon",
-							"sid": 786625180542131,
+							"sid": 917340678023774,
 							"parameters": {
 								"code0": "21"
 							}
@@ -529,15 +441,337 @@
 					],
 					"actions": [
 						{
-							"id": "set-text",
-							"objectClass": "Text",
-							"sid": 238287970743819,
+							"id": "set-value",
+							"objectClass": "Stats",
+							"sid": 193262249224619,
 							"parameters": {
-								"text": "replace(Self.Text, Photon.EventData, \"\")"
+								"path": "str(Photon.ActorNr) & \".active\"",
+								"value": "\"false\""
 							}
 						}
 					],
-					"sid": 818209322298687
+					"sid": 625327067428889
+				},
+				{
+					"eventType": "comment",
+					"text": "On Join room, add player to stat sheet and player count"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onjoinroom14",
+							"objectClass": "Photon",
+							"sid": 609928870846294
+						}
+					],
+					"actions": [
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 538869095857833,
+							"parameters": {
+								"code0": "20",
+								"data1": "Username",
+								"interestgroup2": "0",
+								"cache11": "addtoroomcache",
+								"receivers15": "all",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 355125779892295,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Text",
+									"sid": 538894122984451,
+									"parameters": {
+										"instance-variable": "Name",
+										"comparison": 0,
+										"value": "\"id\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "Text",
+									"sid": 869173983949803,
+									"parameters": {
+										"text": "Photon.MyRoomName"
+									}
+								}
+							],
+							"sid": 909077747760536
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onevent3",
+							"objectClass": "Photon",
+							"sid": 448988067811275,
+							"parameters": {
+								"code0": "20"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-object",
+							"objectClass": "Stats",
+							"sid": 277747553020646,
+							"parameters": {
+								"path": "str(Photon.ActorNr)"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Stats",
+							"sid": 455404312237520,
+							"parameters": {
+								"path": "str(Photon.ActorNr) & \".kills\"",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-value",
+							"objectClass": "Stats",
+							"sid": 119643102476465,
+							"parameters": {
+								"path": "str(Photon.ActorNr) & \".active\"",
+								"value": "\"true\""
+							}
+						}
+					],
+					"sid": 556416099723840,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 929967027366688,
+									"parameters": {
+										"first-value": "Players.ArraySize(\"blue\")",
+										"comparison": 0,
+										"second-value": "-1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-array",
+									"objectClass": "Players",
+									"sid": 426011440455352,
+									"parameters": {
+										"path": "\"blue\"",
+										"size": "0"
+									}
+								}
+							],
+							"sid": 773803000537955
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 388565148059824,
+									"parameters": {
+										"first-value": "Players.ArraySize(\"red\")",
+										"comparison": 0,
+										"second-value": "-1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-array",
+									"objectClass": "Players",
+									"sid": 406779109659622,
+									"parameters": {
+										"path": "\"red\"",
+										"size": "0"
+									}
+								}
+							],
+							"sid": 819857890991329
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 404580172006455,
+									"parameters": {
+										"first-value": "Players.ArraySize(\"blue\")",
+										"comparison": 3,
+										"second-value": "Players.ArraySize(\"red\")"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "push-value",
+									"objectClass": "Players",
+									"sid": 377181159543401,
+									"parameters": {
+										"where": "back",
+										"path": "\"blue\"",
+										"value": "Photon.ActorNr"
+									}
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Stats",
+									"sid": 771380538322886,
+									"parameters": {
+										"path": "str(Photon.ActorNr) & \".team\"",
+										"value": "\"blue\""
+									}
+								}
+							],
+							"sid": 119787652805974
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 398382862113100
+								}
+							],
+							"actions": [
+								{
+									"id": "push-value",
+									"objectClass": "Players",
+									"sid": 454132172222897,
+									"parameters": {
+										"where": "back",
+										"path": "\"red\"",
+										"value": "Photon.ActorNr"
+									}
+								},
+								{
+									"id": "set-value",
+									"objectClass": "Stats",
+									"sid": 470912911011801,
+									"parameters": {
+										"path": "str(Photon.ActorNr) & \".team\"",
+										"value": "\"red\""
+									}
+								}
+							],
+							"sid": 342457633421383
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "BlueFont",
+									"sid": 665572879820568,
+									"parameters": {
+										"text": "\"\""
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "RedFont",
+									"sid": 616207860210720,
+									"parameters": {
+										"text": "\"\""
+									}
+								}
+							],
+							"sid": 372014550786422
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "Players",
+									"sid": 838133260898590,
+									"parameters": {
+										"path": "\"blue\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "BlueFont",
+									"sid": 641615760336259,
+									"parameters": {
+										"instance-variable": "Type",
+										"comparison": 0,
+										"value": "\"Players\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "append-text",
+									"objectClass": "BlueFont",
+									"sid": 960371138973019,
+									"parameters": {
+										"text": "Photon.ActorNameByNr(Players.CurrentValue) & newline"
+									}
+								}
+							],
+							"sid": 522029057194498
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "Players",
+									"sid": 386859351462214,
+									"parameters": {
+										"path": "\"red\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "RedFont",
+									"sid": 166074394144197,
+									"parameters": {
+										"instance-variable": "Type",
+										"comparison": 0,
+										"value": "\"Players\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "append-text",
+									"objectClass": "RedFont",
+									"sid": 615134017246496,
+									"parameters": {
+										"text": "Photon.ActorNameByNr(Players.CurrentValue) & newline"
+									}
+								}
+							],
+							"sid": 622892381511191
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Start Game after start pressed"
 				},
 				{
 					"eventType": "block",
@@ -660,7 +894,61 @@
 									}
 								}
 							],
-							"sid": 992848559628194
+							"sid": 992848559628194,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "BlueFont",
+											"sid": 952173428937477,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Score\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "BlueFont",
+											"sid": 938074685060778,
+											"parameters": {
+												"text": "0"
+											}
+										}
+									],
+									"sid": 953306124933434
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "RedFont",
+											"sid": 723317196486512,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Score\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "RedFont",
+											"sid": 156167760047257,
+											"parameters": {
+												"text": "0"
+											}
+										}
+									],
+									"sid": 118446111581563
+								}
+							]
 						}
 					]
 				}
@@ -768,6 +1056,15 @@
 							}
 						},
 						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 988990109112690,
+							"parameters": {
+								"type": "log",
+								"message": "ActorNr"
+							}
+						},
+						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
 							"sid": 183179637209458,
@@ -778,7 +1075,7 @@
 						},
 						{
 							"type": "script",
-							"script": "const airplane = runtime.objects[runtime.globalVars.SelectedAirplane].getFirstPickedInstance()\n\nairplane.instVars.ActorNr = localVars.ActorNr\nairplane.isVisible = true\nairplane.behaviors.Bullet.speed = localVars.minSpeed\nairplane.behaviors.Bullet.isEnabled = true\nairplane.setSize(93, 93)"
+							"script": "const airplane = runtime.objects[runtime.globalVars.SelectedAirplane].getFirstPickedInstance()\n\nairplane.instVars.ActorNr = localVars.ActorNr\nairplane.isVisible = true\nairplane.behaviors.Bullet.speed = localVars.minSpeed\nairplane.behaviors.Bullet.isEnabled = true\n// airplane.setSize(93, 93)"
 						},
 						{
 							"id": "create-object",
@@ -791,6 +1088,21 @@
 								"y": "50",
 								"create-hierarchy": false,
 								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "PlaneObjects",
+							"sid": 103934793741420,
+							"parameters": {
+								"child": "Particles",
+								"transform-x": false,
+								"transform-y": false,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": true,
+								"transform-z-elevation": true,
+								"destroy-with-parent": true
 							}
 						},
 						{
@@ -820,7 +1132,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Particles",
-							"sid": 600718265322461,
+							"sid": 705159168029698,
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"value": "Photon.ActorNr"
@@ -939,6 +1251,38 @@
 								"layer": "\"UI\"",
 								"angle": "(-Camera.Angle) - 90"
 							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Area",
+							"sid": 389381291224281,
+							"parameters": {
+								"child": "Point",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-z-elevation": true,
+								"destroy-with-parent": false
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Point",
+							"sid": 810334459680085,
+							"parameters": {
+								"x": "Area.ImagePointX(\"Zeros\") + round((PlaneObjects.X/ TiledBackground.Width) * 150)",
+								"y": "Area.ImagePointY(\"Zeros\") + round((PlaneObjects.Y/ TiledBackground.Height) * 150)"
+							}
+						},
+						{
+							"id": "set-path",
+							"objectClass": "Planes",
+							"sid": 618296805910137,
+							"parameters": {
+								"path": "SelectedAirplane"
+							}
 						}
 					],
 					"sid": 805992391045114,
@@ -963,6 +1307,48 @@
 									"parameters": {
 										"x": "PlaneObjects.ImagePointX(\"Engine\")",
 										"y": "PlaneObjects.ImagePointY(\"Engine\")"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 117099707331607,
+									"parameters": {
+										"code0": "2",
+										"data1": "PlaneObjects.X",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "others",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 985997847088106,
+									"parameters": {
+										"code0": "3",
+										"data1": "PlaneObjects.Y",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "others",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 368411003816155,
+									"parameters": {
+										"code0": "4",
+										"data1": "PlaneObjects.Angle",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "others",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
 									}
 								},
 								{
@@ -1119,10 +1505,10 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "PlaneObjects",
-									"sid": 899885952004935,
+									"sid": 950016538696983,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
-										"value": "-35"
+										"value": "-Planes.Get(\".rotationAcceleration\")"
 									}
 								}
 							],
@@ -1146,10 +1532,10 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "PlaneObjects",
-											"sid": 992149317813571,
+											"sid": 151956788597392,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
-												"value": "-40"
+												"value": "-Planes.Get(\".movingTurnInitialVelocity\")"
 											}
 										}
 									],
@@ -1168,10 +1554,10 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "PlaneObjects",
-											"sid": 726939524792260,
+											"sid": 690585480739926,
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
-												"value": "-20"
+												"value": "-Planes.Get(\".normalTurnInitialVelocity\")"
 											}
 										}
 									],
@@ -1195,10 +1581,10 @@
 								{
 									"id": "set-layer-scale",
 									"objectClass": "System",
-									"sid": 106881351988345,
+									"sid": 186709095070613,
 									"parameters": {
 										"layer": "\"Game\"",
-										"scale": "lerp(LayerScale(\"Game\"), 0.85, 0.03)"
+										"scale": "lerp(LayerScale(\"Game\"), Planes.Get(\".maxCameraScale\"), 0.03)"
 									}
 								}
 							],
@@ -1210,11 +1596,11 @@
 										{
 											"id": "compare-speed",
 											"objectClass": "PlaneObjects",
-											"sid": 487877443250428,
+											"sid": 733270480314712,
 											"behaviorType": "Bullet",
 											"parameters": {
 												"comparison": 2,
-												"speed": "437"
+												"speed": "Planes.Get(\".maxSpeed\")"
 											}
 										}
 									],
@@ -1222,10 +1608,10 @@
 										{
 											"id": "set-acceleration",
 											"objectClass": "PlaneObjects",
-											"sid": 316129142919732,
+											"sid": 402480833124455,
 											"behaviorType": "Bullet",
 											"parameters": {
-												"acceleration": "60"
+												"acceleration": "Planes.Get(\".acceleration\")"
 											}
 										}
 									],
@@ -1239,11 +1625,11 @@
 								{
 									"id": "compare-speed",
 									"objectClass": "PlaneObjects",
-									"sid": 294904798481791,
+									"sid": 992653407407955,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"comparison": 5,
-										"speed": "437"
+										"speed": "Planes.Get(\".maxSpeed\")"
 									}
 								}
 							],
@@ -1260,10 +1646,10 @@
 								{
 									"id": "set-speed",
 									"objectClass": "PlaneObjects",
-									"sid": 961689687384231,
+									"sid": 160648978735824,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"speed": "437"
+										"speed": "Planes.Get(\".maxSpeed\")"
 									}
 								}
 							],
@@ -1285,10 +1671,10 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "PlaneObjects",
-									"sid": 677369494592815,
+									"sid": 813523063417109,
 									"parameters": {
 										"instance-variable": "RotationAcceleration",
-										"value": "35"
+										"value": "Planes.Get(\".rotationAcceleration\")"
 									}
 								}
 							],
@@ -1317,6 +1703,15 @@
 												"instance-variable": "RotationInitialVelocity",
 												"value": "40"
 											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlaneObjects",
+											"sid": 500789135173359,
+											"parameters": {
+												"instance-variable": "RotationInitialVelocity",
+												"value": "Planes.Get(\".movingTurnInitialVelocity\")"
+											}
 										}
 									],
 									"sid": 358597599575684
@@ -1338,6 +1733,15 @@
 											"parameters": {
 												"instance-variable": "RotationInitialVelocity",
 												"value": "20"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlaneObjects",
+											"sid": 856605946199566,
+											"parameters": {
+												"instance-variable": "RotationInitialVelocity",
+												"value": "Planes.Get(\".normalTurnInitialVelocity\")"
 											}
 										}
 									],
@@ -1361,10 +1765,10 @@
 								{
 									"id": "set-layer-scale",
 									"objectClass": "System",
-									"sid": 513824438244514,
+									"sid": 265144256294930,
 									"parameters": {
 										"layer": "\"Game\"",
-										"scale": "lerp(LayerScale(\"Game\"), 1.1, 0.03)"
+										"scale": "lerp(LayerScale(\"Game\"), Planes.Get(\".minCameraScale\"), 0.03)"
 									}
 								}
 							],
@@ -1405,11 +1809,11 @@
 								{
 									"id": "compare-speed",
 									"objectClass": "PlaneObjects",
-									"sid": 323086657508996,
+									"sid": 211159100959411,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"comparison": 3,
-										"speed": "200"
+										"speed": "Planes.Get(\".minSpeed\")"
 									}
 								}
 							],
@@ -1426,10 +1830,10 @@
 								{
 									"id": "set-speed",
 									"objectClass": "PlaneObjects",
-									"sid": 924256189968546,
+									"sid": 143633948971357,
 									"behaviorType": "Bullet",
 									"parameters": {
-										"speed": "200"
+										"speed": "Planes.Get(\".minSpeed\")"
 									}
 								}
 							],
@@ -1571,10 +1975,10 @@
 								{
 									"id": "raiseevent17",
 									"objectClass": "Photon",
-									"sid": 552660450416637,
+									"sid": 847629464295712,
 									"parameters": {
 										"code0": "6",
-										"data1": "1",
+										"data1": "10",
 										"interestgroup2": "0",
 										"cache11": "donotcache",
 										"receivers15": "all",
@@ -1624,38 +2028,6 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-instance-variable",
-									"objectClass": "PlaneObjects",
-									"sid": 329710084523700,
-									"parameters": {
-										"instance-variable": "Health",
-										"comparison": 3,
-										"value": "0"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "raiseevent17",
-									"objectClass": "Photon",
-									"sid": 118455642034763,
-									"parameters": {
-										"code0": "8",
-										"data1": "0",
-										"interestgroup2": "0",
-										"cache11": "donotcache",
-										"receivers15": "all",
-										"targetactors16": "\"\"",
-										"webforward19": "no"
-									}
-								}
-							],
-							"sid": 687319683811894
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
 									"id": "on-collision-with-another-object",
 									"objectClass": "PlaneObjects",
 									"sid": 798587123627573,
@@ -1672,15 +2044,25 @@
 										"comparison": 1,
 										"value": "PlaneObjects.ActorNr"
 									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 917993903965406,
+									"parameters": {
+										"instance-variable": "ActorNr",
+										"comparison": 1,
+										"value": "0"
+									}
 								}
 							],
 							"actions": [
 								{
 									"id": "raiseevent17",
 									"objectClass": "Photon",
-									"sid": 820434167601214,
+									"sid": 981257446685442,
 									"parameters": {
-										"code0": "6",
+										"code0": "8",
 										"data1": "50cal_MG_Bullet.UID",
 										"interestgroup2": "0",
 										"cache11": "donotcache",
@@ -1688,9 +2070,133 @@
 										"targetactors16": "\"\"",
 										"webforward19": "no"
 									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 578797857366886,
+									"parameters": {
+										"code0": "6",
+										"data1": "1",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 913414506132737,
+									"parameters": {
+										"type": "log",
+										"message": "50cal_MG_Bullet.ActorNr"
+									}
+								},
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 223505806247309,
+									"parameters": {
+										"type": "log",
+										"message": "PlaneObjects.ActorNr"
+									}
 								}
 							],
 							"sid": 853788868667077
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlaneObjects",
+									"sid": 195567131190545,
+									"parameters": {
+										"instance-variable": "Health",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 305999446969851,
+									"parameters": {
+										"code0": "10",
+										"data1": "0",
+										"interestgroup2": "0",
+										"cache11": "addtoroomcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 303686996705872,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Particles",
+											"sid": 381332877682297,
+											"parameters": {
+												"instance-variable": "ActorNr",
+												"comparison": 0,
+												"value": "PlaneObjects.ActorNr"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "Particles",
+											"sid": 971596181842419
+										}
+									],
+									"sid": 407436720047530
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-destroyed",
+									"objectClass": "PlaneObjects",
+									"sid": 316858445028455
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 774064867252590,
+									"parameters": {
+										"seconds": "2.0"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 680179085163963,
+									"parameters": {
+										"code0": "1",
+										"data1": "SelectedAirplane",
+										"interestgroup2": "0",
+										"cache11": "addtoroomcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 486413327542310
 						}
 					]
 				},
@@ -1698,69 +2204,38 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "every-x-seconds",
+							"id": "else",
 							"objectClass": "System",
-							"sid": 535444135337441,
-							"parameters": {
-								"interval-seconds": "0.02"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "PlaneObjects",
-							"sid": 800430576775890,
-							"parameters": {
-								"instance-variable": "ActorNr",
-								"comparison": 0,
-								"value": "Photon.MyActorNr"
-							}
+							"sid": 782818816544673
 						}
 					],
 					"actions": [
 						{
-							"id": "raiseevent17",
-							"objectClass": "Photon",
-							"sid": 349390379024728,
+							"id": "set-text",
+							"objectClass": "CounterFont",
+							"sid": 370058183356879,
 							"parameters": {
-								"code0": "2",
-								"data1": "PlaneObjects.X",
-								"interestgroup2": "0",
-								"cache11": "donotcache",
-								"receivers15": "others",
-								"targetactors16": "\"\"",
-								"webforward19": "no"
+								"text": "\"0 / 0\""
 							}
 						},
 						{
-							"id": "raiseevent17",
-							"objectClass": "Photon",
-							"sid": 342629489686932,
+							"id": "set-text",
+							"objectClass": "SpeedFont",
+							"sid": 927499592253280,
 							"parameters": {
-								"code0": "3",
-								"data1": "PlaneObjects.Y",
-								"interestgroup2": "0",
-								"cache11": "donotcache",
-								"receivers15": "others",
-								"targetactors16": "\"\"",
-								"webforward19": "no"
+								"text": "\"0 mph\""
 							}
 						},
 						{
-							"id": "raiseevent17",
-							"objectClass": "Photon",
-							"sid": 202097827512969,
+							"id": "set-text",
+							"objectClass": "HealthFont",
+							"sid": 254134935962102,
 							"parameters": {
-								"code0": "4",
-								"data1": "PlaneObjects.Angle",
-								"interestgroup2": "0",
-								"cache11": "donotcache",
-								"receivers15": "others",
-								"targetactors16": "\"\"",
-								"webforward19": "no"
+								"text": "\"0 hp\""
 							}
 						}
 					],
-					"sid": 113124935252386
+					"sid": 595476862161305
 				},
 				{
 					"eventType": "block",
@@ -1897,10 +2372,10 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "50cal_MG_Bullet",
-									"sid": 751096820782527,
+									"sid": 706191895335103,
 									"parameters": {
 										"instance-variable": "ActorNr",
-										"value": "P51D30_Mustang.ActorNr"
+										"value": "PlaneObjects.ActorNr"
 									}
 								},
 								{
@@ -1930,6 +2405,35 @@
 								{
 									"id": "onevent3",
 									"objectClass": "Photon",
+									"sid": 953426329822624,
+									"parameters": {
+										"code0": "8"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 962455719698185,
+									"parameters": {
+										"unique-id": "int(Photon.EventData)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "50cal_MG_Bullet",
+									"sid": 344817989455066
+								}
+							],
+							"sid": 447252218486865
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
 									"sid": 708493607235736,
 									"parameters": {
 										"code0": "6"
@@ -1938,38 +2442,12 @@
 							],
 							"actions": [
 								{
-									"id": "destroy",
-									"objectClass": "50cal_MG_Bullet",
-									"sid": 562340258278981
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "PlaneObjects",
-									"sid": 119803024529272,
-									"parameters": {
-										"animation": "\"Idle Damage 1\"",
-										"from": "beginning"
-									}
-								},
-								{
 									"id": "subtract-from-instvar",
 									"objectClass": "PlaneObjects",
-									"sid": 147146319338837,
+									"sid": 487763048831874,
 									"parameters": {
 										"instance-variable": "Health",
-										"value": "1"
-									}
-								},
-								{
-									"id": "play",
-									"objectClass": "Audio",
-									"sid": 726758487749505,
-									"parameters": {
-										"audio-file": "Metal damage",
-										"loop": "not-looping",
-										"volume": "-10",
-										"stereo-pan": "0",
-										"tag-optional": "\"\""
+										"value": "int(Photon.EventData)"
 									}
 								}
 							],
@@ -2007,6 +2485,136 @@
 										}
 									],
 									"sid": 887978763825901
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 985369593185585
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "PlaneObjects",
+											"sid": 984503494926751,
+											"parameters": {
+												"animation": "\"Idle Damage 1\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 660717372811575
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-tag-playing",
+											"objectClass": "Audio",
+											"sid": 340707215717540,
+											"parameters": {
+												"tag": "\"damage\""
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "play",
+											"objectClass": "Audio",
+											"sid": 728173366455149,
+											"parameters": {
+												"audio-file": "Metal damage",
+												"loop": "not-looping",
+												"volume": "-10",
+												"stereo-pan": "0",
+												"tag-optional": "\"damage\""
+											}
+										}
+									],
+									"sid": 269025621564382
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 978994244326821,
+									"parameters": {
+										"code0": "10"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "PlaneObjects",
+									"sid": 192031602363461,
+									"parameters": {
+										"animation": "\"Death\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "PlaneObjects",
+									"sid": 500359982306735
+								},
+								{
+									"id": "add-to",
+									"objectClass": "Stats",
+									"sid": 279357790647713,
+									"parameters": {
+										"path": "50cal_MG_Bullet.ActorNr & \".kills\"",
+										"value": "1"
+									}
+								},
+								{
+									"callFunction": "getScore",
+									"sid": 989149792779036,
+									"parameters": [
+										"Stats.Get(50cal_MG_Bullet.ActorNr & \".team\")"
+									]
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 732361884651855,
+									"parameters": {
+										"seconds": "2.0"
+									}
+								}
+							],
+							"sid": 542794180720588,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Particles",
+											"sid": 576491405407920,
+											"parameters": {
+												"instance-variable": "ActorNr",
+												"comparison": 0,
+												"value": "PlaneObjects.ActorNr"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "Particles",
+											"sid": 214814484753456
+										}
+									],
+									"sid": 988379824430731
 								}
 							]
 						},
@@ -2044,34 +2652,98 @@
 							"sid": 159500115463217
 						},
 						{
-							"eventType": "block",
-							"conditions": [
+							"eventType": "variable",
+							"name": "score",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 773158548672827
+						},
+						{
+							"functionName": "getScore",
+							"functionDescription": "",
+							"functionCategory": "",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
 								{
-									"id": "onevent3",
-									"objectClass": "Photon",
-									"sid": 682813521249666,
-									"parameters": {
-										"code0": "8"
-									}
+									"name": "team",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"sid": 691467274631350
 								}
 							],
-							"actions": [
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 584587463158088,
+							"children": [
 								{
-									"id": "set-animation",
-									"objectClass": "PlaneObjects",
-									"sid": 808862270420344,
-									"parameters": {
-										"animation": "\"Death\"",
-										"from": "beginning"
-									}
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each",
+											"objectClass": "Players",
+											"sid": 491752773445545,
+											"parameters": {
+												"path": "team"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "add-to-eventvar",
+											"objectClass": "System",
+											"sid": 884186739513452,
+											"parameters": {
+												"variable": "score",
+												"value": "Stats.Get(Players.CurrentValue & \".kills\")"
+											}
+										}
+									],
+									"sid": 124929736130353
 								},
 								{
-									"id": "destroy",
-									"objectClass": "PlaneObjects",
-									"sid": 424754517979971
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "TeamFonts",
+											"sid": 243974946665612,
+											"parameters": {
+												"instance-variable": "Team",
+												"comparison": 0,
+												"value": "team"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "TeamFonts",
+											"sid": 882781064524805,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Score\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "TeamFonts",
+											"sid": 970225507252527,
+											"parameters": {
+												"text": "score"
+											}
+										}
+									],
+									"sid": 795385526489763
 								}
-							],
-							"sid": 777782584786234
+							]
 						},
 						{
 							"eventType": "block",
@@ -2082,6 +2754,16 @@
 									"sid": 145074743669146,
 									"parameters": {
 										"code0": "9"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Particles",
+									"sid": 767881263684288,
+									"parameters": {
+										"instance-variable": "ActorNr",
+										"comparison": 0,
+										"value": "PlaneObjects.ActorNr"
 									}
 								}
 							],
@@ -2097,31 +2779,6 @@
 								}
 							],
 							"sid": 285933261876560
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "onactorleave16",
-									"objectClass": "Photon",
-									"sid": 510909339775261
-								}
-							],
-							"actions": [
-								{
-									"id": "destroy",
-									"objectClass": "PlaneObjects",
-									"sid": 116452366125263
-								},
-								{
-									"callFunction": "AddLog",
-									"sid": 689066206447193,
-									"parameters": [
-										"\"Kicked (either could not connect to host or host quit)\""
-									]
-								}
-							],
-							"sid": 636285772193407
 						}
 					]
 				}
@@ -2239,7 +2896,8 @@
 							}
 						}
 					],
-					"sid": 581468249002058
+					"sid": 581468249002058,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -2266,7 +2924,8 @@
 							}
 						}
 					],
-					"sid": 202582168906007
+					"sid": 202582168906007,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -2293,7 +2952,8 @@
 							}
 						}
 					],
-					"sid": 727871105669296
+					"sid": 727871105669296,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -2320,7 +2980,8 @@
 							}
 						}
 					],
-					"sid": 325635673345989
+					"sid": 325635673345989,
+					"disabled": true
 				}
 			],
 			"sid": 702390106167680

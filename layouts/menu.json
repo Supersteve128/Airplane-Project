@@ -58,6 +58,18 @@
 			"properties": {},
 			"uid": 47,
 			"instanceVariables": {}
+		},
+		{
+			"type": "Players",
+			"properties": {},
+			"uid": 51,
+			"instanceVariables": {}
+		},
+		{
+			"type": "Stats",
+			"properties": {},
+			"uid": 42,
+			"instanceVariables": {}
 		}
 	],
 	"effectTypes": [],

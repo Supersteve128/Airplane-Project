@@ -1,7 +1,7 @@
 {
-	"name": "NameInput",
+	"name": "JoinInput",
 	"plugin-id": "TextBox",
-	"sid": 641407240566620,
+	"sid": 331623255314421,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": []

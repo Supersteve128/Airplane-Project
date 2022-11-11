@@ -1,7 +1,7 @@
 {
-	"name": "Sprite",
+	"name": "Area",
 	"plugin-id": "Sprite",
-	"sid": 853948746304464,
+	"sid": 826319957736279,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -18,12 +18,19 @@
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 2119121,
+						"imageSpriteId": 2141509,
 						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Zeros",
+								"x": 0,
+								"y": 0
+							}
+						],
 						"duration": 1
 					}
 				],
-				"sid": 976676189392745,
+				"sid": 509372768331175,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

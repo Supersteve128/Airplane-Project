@@ -429,7 +429,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": "right down"
+						"Align": "right down",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -471,7 +472,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": "right down"
+						"Align": "right down",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -584,7 +586,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": "right down"
+						"Align": "right down",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -596,6 +599,146 @@
 						"originY": 0,
 						"color": [
 							0,
+							0,
+							0,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Area",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 31,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 359,
+						"y": 563,
+						"width": 150,
+						"height": 150,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Point",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 48,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 292.45267247587003,
+						"y": 497.338058024851,
+						"width": 5,
+						"height": 5,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "BlueFont",
+					"properties": {
+						"text": "Blue Score",
+						"enable-bbcode": true,
+						"character-width": 16,
+						"character-height": 16,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-_~#\"'&()[]|`\\/@°+=*$£€<>",
+						"spacing-data": "",
+						"scale": 1.5,
+						"character-spacing": 0,
+						"line-height": 0,
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 49,
+					"instanceVariables": {
+						"Type": "Score",
+						"Team": "blue"
+					},
+					"behaviors": {},
+					"world": {
+						"x": 372,
+						"y": 28,
+						"width": 276.6884448629279,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							0,
+							0,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "RedFont",
+					"properties": {
+						"text": "Red Score",
+						"enable-bbcode": true,
+						"character-width": 16,
+						"character-height": 16,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-_~#\"'&()[]|`\\/@°+=*$£€<>",
+						"spacing-data": "",
+						"scale": 1.5,
+						"character-spacing": 0,
+						"line-height": 0,
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 50,
+					"instanceVariables": {
+						"Type": "Score",
+						"Team": "red"
+					},
+					"behaviors": {},
+					"world": {
+						"x": 649,
+						"y": 31,
+						"width": 247.65920597738827,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
 							0,
 							0,
 							1
@@ -655,7 +798,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": ""
+						"Align": "",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -697,7 +841,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": ""
+						"Align": "",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -739,7 +884,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": ""
+						"Align": "",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -781,7 +927,8 @@
 					"instanceVariables": {
 						"InicioX": 0,
 						"InicioY": 0,
-						"Align": ""
+						"Align": "",
+						"Name": ""
 					},
 					"behaviors": {},
 					"world": {
@@ -1056,50 +1203,6 @@
 					}
 				},
 				{
-					"type": "Text",
-					"properties": {
-						"text": "",
-						"enable-bbcode": true,
-						"font": "Arial",
-						"size": 24,
-						"line-height": 0,
-						"bold": false,
-						"italic": false,
-						"color": [
-							0,
-							0,
-							0,
-							1
-						],
-						"horizontal-alignment": "left",
-						"vertical-alignment": "top",
-						"wrapping": "word",
-						"initially-visible": true,
-						"origin": "top-left"
-					},
-					"uid": 42,
-					"instanceVariables": {
-						"Name": "PlayerList"
-					},
-					"behaviors": {},
-					"world": {
-						"x": 58,
-						"y": 208,
-						"width": 395,
-						"height": 472,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "Button",
 					"properties": {
 						"initially-visible": true,
@@ -1168,6 +1271,88 @@
 							1,
 							1,
 							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "BlueFont",
+					"properties": {
+						"text": "Blue Players",
+						"enable-bbcode": true,
+						"character-width": 16,
+						"character-height": 16,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-_~#\"'&()[]|`\\/@°+=*$£€<>",
+						"spacing-data": "",
+						"scale": 1.5,
+						"character-spacing": 0,
+						"line-height": 0,
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 52,
+					"instanceVariables": {
+						"Type": "Players",
+						"Team": "blue"
+					},
+					"behaviors": {},
+					"world": {
+						"x": 57,
+						"y": 203,
+						"width": 322.3618505912583,
+						"height": 117.37521095854517,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							0,
+							0,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "RedFont",
+					"properties": {
+						"text": "Red Players",
+						"enable-bbcode": true,
+						"character-width": 16,
+						"character-height": 16,
+						"character-set": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!-_~#\"'&()[]|`\\/@°+=*$£€<>",
+						"spacing-data": "",
+						"scale": 1.5,
+						"character-spacing": 0,
+						"line-height": 0,
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 53,
+					"instanceVariables": {
+						"Type": "Players",
+						"Team": "red"
+					},
+					"behaviors": {},
+					"world": {
+						"x": 54,
+						"y": 349,
+						"width": 331.06281643781773,
+						"height": 145.176414445355,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							0,
+							0,
 							1
 						],
 						"angle": 0,

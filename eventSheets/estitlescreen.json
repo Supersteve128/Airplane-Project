@@ -22,51 +22,38 @@
 			"sid": 190532816925915
 		},
 		{
-			"eventType": "block",
-			"conditions": [
+			"eventType": "variable",
+			"name": "MarginRight",
+			"type": "number",
+			"initialValue": "40",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 644032217412356
+		},
+		{
+			"functionName": "EnterRoom",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
 				{
-					"id": "on-click",
-					"objectClass": "Mouse",
-					"sid": 216859901027553,
-					"parameters": {
-						"mouse-button": "left",
-						"click-type": "clicked"
-					}
-				},
-				{
-					"id": "cursor-is-over-object",
-					"objectClass": "Mouse",
-					"sid": 925638759812515,
-					"parameters": {
-						"object": "Button"
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Button",
-					"sid": 238924345161073,
-					"parameters": {
-						"instance-variable": "Name",
-						"comparison": 0,
-						"value": "\"CreateRoom\""
-					}
-				},
-				{
-					"id": "compare-text",
-					"objectClass": "NameInput",
-					"sid": 948125028231970,
-					"parameters": {
-						"text": "\"\"",
-						"case": "case-insensitive"
-					},
-					"isInverted": true
+					"name": "info",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 231647702626351
 				}
 			],
+			"eventType": "function-block",
+			"conditions": [],
 			"actions": [
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 487621760692698,
+					"sid": 487050170676143,
 					"parameters": {
 						"variable": "Username",
 						"value": "NameInput.Text"
@@ -75,16 +62,16 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 840416534946237,
+					"sid": 313708925898572,
 					"parameters": {
 						"variable": "Host",
-						"value": "\"New\""
+						"value": "info"
 					}
 				},
 				{
 					"id": "setmyactorname101",
 					"objectClass": "Photon",
-					"sid": 381575192292640,
+					"sid": 474713951399262,
 					"parameters": {
 						"name0": "Username"
 					}
@@ -92,13 +79,172 @@
 				{
 					"id": "go-to-layout",
 					"objectClass": "System",
-					"sid": 554664363498769,
+					"sid": 616569132907712,
 					"parameters": {
 						"layout": "Tutorial_FighterMap"
 					}
 				}
 			],
-			"sid": 947427089557152
+			"sid": 473654020026524
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-text",
+					"objectClass": "NameInput",
+					"sid": 366300258342120,
+					"parameters": {
+						"text": "\"\"",
+						"case": "case-insensitive"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 963288318554213,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Button",
+							"sid": 815144082289638,
+							"parameters": {
+								"instance-variable": "Name",
+								"comparison": 0,
+								"value": "\"CreateRoom\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 589675668556792,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-tap-object",
+									"objectClass": "Touch",
+									"sid": 705667434542311,
+									"parameters": {
+										"object": "Button"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "EnterRoom",
+									"sid": 178169087785800,
+									"parameters": [
+										"\"New\""
+									]
+								}
+							],
+							"sid": 896889558765994
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-click",
+									"objectClass": "Mouse",
+									"sid": 805860028560309,
+									"parameters": {
+										"mouse-button": "left",
+										"click-type": "clicked"
+									}
+								},
+								{
+									"id": "cursor-is-over-object",
+									"objectClass": "Mouse",
+									"sid": 149950729735535,
+									"parameters": {
+										"object": "Button"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "EnterRoom",
+									"sid": 879631563593785,
+									"parameters": [
+										"\"New\""
+									]
+								}
+							],
+							"sid": 689549913160545
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 411913124632211,
+							"parameters": {
+								"key": 13
+							}
+						},
+						{
+							"id": "is-focused",
+							"objectClass": "JoinInput",
+							"sid": 661755823809366
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "EnterRoom",
+							"sid": 602761670908643,
+							"parameters": [
+								"JoinInput.Text"
+							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 411739052374623,
+							"disabled": true,
+							"parameters": {
+								"variable": "Username",
+								"value": "JoinInput.Text"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 675802325165769,
+							"disabled": true,
+							"parameters": {
+								"variable": "Host",
+								"value": "JoinInput.Text"
+							}
+						},
+						{
+							"id": "setmyactorname101",
+							"objectClass": "Photon",
+							"sid": 477110092233806,
+							"disabled": true,
+							"parameters": {
+								"name0": "Username"
+							}
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 351592223721340,
+							"disabled": true,
+							"parameters": {
+								"layout": "Tutorial_FighterMap"
+							}
+						}
+					],
+					"sid": 436327006160914
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -127,7 +273,7 @@
 				{
 					"id": "set-css-style",
 					"objectClass": "NameInput",
-					"sid": 639223186285549,
+					"sid": 353428859892006,
 					"parameters": {
 						"property-name": "\"border\"",
 						"value": "\"1px solid black\""
@@ -136,16 +282,16 @@
 				{
 					"id": "set-css-style",
 					"objectClass": "NameInput",
-					"sid": 879095379280574,
+					"sid": 730754573727181,
 					"parameters": {
 						"property-name": "\"font-size\"",
-						"value": "\"36px\""
+						"value": "\"150%\""
 					}
 				},
 				{
 					"id": "set-css-style",
 					"objectClass": "NameInput",
-					"sid": 774363767855028,
+					"sid": 657694275605676,
 					"parameters": {
 						"property-name": "\"border-radius\"",
 						"value": "\"5px\""
@@ -154,10 +300,10 @@
 				{
 					"id": "set-css-style",
 					"objectClass": "NameInput",
-					"sid": 964695522663695,
+					"sid": 228023665259070,
 					"parameters": {
 						"property-name": "\"padding\"",
-						"value": "\"5px 10px\""
+						"value": "\"1% 1%\""
 					}
 				},
 				{
@@ -176,6 +322,24 @@
 					"parameters": {
 						"layer": "\"Start\"",
 						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "ResponsiveObjects",
+					"sid": 882392379075730,
+					"parameters": {
+						"instance-variable": "InicioX",
+						"value": "Self.X"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "ResponsiveObjects",
+					"sid": 809932373196014,
+					"parameters": {
+						"instance-variable": "InicioY",
+						"value": "Self.Y"
 					}
 				}
 			],
@@ -209,39 +373,212 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 752580367817613,
+					"id": "pick-by-comparison",
+					"objectClass": "System",
+					"sid": 199562289625941,
 					"parameters": {
-						"key": 13
+						"object": "ResponsiveObjects",
+						"expression": "find(ResponsiveObjects.Align, \"left\")",
+						"comparison": 1,
+						"value": "-1"
 					}
-				},
-				{
-					"id": "is-focused",
-					"objectClass": "NameInput",
-					"sid": 405725825084879
 				}
 			],
 			"actions": [
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 127824549172544,
+					"id": "set-x",
+					"objectClass": "ResponsiveObjects",
+					"sid": 478851044180785,
 					"parameters": {
-						"variable": "Host",
-						"value": "NameInput.Text"
-					}
-				},
-				{
-					"id": "go-to-layout",
-					"objectClass": "System",
-					"sid": 924746484554677,
-					"parameters": {
-						"layout": "Tutorial_FighterMap"
+						"x": "Self.InicioX + ViewportLeft(Self.LayerName)"
 					}
 				}
 			],
-			"sid": 678928995104761
+			"sid": 698086071602086,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "pick-by-comparison",
+					"objectClass": "System",
+					"sid": 985335827861746,
+					"parameters": {
+						"object": "ResponsiveObjects",
+						"expression": "find(ResponsiveObjects.Align, \"right\")",
+						"comparison": 1,
+						"value": "-1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "ResponsiveObjects",
+					"sid": 140050643364204,
+					"parameters": {
+						"x": "Self.InicioX "
+					}
+				}
+			],
+			"sid": 573489488450045,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "pick-by-comparison",
+					"objectClass": "System",
+					"sid": 531425952823796,
+					"parameters": {
+						"object": "ResponsiveObjects",
+						"expression": "find(ResponsiveObjects.Align, \"up\")",
+						"comparison": 1,
+						"value": "-1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-y",
+					"objectClass": "ResponsiveObjects",
+					"sid": 452720934728689,
+					"parameters": {
+						"y": "Self.InicioY + ViewportTop(Self.LayerName)"
+					}
+				}
+			],
+			"sid": 870476045921549
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "pick-by-comparison",
+					"objectClass": "System",
+					"sid": 598876100448148,
+					"parameters": {
+						"object": "ResponsiveObjects",
+						"expression": "find(ResponsiveObjects.Align, \"down\")",
+						"comparison": 1,
+						"value": "-1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-y",
+					"objectClass": "ResponsiveObjects",
+					"sid": 631519565757017,
+					"parameters": {
+						"y": "Self.InicioY + ( ViewportBottom(Self.LayerName) - OriginalWindowHeight )"
+					}
+				}
+			],
+			"sid": 270520018515414
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "pick-all",
+					"objectClass": "System",
+					"sid": 860408933336567,
+					"parameters": {
+						"object": "ResponsiveObjects"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-y",
+					"objectClass": "ResponsiveObjects",
+					"sid": 131146666667671,
+					"parameters": {
+						"y": "ViewportWidth(Self.LayerName) / ViewportHeight(Self.LayerName) / 2"
+					}
+				}
+			],
+			"sid": 289901617807637,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "pick-all",
+					"objectClass": "System",
+					"sid": 582030574226327,
+					"parameters": {
+						"object": "ResponsiveObjects"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-scale",
+					"objectClass": "ResponsiveObjects",
+					"sid": 138956919404333,
+					"parameters": {
+						"scale": "1.4^((ViewportWidth(Self.LayerName) / ViewportHeight(Self.LayerName))-1)"
+					}
+				}
+			],
+			"sid": 412450452665627
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "ResponsiveObjects",
+					"sid": 988630841677490,
+					"parameters": {
+						"instance-variable": "Name",
+						"comparison": 0,
+						"value": "\"Join\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "ResponsiveObjects",
+					"sid": 894593794882199,
+					"parameters": {
+						"x": "ViewportWidth(0) +(OriginalViewportWidth - ViewportWidth(0))-MarginRight"
+					}
+				}
+			],
+			"sid": 185834266552742
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "ResponsiveObjects",
+					"sid": 168376519436827,
+					"parameters": {
+						"instance-variable": "Name",
+						"comparison": 0,
+						"value": "\"Create\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "ResponsiveObjects",
+					"sid": 695310563055635,
+					"parameters": {
+						"x": "ViewportLeft(0) + 50"
+					}
+				}
+			],
+			"sid": 133854660043459
 		}
 	],
 	"sid": 255209927989058

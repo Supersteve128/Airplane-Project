@@ -1,0 +1,13 @@
+{
+	"name": "TextObjects",
+	"plugin-id": "Text",
+	"sid": 681124973183714,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Text",
+		"NetStats",
+		"LogText"
+	]
+}

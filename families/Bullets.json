@@ -1,0 +1,12 @@
+{
+	"name": "Bullets",
+	"plugin-id": "Sprite",
+	"sid": 169370677240100,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"50cal_MG_Bullet",
+		"20mm_Cannon_Bullet"
+	]
+}

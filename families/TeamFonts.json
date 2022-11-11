@@ -1,0 +1,27 @@
+{
+	"name": "TeamFonts",
+	"plugin-id": "Spritefont2",
+	"sid": 812162699783164,
+	"instanceVariables": [
+		{
+			"name": "Type",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 610896001078245
+		},
+		{
+			"name": "Team",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 283710613750650
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"RedFont",
+		"BlueFont"
+	]
+}
