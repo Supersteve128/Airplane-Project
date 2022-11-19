@@ -4,7 +4,7 @@
 	"name": "Coding Club Game Concept",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": false,
+	"bundleAddons": true,
 	"usedAddons": [
 		{
 			"type": "plugin",
@@ -127,6 +127,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
+			"author": "Scirra",
+			"version": "r317.2",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "destroy",
 			"name": "Destroy outside layout",
@@ -167,6 +175,14 @@
 			"bundled": false
 		},
 		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"version": "r317.2",
+			"bundled": false
+		},
+		{
 			"type": "effect",
 			"id": "sharpen",
 			"name": "Sharpen",
@@ -192,7 +208,8 @@
 			"NetStats",
 			"NameInput",
 			"Players",
-			"Stats"
+			"Stats",
+			"Boundaries"
 		],
 		"subfolders": [
 			{
@@ -317,6 +334,22 @@
 					"name": "Metal damage.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 417118454039589,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "hit.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 668104178215662,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "fire_explosion.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 421106699554600,
 					"file-info": {
 						"purpose": "none"
 					}

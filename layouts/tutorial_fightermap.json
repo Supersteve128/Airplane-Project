@@ -23,10 +23,10 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": -302.3062786749815,
-						"y": -209.47643964926587,
-						"width": 5678.269932466935,
-						"height": 3462.812237638909,
+						"x": -1993.8663066973288,
+						"y": -1723.7691452537315,
+						"width": 8422.423633498736,
+						"height": 6028.697099913143,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -36,6 +36,54 @@
 							1
 						],
 						"angle": 0,
+						"zElevation": -1
+					}
+				},
+				{
+					"type": "Boundaries",
+					"properties": {
+						"initially-visible": true,
+						"tile-width": 128,
+						"tile-height": 128,
+						"tile-x-offset": 0,
+						"tile-y-offset": 0,
+						"tile-x-spacing": 0,
+						"tile-y-spacing": 0,
+						"tile-x-drawing-offset": 0,
+						"tile-y-drawing-offset": 0,
+						"drawing-mode": "top-to-right"
+					},
+					"uid": 22,
+					"instanceVariables": {},
+					"behaviors": {},
+					"ownData": {
+						"tilemapData": {
+							"width": 65,
+							"height": 47,
+							"max-width": 365,
+							"max-height": 377,
+							"data": "47x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,48x1,329x0,47x1,330x0,47x1,330x0,47x1,330x0,48x1,329x0,48x1,329x0,48x1,329x0,48x1,329x0,13x1,25x0,10x1,329x0,13x1,25x0,10x1,329x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,10x1,329x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,13x1,25x0,9x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,48x1,329x0,48x1,329x0,47x1,330x0,47x1,330x0,47x1,330x0,47x1,330x0,1,6x0,1,6x0,8x1,0,8x1,0,4x1,0,4x1,3x0,4x1,12107x0,2x1,374x0,1,0,1,372x0,1,3x0,1,371x0,1,4x0,1,371x0,1,4x0,1,370x0,1,5x0,1,369x0,1,6x0,1,368x0,1,7x0,1,368x0,1,7x0,1,368x0,1,8x0,1,367x0,1,8x0,1,367x0,1,8x0,1,367x0,1,8x0,1,368x0,1,7x0,1,368x0,1,7x0,1,369x0,1,6x0,1,369x0,1,6x0,1,370x0,1,5x0,1,370x0,1,5x0,1,371x0,1,4x0,1,371x0,1,4x0,1,371x0,1,4x0,1,368x0,1,0,1,5x0,1,367x0,1,8x0,1,362x0,1,0,2x1,10x0,1,349x0,4x1,0,2x1,0,5x1,14x0,1,348x0,14x1,0,1,0,1,0,7x1,2x0,1,360x0,1,2x0,1,0,3x1,8x0,1,347x0,4x1,2x0,2x1,2x0,2x1,17x0,1,376x0,1,376x0,1,376x0,1,363x0,15x1,363x0,14x1,88500x0"
+						},
+						"tile-width": 128,
+						"tile-height": 128,
+						"tile-x-offset": 0,
+						"tile-y-offset": 0,
+						"tile-x-spacing": 0,
+						"tile-y-spacing": 0
+					},
+					"world": {
+						"x": -1970.6906970620778,
+						"y": -1760.685654926821,
+						"width": 8418.641353333156,
+						"height": 6091.962299,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							0.6
+						],
 						"zElevation": -1
 					}
 				},
@@ -55,6 +103,7 @@
 						"RotationInitialVelocity": 0,
 						"RotationAcceleration": 0,
 						"Name": "P51D30_Mustang",
+						"Type": "",
 						"inputs": 0,
 						"FiftyCal_Mg_Bullet_Count": 1200
 					},
@@ -81,6 +130,12 @@
 						"BoundToLayout": {
 							"properties": {
 								"bound-by": "edge"
+							}
+						},
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
 							}
 						}
 					},
@@ -207,7 +262,8 @@
 						"ActorNr": 0,
 						"RotationInitialVelocity": 0,
 						"RotationAcceleration": 0,
-						"Name": ""
+						"Name": "",
+						"Type": ""
 					},
 					"behaviors": {
 						"Bullet": {
@@ -232,6 +288,12 @@
 						"BoundToLayout": {
 							"properties": {
 								"bound-by": "edge"
+							}
+						},
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
 							}
 						}
 					},
@@ -305,7 +367,7 @@
 					"behaviors": {
 						"ScrollTo": {
 							"properties": {
-								"enabled": true
+								"enabled": false
 							}
 						}
 					},
@@ -1086,6 +1148,7 @@
 						"RotationInitialVelocity": 0,
 						"RotationAcceleration": 0,
 						"Name": "P51D30_Mustang",
+						"Type": "Display",
 						"inputs": 0,
 						"FiftyCal_Mg_Bullet_Count": 1200
 					},
@@ -1113,7 +1176,265 @@
 							"properties": {
 								"bound-by": "edge"
 							}
+						},
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"tags": ""
+							}
 						}
+					},
+					"template": {
+						"mode": "template",
+						"templateName": "Display",
+						"sourceTemplateName": "",
+						"components": [
+							{
+								"id": "plugin",
+								"component": [
+									{
+										"key": "plugin",
+										"state": [
+											[
+												"initially-visible",
+												true
+											],
+											[
+												"initial-animation",
+												true
+											],
+											[
+												"initial-frame",
+												true
+											],
+											[
+												"enable-collisions",
+												true
+											]
+										]
+									}
+								]
+							},
+							{
+								"id": "instance-variable",
+								"component": [
+									{
+										"key": "instance-variable",
+										"state": [
+											{
+												"iv": "Health",
+												"state": true
+											},
+											{
+												"iv": "ActorNr",
+												"state": true
+											},
+											{
+												"iv": "RotationInitialVelocity",
+												"state": true
+											},
+											{
+												"iv": "RotationAcceleration",
+												"state": true
+											},
+											{
+												"iv": "Name",
+												"state": true
+											},
+											{
+												"iv": "Type",
+												"state": true
+											},
+											{
+												"iv": "inputs",
+												"state": true
+											},
+											{
+												"iv": "FiftyCal_Mg_Bullet_Count",
+												"state": true
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "behavior",
+								"component": [
+									{
+										"key": "Bullet",
+										"state": [
+											[
+												"speed",
+												true
+											],
+											[
+												"acceleration",
+												true
+											],
+											[
+												"gravity",
+												true
+											],
+											[
+												"bounce-off-solids",
+												true
+											],
+											[
+												"set-angle",
+												true
+											],
+											[
+												"step",
+												true
+											],
+											[
+												"enabled",
+												true
+											]
+										]
+									},
+									{
+										"key": "Rotate",
+										"state": [
+											[
+												"speed",
+												true
+											],
+											[
+												"acceleration",
+												true
+											],
+											[
+												"enabled",
+												true
+											]
+										]
+									},
+									{
+										"key": "BoundToLayout",
+										"state": [
+											[
+												"bound-by",
+												true
+											]
+										]
+									},
+									{
+										"key": "Solid",
+										"state": [
+											[
+												"enabled",
+												true
+											],
+											[
+												"tags",
+												true
+											]
+										]
+									}
+								]
+							},
+							{
+								"id": "effect",
+								"component": [
+									{
+										"key": "Sharpen",
+										"state": [
+											[
+												"intensity",
+												true
+											]
+										]
+									}
+								]
+							},
+							{
+								"id": "world-instance",
+								"component": [
+									{
+										"key": "world-instance",
+										"state": [
+											[
+												"x",
+												false
+											],
+											[
+												"y",
+												false
+											],
+											[
+												"z",
+												true
+											],
+											[
+												"w",
+												true
+											],
+											[
+												"h",
+												true
+											],
+											[
+												"a",
+												true
+											],
+											[
+												"o",
+												true
+											],
+											[
+												"c",
+												true
+											],
+											[
+												"sx",
+												true
+											],
+											[
+												"sy",
+												true
+											],
+											[
+												"bm",
+												true
+											],
+											[
+												"twpx",
+												true
+											],
+											[
+												"twpy",
+												true
+											],
+											[
+												"twpz",
+												true
+											],
+											[
+												"twpw",
+												true
+											],
+											[
+												"twph",
+												true
+											],
+											[
+												"twpa",
+												true
+											],
+											[
+												"dwp",
+												true
+											],
+											[
+												"ssm",
+												true
+											]
+										]
+									}
+								]
+							}
+						]
 					},
 					"effects": {
 						"Sharpen": {
@@ -1125,9 +1446,9 @@
 					},
 					"world": {
 						"x": 940,
-						"y": 269,
-						"width": 167.4115050873113,
-						"height": 165.63053162893564,
+						"y": 270,
+						"width": 165,
+						"height": 165,
 						"originX": 0.5531914893617021,
 						"originY": 0.4946236559139785,
 						"color": [
@@ -1394,7 +1715,7 @@
 	"effectTypes": [],
 	"width": 5000,
 	"height": 3000,
-	"unboundedScrolling": false,
+	"unboundedScrolling": true,
 	"vpX": 0.5,
 	"vpY": 0.5,
 	"projection": "perspective",

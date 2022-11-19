@@ -45,6 +45,13 @@
 							]
 						},
 						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Engine",
+								"x": 0.05128205128205128,
+								"y": 0.4945054945054945
+							}
+						],
 						"duration": 1
 					},
 					{
@@ -77,6 +84,13 @@
 							]
 						},
 						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Engine",
+								"x": 0.05128205128205128,
+								"y": 0.4945054945054945
+							}
+						],
 						"duration": 1
 					}
 				],

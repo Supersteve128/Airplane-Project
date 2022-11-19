@@ -8,7 +8,7 @@
 			"appid": "61f4f2f8-2c92-4b5b-966f-2f66f42c9496",
 			"appversion": "1.0",
 			"protocol": "wss",
-			"region": "eu",
+			"region": "us",
 			"hosttype": "photon cloud",
 			"selfhostedaddress": "localhost:9090",
 			"loglevel": "info"

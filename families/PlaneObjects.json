@@ -37,6 +37,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 486665192016937
+		},
+		{
+			"name": "Type",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 702224924922411
 		}
 	],
 	"behaviorTypes": [
@@ -54,6 +61,11 @@
 			"behaviorId": "bound",
 			"name": "BoundToLayout",
 			"sid": 385185528897641
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 331449401878147
 		}
 	],
 	"effectTypes": [],

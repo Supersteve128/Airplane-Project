@@ -5,11 +5,21 @@
 			"eventType": "variable",
 			"name": "CameraDistance",
 			"type": "number",
-			"initialValue": "275",
+			"initialValue": "400",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 732821038577502
+		},
+		{
+			"eventType": "variable",
+			"name": "CameraZoom",
+			"type": "number",
+			"initialValue": "0.6",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 538667688070103
 		},
 		{
 			"eventType": "variable",
@@ -218,6 +228,15 @@
 							"id": "set-layer-visible",
 							"objectClass": "System",
 							"sid": 328455468978339,
+							"parameters": {
+								"layer": "\"Game\"",
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 631938080932032,
 							"parameters": {
 								"layer": "\"Game\"",
 								"visibility": "visible"
@@ -855,7 +874,8 @@
 								{
 									"id": "destroy",
 									"objectClass": "PlaneObjects",
-									"sid": 784014556820787
+									"sid": 784014556820787,
+									"disabled": true
 								},
 								{
 									"id": "set-eventvar-value",
@@ -949,6 +969,192 @@
 									"sid": 118446111581563
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-click",
+									"objectClass": "Mouse",
+									"sid": 303885468625557,
+									"parameters": {
+										"mouse-button": "left",
+										"click-type": "clicked"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 376816841319974,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "cursor-is-over-object",
+											"objectClass": "Mouse",
+											"sid": 902343150279402,
+											"parameters": {
+												"object": "Arrow"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Arrow",
+											"sid": 777956513506458,
+											"parameters": {
+												"instance-variable": "Name",
+												"comparison": 0,
+												"value": "\"right\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlaneObjects",
+											"sid": 782714591016736,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Display\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "PlaneObjects",
+											"sid": 435413961371498
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 299894438067835,
+											"parameters": {
+												"variable": "SelectedAirplane",
+												"value": "Planes.Get(SelectedAirplane&\".next\")"
+											}
+										},
+										{
+											"id": "create-object-by-name",
+											"objectClass": "System",
+											"sid": 282444846094423,
+											"parameters": {
+												"object-name": "SelectedAirplane",
+												"layer": "\"Room\"",
+												"x": "940",
+												"y": "270",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										}
+									],
+									"sid": 431751194751689
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "cursor-is-over-object",
+											"objectClass": "Mouse",
+											"sid": 806330929223152,
+											"parameters": {
+												"object": "Arrow"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Arrow",
+											"sid": 958080622785790,
+											"parameters": {
+												"instance-variable": "Name",
+												"comparison": 0,
+												"value": "\"left\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlaneObjects",
+											"sid": 614358084772048,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Display\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "PlaneObjects",
+											"sid": 546430945381425
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 791039032027159,
+											"parameters": {
+												"variable": "SelectedAirplane",
+												"value": "Planes.Get(SelectedAirplane&\".previous\")"
+											}
+										},
+										{
+											"id": "create-object-by-name",
+											"objectClass": "System",
+											"sid": 715131640332953,
+											"parameters": {
+												"object-name": "SelectedAirplane",
+												"layer": "\"Room\"",
+												"x": "940",
+												"y": "270",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										}
+									],
+									"sid": 671598012092480
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-last-created",
+									"objectClass": "System",
+									"sid": 481832122424639,
+									"parameters": {
+										"object": "PlaneObjects"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "PlaneObjects",
+									"sid": 916356304369393,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "PlaneObjects",
+									"sid": 879194034037513,
+									"parameters": {
+										"instance-variable": "Type",
+										"value": "\"Display\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "PlaneObjects",
+									"sid": 872286765778244,
+									"parameters": {
+										"width": "Planes.Get(SelectedAirplane&\".displayWidth\")",
+										"height": "Planes.Get(SelectedAirplane&\".displayHeight\")"
+									}
+								}
+							],
+							"sid": 776374447772524
 						}
 					]
 				}
@@ -1017,6 +1223,22 @@
 					"sid": 331047421878805
 				},
 				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-size",
+							"objectClass": "PlaneObjects",
+							"sid": 443195170158398,
+							"parameters": {
+								"width": "94",
+								"height": "93"
+							}
+						}
+					],
+					"sid": 106248043134364
+				},
+				{
 					"eventType": "comment",
 					"text": "Creates object on start of entering room"
 				},
@@ -1056,15 +1278,6 @@
 							}
 						},
 						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 988990109112690,
-							"parameters": {
-								"type": "log",
-								"message": "ActorNr"
-							}
-						},
-						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
 							"sid": 183179637209458,
@@ -1075,7 +1288,7 @@
 						},
 						{
 							"type": "script",
-							"script": "const airplane = runtime.objects[runtime.globalVars.SelectedAirplane].getFirstPickedInstance()\n\nairplane.instVars.ActorNr = localVars.ActorNr\nairplane.isVisible = true\nairplane.behaviors.Bullet.speed = localVars.minSpeed\nairplane.behaviors.Bullet.isEnabled = true\n// airplane.setSize(93, 93)"
+							"script": "const airplane = runtime.objects[runtime.globalVars.SelectedAirplane].getFirstPickedInstance()\n\nairplane.instVars.ActorNr = localVars.ActorNr\nairplane.isVisible = true\nairplane.behaviors.Bullet.speed = localVars.minSpeed\nairplane.behaviors.Bullet.isEnabled = true\nairplane.moveToTop()"
 						},
 						{
 							"id": "create-object",
@@ -1088,21 +1301,6 @@
 								"y": "50",
 								"create-hierarchy": false,
 								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "add-child",
-							"objectClass": "PlaneObjects",
-							"sid": 103934793741420,
-							"parameters": {
-								"child": "Particles",
-								"transform-x": false,
-								"transform-y": false,
-								"transform-w": false,
-								"transform-h": false,
-								"transform-a": true,
-								"transform-z-elevation": true,
-								"destroy-with-parent": true
 							}
 						},
 						{
@@ -1127,6 +1325,15 @@
 							"parameters": {
 								"instance-variable": "ActorNr",
 								"value": "Photon.ActorNr"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Camera",
+							"sid": 260517859065593,
+							"behaviorType": "ScrollTo",
+							"parameters": {
+								"state": "enabled"
 							}
 						},
 						{
@@ -1581,10 +1788,10 @@
 								{
 									"id": "set-layer-scale",
 									"objectClass": "System",
-									"sid": 186709095070613,
+									"sid": 828110236984732,
 									"parameters": {
 										"layer": "\"Game\"",
-										"scale": "lerp(LayerScale(\"Game\"), Planes.Get(\".maxCameraScale\"), 0.03)"
+										"scale": "lerp(LayerScale(\"Game\"), CameraZoom*Planes.Get(\".maxCameraScale\"), 0.03)"
 									}
 								}
 							],
@@ -1765,10 +1972,10 @@
 								{
 									"id": "set-layer-scale",
 									"objectClass": "System",
-									"sid": 265144256294930,
+									"sid": 363742010492119,
 									"parameters": {
 										"layer": "\"Game\"",
-										"scale": "lerp(LayerScale(\"Game\"), Planes.Get(\".minCameraScale\"), 0.03)"
+										"scale": "lerp(LayerScale(\"Game\"), CameraZoom*Planes.Get(\".minCameraScale\"), 0.03)"
 									}
 								}
 							],
@@ -1907,10 +2114,10 @@
 								{
 									"id": "set-speed",
 									"objectClass": "PlaneObjects",
-									"sid": 912154422314602,
+									"sid": 937297294827378,
 									"behaviorType": "Rotate",
 									"parameters": {
-										"speed": "lerp(Self.Rotate.Speed, 0, 0.5)"
+										"speed": "lerp(Self.Rotate.Speed, 0, 0.4)"
 									}
 								},
 								{
@@ -1933,6 +2140,41 @@
 								}
 							],
 							"sid": 688108594923412
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 860054521028706,
+									"parameters": {
+										"key": 87
+									},
+									"isInverted": true
+								},
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 505808454398075,
+									"parameters": {
+										"key": 83
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-scale",
+									"objectClass": "System",
+									"sid": 375582762230662,
+									"parameters": {
+										"layer": "\"Game\"",
+										"scale": "lerp(LayerScale(\"Game\"), CameraZoom, 0.03)"
+									}
+								}
+							],
+							"sid": 120299176744267
 						},
 						{
 							"eventType": "block",
@@ -2136,32 +2378,7 @@
 									}
 								}
 							],
-							"sid": 303686996705872,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Particles",
-											"sid": 381332877682297,
-											"parameters": {
-												"instance-variable": "ActorNr",
-												"comparison": 0,
-												"value": "PlaneObjects.ActorNr"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "destroy",
-											"objectClass": "Particles",
-											"sid": 971596181842419
-										}
-									],
-									"sid": 407436720047530
-								}
-							]
+							"sid": 303686996705872
 						},
 						{
 							"eventType": "block",
@@ -2525,9 +2742,9 @@
 										{
 											"id": "play",
 											"objectClass": "Audio",
-											"sid": 728173366455149,
+											"sid": 905163773266218,
 											"parameters": {
-												"audio-file": "Metal damage",
+												"audio-file": "hit",
 												"loop": "not-looping",
 												"volume": "-10",
 												"stereo-pan": "0",
@@ -2559,6 +2776,18 @@
 									"parameters": {
 										"animation": "\"Death\"",
 										"from": "beginning"
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 307538932514234,
+									"parameters": {
+										"audio-file": "fire_explosion",
+										"loop": "not-looping",
+										"volume": "-4",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
 									}
 								},
 								{
@@ -2599,11 +2828,11 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "Particles",
-											"sid": 576491405407920,
+											"sid": 359406278507881,
 											"parameters": {
 												"instance-variable": "ActorNr",
 												"comparison": 0,
-												"value": "PlaneObjects.ActorNr"
+												"value": "Photon.ActorNr"
 											}
 										}
 									],

@@ -8,9 +8,25 @@
         "movingTurnInitialVelocity": 40,
         "normalTurnInitialVelocity": 20,
         "minCameraScale": 1.1,
-        "maxCameraScale": 0.85
+        "maxCameraScale": 0.85,
+		"displayWidth": 165,
+		"displayHeight": 165,
+		"previous": "BF109F2",
+		"next": "BF109F2"
     },
 	"BF109F2": {
-	
+		"name": "BF109F2",
+        "minSpeed": 150,
+        "maxSpeed": 350,
+		"acceleration": 90,
+        "rotationAcceleration": 45,
+        "movingTurnInitialVelocity": 60,
+        "normalTurnInitialVelocity": 40,
+        "minCameraScale": 1.1,
+        "maxCameraScale": 0.9,
+		"displayWidth": 165,
+		"displayHeight": 165,
+		"previous": "P51D30_Mustang",
+		"next": "P51D30_Mustang"
 	}
 }
