@@ -3,7 +3,18 @@
 	"plugin-id": "Sprite",
 	"sid": 169370677240100,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 514728272586737
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 856299945554954
+		}
+	],
 	"effectTypes": [],
 	"members": [
 		"50cal_MG_Bullet",

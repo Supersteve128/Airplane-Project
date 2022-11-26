@@ -178,9 +178,6 @@
 						"ActorNr": 0
 					},
 					"behaviors": {
-						"DestroyOutsideLayout": {
-							"properties": {}
-						},
 						"Bullet": {
 							"properties": {
 								"speed": 1500,
@@ -191,6 +188,9 @@
 								"step": false,
 								"enabled": true
 							}
+						},
+						"DestroyOutsideLayout": {
+							"properties": {}
 						}
 					},
 					"world": {
@@ -258,7 +258,7 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"Health": 120,
+						"Health": 110,
 						"ActorNr": 0,
 						"RotationInitialVelocity": 0,
 						"RotationAcceleration": 0,
@@ -333,7 +333,22 @@
 					},
 					"uid": 7,
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Bullet": {
+							"properties": {
+								"speed": 1500,
+								"acceleration": -50,
+								"gravity": 0,
+								"bounce-off-solids": false,
+								"set-angle": true,
+								"step": false,
+								"enabled": true
+							}
+						},
+						"DestroyOutsideLayout": {
+							"properties": {}
+						}
+					},
 					"world": {
 						"x": -27.3838868499155,
 						"y": 310.3365320944232,
@@ -417,7 +432,13 @@
 					"instanceVariables": {
 						"ActorNr": 0
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Pin": {
+							"properties": {
+								"destroy": true
+							}
+						}
+					},
 					"world": {
 						"x": 54,
 						"y": -77,

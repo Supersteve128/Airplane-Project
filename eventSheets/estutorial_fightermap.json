@@ -1176,17 +1176,17 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 240233815759730
+					"sid": 294747924419385
 				},
 				{
 					"eventType": "variable",
-					"name": "minSpeed",
-					"type": "number",
-					"initialValue": "0",
+					"name": "Airplane",
+					"type": "string",
+					"initialValue": "",
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 693795811392371
+					"sid": 612411919165317
 				},
 				{
 					"eventType": "block",
@@ -1256,16 +1256,12 @@
 					],
 					"actions": [
 						{
-							"id": "create-object-by-name",
+							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 697049974069227,
+							"sid": 388695869513904,
 							"parameters": {
-								"object-name": "Photon.EventData",
-								"layer": "0",
-								"x": "500",
-								"y": "500",
-								"create-hierarchy": false,
-								"template-name": "\"\""
+								"variable": "Airplane",
+								"value": "Photon.EventData"
 							}
 						},
 						{
@@ -1278,17 +1274,8 @@
 							}
 						},
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 183179637209458,
-							"parameters": {
-								"variable": "minSpeed",
-								"value": "Planes.Get(Photon.EventData&\".minSpeed\")"
-							}
-						},
-						{
 							"type": "script",
-							"script": "const airplane = runtime.objects[runtime.globalVars.SelectedAirplane].getFirstPickedInstance()\n\nairplane.instVars.ActorNr = localVars.ActorNr\nairplane.isVisible = true\nairplane.behaviors.Bullet.speed = localVars.minSpeed\nairplane.behaviors.Bullet.isEnabled = true\nairplane.moveToTop()"
+							"script": "const airplane = runtime.objects[localVars.Airplane].createInstance(\"Game\", Math.random()*2000 + 50, Math.random() * 2000+50, false, \"\")\n\n\nairplane.instVars.Name = localVars.Airplane\nairplane.instVars.ActorNr = localVars.ActorNr"
 						},
 						{
 							"id": "create-object",
@@ -1354,6 +1341,44 @@
 						}
 					],
 					"sid": 285009607860158
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "PlaneObjects",
+							"sid": 937596045979337,
+							"parameters": {
+								"object": "PlaneObjects"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 202483536958911,
+							"parameters": {
+								"code0": "6",
+								"data1": "50",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "all",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 471702416661539,
+							"parameters": {
+								"seconds": "5"
+							}
+						}
+					],
+					"sid": 323046554802878
 				},
 				{
 					"eventType": "comment",
@@ -1498,6 +1523,33 @@
 							"eventType": "block",
 							"conditions": [
 								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 100856648123883
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 704508029603395,
+									"parameters": {
+										"code0": "30",
+										"data1": "Photon.MyActorNr",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 121566499951613
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
 									"id": "every-x-seconds",
 									"objectClass": "System",
 									"sid": 328252753612756,
@@ -1511,6 +1563,7 @@
 									"id": "set-position",
 									"objectClass": "Particles",
 									"sid": 234462842918191,
+									"disabled": true,
 									"parameters": {
 										"x": "PlaneObjects.ImagePointX(\"Engine\")",
 										"y": "PlaneObjects.ImagePointY(\"Engine\")"
@@ -1562,6 +1615,7 @@
 									"id": "raiseevent17",
 									"objectClass": "Photon",
 									"sid": 613879220521702,
+									"disabled": true,
 									"parameters": {
 										"code0": "9",
 										"data1": "0",
@@ -2326,24 +2380,6 @@
 										"targetactors16": "\"\"",
 										"webforward19": "no"
 									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 913414506132737,
-									"parameters": {
-										"type": "log",
-										"message": "50cal_MG_Bullet.ActorNr"
-									}
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 223505806247309,
-									"parameters": {
-										"type": "log",
-										"message": "PlaneObjects.ActorNr"
-									}
 								}
 							],
 							"sid": 853788868667077
@@ -2477,6 +2513,82 @@
 								{
 									"id": "onevent3",
 									"objectClass": "Photon",
+									"sid": 402702001043145,
+									"parameters": {
+										"code0": "30"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "PlaneObjects",
+									"sid": 215661508849486,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "PlaneObjects",
+									"sid": 344588692127593,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-speed",
+									"objectClass": "PlaneObjects",
+									"sid": 869575763845224,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"speed": "Planes.Get(Photon.EventData&\".minSpeed\")"
+									}
+								}
+							],
+							"sid": 476082963431048,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Particles",
+											"sid": 453907913493016,
+											"parameters": {
+												"instance-variable": "ActorNr",
+												"comparison": 0,
+												"value": "int(Photon.EventData)"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "pin-to-object-imagepoint",
+											"objectClass": "Particles",
+											"sid": 439479333140786,
+											"behaviorType": "Pin",
+											"parameters": {
+												"pin-to": "PlaneObjects",
+												"image-point": "\"Engine\"",
+												"angle": true,
+												"width-type": "no",
+												"height-type": "no",
+												"z": true
+											}
+										}
+									],
+									"sid": 352045179336514
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
 									"sid": 414584304032105,
 									"parameters": {
 										"code0": "2"
@@ -2598,7 +2710,7 @@
 								{
 									"id": "set-angle-of-motion",
 									"objectClass": "50cal_MG_Bullet",
-									"sid": 242098324424371,
+									"sid": 953405248999769,
 									"behaviorType": "Bullet",
 									"parameters": {
 										"angle": "0"
@@ -2753,6 +2865,95 @@
 										}
 									],
 									"sid": 269025621564382
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlaneObjects",
+											"sid": 471784854305605,
+											"parameters": {
+												"instance-variable": "Health",
+												"comparison": 3,
+												"value": "Planes.Get(Self.Name&\".health\") * 0.4"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Particles",
+											"sid": 736787391057924,
+											"parameters": {
+												"instance-variable": "ActorNr",
+												"comparison": 0,
+												"value": "Photon.ActorNr"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-default-color",
+											"objectClass": "Particles",
+											"sid": 729191291298318,
+											"parameters": {
+												"color": "rgbEx(90, 90, 90)"
+											}
+										},
+										{
+											"id": "set-size-randomiser",
+											"objectClass": "Particles",
+											"sid": 707248556058123,
+											"parameters": {
+												"size-randomiser": "5"
+											}
+										},
+										{
+											"id": "set-spray-cone",
+											"objectClass": "Particles",
+											"sid": 402811099209197,
+											"parameters": {
+												"spray-cone": "25"
+											}
+										},
+										{
+											"id": "set-rate",
+											"objectClass": "Particles",
+											"sid": 746682942271209,
+											"parameters": {
+												"rate": "55"
+											}
+										}
+									],
+									"sid": 954724227220872
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlaneObjects",
+											"sid": 741021294820982,
+											"parameters": {
+												"instance-variable": "ActorNr",
+												"comparison": 0,
+												"value": "Photon.MyActorNr"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "shake",
+											"objectClass": "Camera",
+											"sid": 400696336003283,
+											"behaviorType": "ScrollTo",
+											"parameters": {
+												"magnitude": "17",
+												"duration": "0.4",
+												"mode": "reducing-magnitude"
+											}
+										}
+									],
+									"sid": 221977177009702
 								}
 							]
 						},
@@ -2765,6 +2966,16 @@
 									"sid": 978994244326821,
 									"parameters": {
 										"code0": "10"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Particles",
+									"sid": 752704635586793,
+									"parameters": {
+										"instance-variable": "ActorNr",
+										"comparison": 0,
+										"value": "Photon.ActorNr"
 									}
 								}
 							],
@@ -2796,6 +3007,11 @@
 									"sid": 500359982306735
 								},
 								{
+									"id": "destroy",
+									"objectClass": "Particles",
+									"sid": 331146840929023
+								},
+								{
 									"id": "add-to",
 									"objectClass": "Stats",
 									"sid": 279357790647713,
@@ -2824,25 +3040,8 @@
 							"children": [
 								{
 									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Particles",
-											"sid": 359406278507881,
-											"parameters": {
-												"instance-variable": "ActorNr",
-												"comparison": 0,
-												"value": "Photon.ActorNr"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "destroy",
-											"objectClass": "Particles",
-											"sid": 214814484753456
-										}
-									],
+									"conditions": [],
+									"actions": [],
 									"sid": 988379824430731
 								}
 							]
@@ -2973,41 +3172,6 @@
 									"sid": 795385526489763
 								}
 							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "onevent3",
-									"objectClass": "Photon",
-									"sid": 145074743669146,
-									"parameters": {
-										"code0": "9"
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Particles",
-									"sid": 767881263684288,
-									"parameters": {
-										"instance-variable": "ActorNr",
-										"comparison": 0,
-										"value": "PlaneObjects.ActorNr"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-position",
-									"objectClass": "Particles",
-									"sid": 147714358758514,
-									"parameters": {
-										"x": "PlaneObjects.ImagePointX(\"Engine\")",
-										"y": "PlaneObjects.ImagePointY(\"Engine\")"
-									}
-								}
-							],
-							"sid": 285933261876560
 						}
 					]
 				}
@@ -3026,8 +3190,8 @@
 					"conditions": [
 						{
 							"id": "on-collision-with-another-object",
-							"objectClass": "Ammo_Box_Supply",
-							"sid": 305403934356866,
+							"objectClass": "PlaneObjects",
+							"sid": 543788322097589,
 							"parameters": {
 								"object": "P51D30_Mustang"
 							}

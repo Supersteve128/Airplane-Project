@@ -12,18 +12,7 @@
 			"sid": 988750655279168
 		}
 	],
-	"behaviorTypes": [
-		{
-			"behaviorId": "destroy",
-			"name": "DestroyOutsideLayout",
-			"sid": 118184849507926
-		},
-		{
-			"behaviorId": "Bullet",
-			"name": "Bullet",
-			"sid": 270332944322819
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [

@@ -11,6 +11,7 @@
         "maxCameraScale": 0.85,
 		"displayWidth": 165,
 		"displayHeight": 165,
+		"health": 120,
 		"previous": "BF109F2",
 		"next": "BF109F2"
     },
@@ -26,6 +27,7 @@
         "maxCameraScale": 0.9,
 		"displayWidth": 165,
 		"displayHeight": 165,
+		"health": 110,
 		"previous": "P51D30_Mustang",
 		"next": "P51D30_Mustang"
 	}

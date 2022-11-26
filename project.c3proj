@@ -4,7 +4,7 @@
 	"name": "Coding Club Game Concept",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": true,
+	"bundleAddons": false,
 	"usedAddons": [
 		{
 			"type": "plugin",
@@ -136,16 +136,8 @@
 		},
 		{
 			"type": "behavior",
-			"id": "destroy",
-			"name": "Destroy outside layout",
-			"author": "Scirra",
-			"version": "r317.2",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Bullet",
-			"name": "Bullet",
+			"id": "Pin",
+			"name": "Pin",
 			"author": "Scirra",
 			"version": "r317.2",
 			"bundled": false
@@ -154,6 +146,14 @@
 			"type": "behavior",
 			"id": "scrollto",
 			"name": "Scroll To",
+			"author": "Scirra",
+			"version": "r317.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Bullet",
+			"name": "Bullet",
 			"author": "Scirra",
 			"version": "r317.2",
 			"bundled": false
@@ -178,6 +178,14 @@
 			"type": "behavior",
 			"id": "solid",
 			"name": "Solid",
+			"author": "Scirra",
+			"version": "r317.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "destroy",
+			"name": "Destroy outside layout",
 			"author": "Scirra",
 			"version": "r317.2",
 			"bundled": false

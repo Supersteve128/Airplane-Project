@@ -1,16 +1,9 @@
 {
-    "P51D30_Mustang": {
-        "name": "P51D30_Mustang",
-        "minSpeed": 200,
-        "maxSpeed": 437,
-		"acceleration": 60,
-        "rotationAcceleration": 35,
-        "movingTurnInitialVelocity": 40,
-        "normalTurnInitialVelocity": 20,
-        "minCameraScale": 1.1,
-        "maxCameraScale": 0.85
+    "20mm_Cannon_Bullet": {
+        "name": "20mm_Cannon_Bullet"
+
     },
-	"BF109F2": {
+	"50cal_MG_Bullet": {
 	
 	}
 }
