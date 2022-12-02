@@ -1275,7 +1275,7 @@
 						},
 						{
 							"type": "script",
-							"script": "const airplane = runtime.objects[localVars.Airplane].createInstance(\"Game\", Math.random()*2000 + 50, Math.random() * 2000+50, false, \"\")\n\n\nairplane.instVars.Name = localVars.Airplane\nairplane.instVars.ActorNr = localVars.ActorNr"
+							"script": "const airplane = runtime.objects[localVars.Airplane].createInstance(\"Game\", Math.random()*4000 + 50, Math.random() * 2500+50, false, \"\")\n\n\nairplane.instVars.Name = localVars.Airplane\nairplane.instVars.ActorNr = localVars.ActorNr"
 						},
 						{
 							"id": "create-object",
@@ -1358,27 +1358,107 @@
 						{
 							"id": "raiseevent17",
 							"objectClass": "Photon",
-							"sid": 202483536958911,
+							"sid": 456232688595903,
 							"parameters": {
 								"code0": "6",
-								"data1": "50",
+								"data1": "40",
 								"interestgroup2": "0",
 								"cache11": "donotcache",
 								"receivers15": "all",
 								"targetactors16": "\"\"",
 								"webforward19": "no"
 							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 471702416661539,
-							"parameters": {
-								"seconds": "5"
-							}
 						}
 					],
-					"sid": 323046554802878
+					"sid": 323046554802878,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlaneObjects",
+									"sid": 315943652837729,
+									"parameters": {
+										"instance-variable": "Health",
+										"comparison": 3,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 391620578240961,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 844881919070984,
+											"parameters": {
+												"object": "PlaneObjects",
+												"expression": "Photon.MyActorNr",
+												"comparison": 1,
+												"value": "PlaneObjects.ActorNr"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "raiseevent17",
+											"objectClass": "Photon",
+											"sid": 499838045920698,
+											"parameters": {
+												"code0": "10",
+												"data1": "PlaneObjects.ActorNr",
+												"interestgroup2": "0",
+												"cache11": "addtoroomcache",
+												"receivers15": "all",
+												"targetactors16": "\"\"",
+												"webforward19": "no"
+											}
+										}
+									],
+									"sid": 834341797844326,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlaneObjects",
+													"sid": 952944599480416,
+													"parameters": {
+														"instance-variable": "Health",
+														"comparison": 3,
+														"value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "raiseevent17",
+													"objectClass": "Photon",
+													"sid": 288297728125947,
+													"parameters": {
+														"code0": "11",
+														"data1": "Photon.ActorNr",
+														"interestgroup2": "0",
+														"cache11": "addtoroomcache",
+														"receivers15": "all",
+														"targetactors16": "\"\"",
+														"webforward19": "no"
+													}
+												}
+											],
+											"sid": 447733860203405
+										}
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					"eventType": "comment",
@@ -1519,6 +1599,46 @@
 					],
 					"sid": 805992391045114,
 					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 131580046561803,
+									"parameters": {
+										"code0": "11"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlaneObjects",
+									"sid": 447287748384161,
+									"parameters": {
+										"instance-variable": "ActorNr",
+										"comparison": 0,
+										"value": "int(Photon.EventData)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 755130674023568,
+									"parameters": {
+										"code0": "10",
+										"data1": "Photon.ActorNr",
+										"interestgroup2": "0",
+										"cache11": "addtoroomcache",
+										"receivers15": "all",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 322059646350433
+						},
 						{
 							"eventType": "block",
 							"conditions": [
@@ -2382,39 +2502,41 @@
 									}
 								}
 							],
-							"sid": 853788868667077
-						},
-						{
-							"eventType": "block",
-							"conditions": [
+							"sid": 853788868667077,
+							"children": [
 								{
-									"id": "compare-instance-variable",
-									"objectClass": "PlaneObjects",
-									"sid": 195567131190545,
-									"parameters": {
-										"instance-variable": "Health",
-										"comparison": 3,
-										"value": "0"
-									}
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlaneObjects",
+											"sid": 970908699714287,
+											"parameters": {
+												"instance-variable": "Health",
+												"comparison": 3,
+												"value": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "raiseevent17",
+											"objectClass": "Photon",
+											"sid": 388762076710574,
+											"parameters": {
+												"code0": "10",
+												"data1": "50cal_MG_Bullet.ActorNr",
+												"interestgroup2": "0",
+												"cache11": "addtoroomcache",
+												"receivers15": "all",
+												"targetactors16": "\"\"",
+												"webforward19": "no"
+											}
+										}
+									],
+									"sid": 886837304580072
 								}
-							],
-							"actions": [
-								{
-									"id": "raiseevent17",
-									"objectClass": "Photon",
-									"sid": 305999446969851,
-									"parameters": {
-										"code0": "10",
-										"data1": "0",
-										"interestgroup2": "0",
-										"cache11": "addtoroomcache",
-										"receivers15": "all",
-										"targetactors16": "\"\"",
-										"webforward19": "no"
-									}
-								}
-							],
-							"sid": 303686996705872
+							]
 						},
 						{
 							"eventType": "block",
@@ -3014,17 +3136,17 @@
 								{
 									"id": "add-to",
 									"objectClass": "Stats",
-									"sid": 279357790647713,
+									"sid": 699359696124675,
 									"parameters": {
-										"path": "50cal_MG_Bullet.ActorNr & \".kills\"",
+										"path": "Photon.EventData & \".kills\"",
 										"value": "1"
 									}
 								},
 								{
 									"callFunction": "getScore",
-									"sid": 989149792779036,
+									"sid": 953005490139425,
 									"parameters": [
-										"Stats.Get(50cal_MG_Bullet.ActorNr & \".team\")"
+										"Stats.Get(Photon.EventData & \".team\")"
 									]
 								},
 								{

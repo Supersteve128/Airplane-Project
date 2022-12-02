@@ -135,6 +135,22 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "AdvancedRandom",
+			"name": "Advanced Random",
+			"author": "Scirra",
+			"version": "r317.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "PlatformInfo",
+			"name": "Platform info",
+			"author": "Scirra",
+			"version": "r317.2",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Pin",
 			"name": "Pin",
@@ -217,7 +233,10 @@
 			"NameInput",
 			"Players",
 			"Stats",
-			"Boundaries"
+			"Boundaries",
+			"AdvancedRandom",
+			"PlatformInfo",
+			"Sprite"
 		],
 		"subfolders": [
 			{
